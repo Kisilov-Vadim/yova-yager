@@ -1,0 +1,114 @@
+@font-face {
+  font-family: Formular;
+  src: url('../../fonts/Formular/Formular.otf');
+}
+
+@font-face {
+  font-family: "Proxima Nova - Regular";
+  src: url('../../fonts/Proxima/Proxima\ Nova\ Regular.otf');
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 170px);
+  max-width: 1427px;
+  height: 34px;
+  margin: 35px auto 0;
+  
+
+  &__atmosphere {
+    display: flex;
+    max-width: 159px;
+    width: max-content;
+    height: 34px;
+    border: 1px solid #221d00;
+    box-sizing: border-box;
+
+    &-hospitality {
+      display: flex;
+      align-items: center;
+      padding: 0 11px;
+      height: 100%;
+      border-right: 1px solid #221d00;
+
+      & > img {
+        height: 9px;
+        width: 71px;
+      }
+    }
+
+    &-design {
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+    }
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr; 
+    width: 188px;
+    height: 34px;
+
+    &-search {
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      & > button {
+        justify-self: start;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      & > button:before {
+        content: "Search";
+        position: absolute;
+        transform: translate(-70px);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.3s, opacity 0.3s, visibility 0.3s;
+      }
+
+      & > button:hover:before {
+        opacity: 1;
+        transform: translate(-60px);
+        visibility: visible;
+        
+      }
+    }
+
+    &-social {
+      width: 110px;
+
+      & > a {
+        color: #000;
+        font-family: "Proxima Nova - Regular";
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 34px;
+        margin-right: 18px;
+        text-decoration: none;
+
+        &:hover {
+          cursor: pointer;
+          color: rgb(94, 83, 83); 
+        }
+      }
+    }
+
+    &-burger {
+      padding: 0;
+      display: flex;
+      justify-content: flex-end;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
