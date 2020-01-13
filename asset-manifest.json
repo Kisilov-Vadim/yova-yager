@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/yova-yager/static/css/main.d1b05096.chunk.css",
+    "main.js": "/yova-yager/static/js/main.67767c0c.chunk.js",
+    "main.js.map": "/yova-yager/static/js/main.67767c0c.chunk.js.map",
+    "runtime-main.js": "/yova-yager/static/js/runtime-main.e5584b23.js",
+    "runtime-main.js.map": "/yova-yager/static/js/runtime-main.e5584b23.js.map",
+    "static/js/2.d81e8aef.chunk.js": "/yova-yager/static/js/2.d81e8aef.chunk.js",
+    "static/js/2.d81e8aef.chunk.js.map": "/yova-yager/static/js/2.d81e8aef.chunk.js.map",
+    "index.html": "/yova-yager/index.html",
+    "precache-manifest.ccbdf75004322dff585c059df8a68a56.js": "/yova-yager/precache-manifest.ccbdf75004322dff585c059df8a68a56.js",
+    "service-worker.js": "/yova-yager/service-worker.js",
+    "static/css/main.d1b05096.chunk.css.map": "/yova-yager/static/css/main.d1b05096.chunk.css.map",
+    "static/js/2.d81e8aef.chunk.js.LICENSE": "/yova-yager/static/js/2.d81e8aef.chunk.js.LICENSE",
+    "static/media/logo.svg": "/yova-yager/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e5584b23.js",
+    "static/js/2.d81e8aef.chunk.js",
+    "static/css/main.d1b05096.chunk.css",
+    "static/js/main.67767c0c.chunk.js"
+  ]
+}
