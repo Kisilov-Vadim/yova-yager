@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/yova-yager/precache-manifest.ccbdf75004322dff585c059df8a68a56.js"
+  "/yova-yager/precache-manifest.7cd7f0cdded88f9b3ecc03252ee9b6df.js"
 );
 
 self.addEventListener('message', (event) => {
