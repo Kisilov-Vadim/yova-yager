@@ -7,3 +7,18 @@ button {
   border: none;
   outline: none;
 }
+
+.wrapper {
+  max-width: 2000px;
+  margin: 0 auto;
+  width: 100%;
+  height: max-content;
+}
+
+h3 {
+  font-family: Formular;
+  font-size: 21px;
+  letter-spacing: 4.38px;
+  text-transform: uppercase;
+  margin: 0;
+}

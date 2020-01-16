@@ -1,0 +1,31 @@
+.featured {
+  // display: flex;
+  // justify-content: center;
+  position: relative;
+  height: max-content;
+  top: -340px;
+  padding: 0 145px;
+
+  &__projects {
+    justify-self: center;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 750px));   
+    grid-template-rows: 525px 525px;
+    grid-gap: 103px; 
+    justify-content: center;
+    height: max-content;
+    padding-top: 53px;
+    margin: 0 auto; 
+
+    & > div > img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    & > div:nth-child(even) img {
+      position: relative;
+      top: 60px;
+    }
+  }
+}

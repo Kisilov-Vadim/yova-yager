@@ -1,0 +1,67 @@
+.message {
+  position: relative;
+  top: 140px;
+  display: flex; 
+  justify-content: flex-end;
+  height: 1033px;
+
+  &__info {
+    position: absolute;
+    left: 0;
+    max-width: 420px;
+    width: 420px;
+    min-width: 420px;
+    padding: 142px 0 0 148px;
+
+    &-title {
+      font-family: Formular;
+      font-size: 67px;
+      font-weight: 400;
+      color:#221d00;
+      letter-spacing: -1px;
+      height: 150px;
+      margin: 0;
+
+      & > span {
+        box-sizing: border-box;
+        border: 1px solid black;
+        padding: 0 6px;
+        margin-left: -9px;
+      }
+    }
+
+    &-text {
+      font-family: "Proxima Nova - Regular";
+      font-size: 21px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      line-height: 39px;
+      margin-top: 60px;
+    }
+  }
+
+  &__animation {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 100%;
+    overflow: hidden;
+
+    & > img {
+      position: absolute;
+      left: 245px;
+    }
+  }
+}
+
+// @media screen and (max-width: 949px) {
+//   .message { 
+
+//     &__animation {
+
+//       & > img {
+//         left: 50px;
+//       }
+//     }
+//   }
+// }

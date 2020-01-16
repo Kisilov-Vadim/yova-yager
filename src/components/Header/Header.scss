@@ -9,14 +9,33 @@
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 259px auto 282px;
   align-items: center;
-  width: calc(100% - 170px);
-  max-width: 1427px;
-  height: 34px;
-  margin: 35px auto 0;
-  
+  justify-items: center;
+  width: 100%;
+  max-width: 2000px;
+  margin: 0 auto;
+  height: 104px;
+  border-bottom: none;
+  background-color: white;
+  z-index: 2; 
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease-in;
+
+  &-underline {
+    border-bottom: 1px solid #e4e4e4;
+  }
+
+  &-invisible {
+    visibility: hidden;
+    opacity: 0;
+  }
 
   &__atmosphere {
     display: flex;
@@ -25,6 +44,7 @@
     height: 34px;
     border: 1px solid #221d00;
     box-sizing: border-box;
+    justify-self: self-end;
 
     &-hospitality {
       display: flex;
@@ -48,14 +68,18 @@
 
   &__info {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr; 
-    width: 188px;
+    grid-template-columns: 1fr 110px 40px; 
+    width: max-content;
     height: 34px;
+    justify-self: self-start;
 
     &-search {
+      position: relative;
       display: flex;
       align-items: center;
       height: 100%;
+      padding-right: 10px;
+      width: 26px;
 
       & > button {
         justify-self: start;
@@ -102,12 +126,103 @@
     }
 
     &-burger {
-      padding: 0;
       display: flex;
       justify-content: flex-end;
+      align-items: center;
+      padding: 0;
 
       &:hover {
         cursor: pointer;
+      }
+    }
+
+    &-form {
+      position: absolute;
+      right: 5px;
+      align-items: center;
+      justify-content: center;
+      width: max-content;
+      height: 34px;
+      border-radius: 20px;
+      border: 1px solid #e7e7e7; 
+      box-sizing: border-box;
+      padding: 0 7px 0 20px;
+
+      & > input {
+        width: 80px;
+        border: none;
+        outline: none;
+        font-family: "Proxima Nova - Regular";
+        font-size: 14px;
+
+        &::placeholder {
+          font-family: "Proxima Nova - Regular";
+          font-size: 14px;
+        }
+      }
+
+      & > button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 25px; 
+        width: 25px;
+        border: 1px solid black;
+        border-radius: 50%;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.is-active-button path {
+  background-color: black;
+  fill: #fff;
+}
+
+.invisible {
+  display: none;
+}
+
+.visible {
+  display: flex;
+}
+
+.menu {
+  position: fixed; 
+  right: 0;
+  top: 104px;
+  width: 360px;
+  box-sizing: border-box;
+  padding: 38px 85px 0 0;
+  height: 100%;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
+  transform: translate(0); //365px
+  transition: all 0.5s ease-out;
+  background-color: transparent;
+  z-index: 1;
+
+  &-invisible {
+    transform: translate(365px);
+  }
+
+  &__nav {
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-end;
+
+    &-link {
+      color: #000;
+      font-family: Formular;
+      font-size: 16px;
+      line-height: 46px;
+      text-decoration: none; 
+      
+      &:hover {
+        color: #1518ff;
       }
     }
   }
