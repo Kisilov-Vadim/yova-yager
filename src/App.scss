@@ -6,13 +6,17 @@ button {
   background-color: transparent;
   border: none;
   outline: none;
+  padding: 0;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .wrapper {
   max-width: 2000px;
   margin: 0 auto;
   width: 100%;
-  height: max-content;
 }
 
 h3 {

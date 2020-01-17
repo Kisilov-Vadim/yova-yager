@@ -2,9 +2,82 @@
   position: relative;
   top: -120px;
   padding: 0 145px;
+  overflow: hidden;
+  height: max-content;
 
   &-title {
     font-size: 24px;
     letter-spacing: 5px;    
   }
+
+  &__gallery {
+    position: relative;
+
+    &-table {
+      width: 100%;
+      margin-top: 51px;
+      display: -webkit-box; /* Not needed if autoprefixing */
+      display: -ms-flexbox; /* Not needed if autoprefixing */
+      display: flex;/* gutter size offset */
+      width: auto;
+      justify-content: center;
+    }
+
+    &-columns {
+
+      & > div {
+        position: relative;
+        margin-bottom: 10%;
+        display: flex;
+        justify-content: center;
+      }
+
+      & > div > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &:nth-child(even) {
+        margin-left: 3%; /* gutter size */
+        padding-top: 104px;
+      }
+
+      &:nth-child(odd) {
+        margin-right: 3%; /* gutter size */
+      }
+    }
+  }
+
+  &__more {
+    width: 145px;
+    height: 85px;
+    display: flex;
+    align-items: center;
+    margin: -10px auto 0;
+    background-image: url('./img/button-background.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    &-button {
+      font-family: "Formular - Bold";
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.works__Y {
+  position: absolute;
+  top: -180px;
+  right: 0;
+  left: 0;
+  width: 110%;
+  height: 150%;
+  background-image: url('./img/26-Y.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
 }

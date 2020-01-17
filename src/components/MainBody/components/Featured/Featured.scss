@@ -1,17 +1,16 @@
 .featured {
-  // display: flex;
-  // justify-content: center;
   position: relative;
   height: max-content;
   top: -340px;
-  padding: 0 145px;
+  padding: 0 10%;
 
   &__projects {
     justify-self: center;
     display: grid;
-    grid-template-columns: repeat(2, minmax(100px, 750px));   
+    grid-template-columns: repeat(2, minmax(100px, 1fr));   
     grid-template-rows: 525px 525px;
-    grid-gap: 103px; 
+    grid-gap: 7%; 
+    justify-items: stretch;
     justify-content: center;
     height: max-content;
     padding-top: 53px;

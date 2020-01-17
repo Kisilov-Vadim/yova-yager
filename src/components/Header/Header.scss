@@ -14,11 +14,11 @@
   left: 0;
   right: 0;
   display: grid;
-  grid-template-columns: 259px auto 282px;
+  grid-template-columns: 329px auto 350px;
   align-items: center;
   justify-items: center;
   width: 100%;
-  max-width: 2000px;
+  // max-width: 2000px;
   margin: 0 auto;
   height: 104px;
   border-bottom: none;
@@ -44,7 +44,6 @@
     height: 34px;
     border: 1px solid #221d00;
     box-sizing: border-box;
-    justify-self: self-end;
 
     &-hospitality {
       display: flex;
@@ -71,7 +70,6 @@
     grid-template-columns: 1fr 110px 40px; 
     width: max-content;
     height: 34px;
-    justify-self: self-start;
 
     &-search {
       position: relative;

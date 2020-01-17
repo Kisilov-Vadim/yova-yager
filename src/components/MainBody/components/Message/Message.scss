@@ -1,17 +1,15 @@
 .message {
   position: relative;
   top: 140px;
-  display: flex; 
-  justify-content: flex-end;
   height: 1033px;
 
   &__info {
-    position: absolute;
+    position: relative;
     left: 0;
     max-width: 420px;
     width: 420px;
     min-width: 420px;
-    padding: 142px 0 0 148px;
+    padding: 142px 0 0 10%;
 
     &-title {
       font-family: Formular;
@@ -41,27 +39,16 @@
   }
 
   &__animation {
-    position: relative;
+    position: absolute;
     width: 100%;
     max-width: 900px;
     height: 100%;
     overflow: hidden;
+    right: 0;
 
     & > img {
       position: absolute;
-      left: 245px;
+      left: 220px;
     }
   }
 }
-
-// @media screen and (max-width: 949px) {
-//   .message { 
-
-//     &__animation {
-
-//       & > img {
-//         left: 50px;
-//       }
-//     }
-//   }
-// }

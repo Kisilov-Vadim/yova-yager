@@ -4,6 +4,7 @@ import './MainBody.scss';
 import Message from './components/Message/Message'; 
 import Featured from './components/Featured/Featured'; 
 import Works from './components/Works/Works';
+import MainSociality from './components/MainSociality/MainSociality';
 
 const MainBody = () => {
   
@@ -12,6 +13,7 @@ const MainBody = () => {
       <Message />
       <Featured />
       <Works />
+      <MainSociality />
     </main>
    );
 }
