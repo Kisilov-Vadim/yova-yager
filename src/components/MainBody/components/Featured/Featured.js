@@ -4,8 +4,8 @@ import Fade from 'react-reveal/Fade';
 
 const Featured = () => {
   return ( 
-    <div className="wrapper">
-      <section className="featured">
+    <section className="featured">
+      <div className="wrapper">
         <h3>
           Featured Projects
         </h3>
@@ -31,8 +31,8 @@ const Featured = () => {
             </Fade>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
  

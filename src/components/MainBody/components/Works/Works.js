@@ -6,8 +6,8 @@ import Masonry from 'react-masonry-css';
 const Works = () => {
   
   return ( 
-    <div className="wrapper">
-      <section className='works'>
+    <section className='works'>
+      <div className="wrapper">
         <h3 className="works__title">
           Works  
         </h3>
@@ -42,8 +42,8 @@ const Works = () => {
         <div className="works__more">
           <button className="works__more-button">Load more</button>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
  
