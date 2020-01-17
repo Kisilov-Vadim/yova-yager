@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9ba8a91a0b1a26c647b5d8fd07c477ee",
+    "revision": "6611342fec0247bea1f1d77eb2696860",
     "url": "/yova-yager/index.html"
   },
   {
-    "revision": "3531588c155fcd225364",
-    "url": "/yova-yager/static/css/main.9543660b.chunk.css"
+    "revision": "acecf544f4ef54119967",
+    "url": "/yova-yager/static/css/main.530cb5e6.chunk.css"
   },
   {
-    "revision": "1acc72134dd9daabb413",
-    "url": "/yova-yager/static/js/2.a314a5de.chunk.js"
+    "revision": "d87c668974d8f04af121",
+    "url": "/yova-yager/static/js/2.d988eb20.chunk.js"
   },
   {
     "revision": "d705cb622423d72c5defbf368ca70dcc",
-    "url": "/yova-yager/static/js/2.a314a5de.chunk.js.LICENSE"
+    "url": "/yova-yager/static/js/2.d988eb20.chunk.js.LICENSE"
   },
   {
-    "revision": "3531588c155fcd225364",
-    "url": "/yova-yager/static/js/main.45a5551b.chunk.js"
+    "revision": "acecf544f4ef54119967",
+    "url": "/yova-yager/static/js/main.4b2b6b23.chunk.js"
   },
   {
     "revision": "b1a4c8c547c012532984",
@@ -30,5 +30,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "410504d49238e955ba7dc23a7f963021",
     "url": "/yova-yager/static/media/Proxima Nova Regular.410504d4.otf"
+  },
+  {
+    "revision": "98953312ba5d7791459613fbfe1c9e5d",
+    "url": "/yova-yager/static/media/button-background.98953312.svg"
   }
 ]);
