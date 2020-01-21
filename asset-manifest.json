@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/yova-yager/static/css/main.5408b4ff.chunk.css",
-    "main.js": "/yova-yager/static/js/main.37790980.chunk.js",
-    "main.js.map": "/yova-yager/static/js/main.37790980.chunk.js.map",
+    "main.css": "/yova-yager/static/css/main.dbeb4e02.chunk.css",
+    "main.js": "/yova-yager/static/js/main.5cf06b1e.chunk.js",
+    "main.js.map": "/yova-yager/static/js/main.5cf06b1e.chunk.js.map",
     "runtime-main.js": "/yova-yager/static/js/runtime-main.e5584b23.js",
     "runtime-main.js.map": "/yova-yager/static/js/runtime-main.e5584b23.js.map",
     "static/js/2.d988eb20.chunk.js": "/yova-yager/static/js/2.d988eb20.chunk.js",
     "static/js/2.d988eb20.chunk.js.map": "/yova-yager/static/js/2.d988eb20.chunk.js.map",
     "index.html": "/yova-yager/index.html",
-    "precache-manifest.6862edc35505576baf430193ab2ff34e.js": "/yova-yager/precache-manifest.6862edc35505576baf430193ab2ff34e.js",
+    "precache-manifest.2e5926f65e2cfb8643f7305f9a019065.js": "/yova-yager/precache-manifest.2e5926f65e2cfb8643f7305f9a019065.js",
     "service-worker.js": "/yova-yager/service-worker.js",
-    "static/css/main.5408b4ff.chunk.css.map": "/yova-yager/static/css/main.5408b4ff.chunk.css.map",
+    "static/css/main.dbeb4e02.chunk.css.map": "/yova-yager/static/css/main.dbeb4e02.chunk.css.map",
     "static/js/2.d988eb20.chunk.js.LICENSE": "/yova-yager/static/js/2.d988eb20.chunk.js.LICENSE",
     "static/media/Header.scss": "/yova-yager/static/media/Proxima Nova Regular.410504d4.otf",
     "static/media/Works.scss": "/yova-yager/static/media/button-background.98953312.svg"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.e5584b23.js",
     "static/js/2.d988eb20.chunk.js",
-    "static/css/main.5408b4ff.chunk.css",
-    "static/js/main.37790980.chunk.js"
+    "static/css/main.dbeb4e02.chunk.css",
+    "static/js/main.5cf06b1e.chunk.js"
   ]
 }
