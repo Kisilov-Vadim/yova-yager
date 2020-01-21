@@ -11,12 +11,12 @@ const MainSociality = () => {
           <div className="mainSociality__gallery">
             <Fade bottom delay={200}>
               <div>
-                <img src="/img/body/sociality/1.png" alt="Sociality" />
+                <img src="img/body/sociality/1.png" alt="Sociality" />
               </div>
             </Fade>
             <Fade bottom delay={200}>
               <div>
-                <img src="/img/body/sociality/2.png" alt="Sociality" />
+                <img src="img/body/sociality/2.png" alt="Sociality" />
               </div>
             </Fade>
           </div>
