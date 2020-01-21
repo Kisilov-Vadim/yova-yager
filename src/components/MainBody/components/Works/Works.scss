@@ -80,3 +80,12 @@
   background-size: contain;
   background-position: right;
 }
+
+@media screen and (max-width: 699px) {
+  .works {
+
+    &__Y {
+      display: none;
+    }
+  }
+}

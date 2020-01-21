@@ -45,3 +45,12 @@
     }
   }
 }
+
+@media screen and (max-width: 899px) {
+  .mainSociality {
+
+    &__gallery {
+      grid-template-columns: 1fr;
+    }
+  }
+}

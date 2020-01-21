@@ -1,10 +1,24 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './Works.scss'
 import Fade from 'react-reveal/Fade';
 import Masonry from 'react-masonry-css';
 
 const Works = () => {
-  
+  const [screenWidth, setScreenWidth] = useState(); 
+
+  const resize = () => {
+    setScreenWidth(window.innerWidth);
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", resize.bind(this));
+    resize(); 
+
+    return () => {
+      window.removeEventListener('resize', resize); 
+    }
+  }, [])
+
   return ( 
     <section className='works'>
       <div className="wrapper">
@@ -13,7 +27,7 @@ const Works = () => {
         </h3>
         <div className="works__gallery">
           <Masonry 
-            breakpointCols={2}
+            breakpointCols={`${screenWidth < 700 ? 1 : 2}`}
             className="works__gallery-table"
             columnClassName="works__gallery-columns"> 
             <div>

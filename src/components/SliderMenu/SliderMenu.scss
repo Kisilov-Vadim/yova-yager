@@ -1,0 +1,30 @@
+.menu {
+  
+  &__form {
+  border-bottom: 2px solid rgba(151, 151, 151, .2);
+  width: 200px;
+  display: none;
+
+    & > input {
+      width: 180px;
+      color: #000000;
+      font-family: Formular;
+      font-size: 14px;
+      letter-spacing: 0.67px;
+      line-height: 52px;
+
+      &::placeholder {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 949px) {
+  .menu {
+
+    &__form {
+      display: flex;
+    }
+  }
+}

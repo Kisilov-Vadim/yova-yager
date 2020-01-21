@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import './Header.scss'; 
 
+import Social from '../Social/Social';
+import SliderMenu from '../SliderMenu/SliderMenu';
+
 const Header = () => {
 
   const textInput = React.createRef();
@@ -47,6 +50,9 @@ const Header = () => {
         <div className="header__atmosphere-design">
           <img src="img/header/design.svg" alt="Hospitality and Design"/>
         </div>
+        <div className="header__atmosphere-YY">
+          <img src="img/header/YY.png" alt="YY" />
+        </div>
       </div>
       <a href="/">
         <div className="header__logo">
@@ -73,15 +79,7 @@ const Header = () => {
           </form>
         </div>
         <div className="header__info-social">
-          <a href="/">
-            <span>Inst</span>
-          </a>
-          <a href="/">
-            <span>Fb</span>
-          </a>
-          <a href="/">
-            <span>Be</span>
-          </a>
+          <Social />
         </div>
         <button 
           className="header__info-burger"
@@ -91,18 +89,7 @@ const Header = () => {
         </button>
       </div>
       <div className={`menu ${menuShow === false ?  "menu-invisible" : null}`}>
-        <form></form>
-        <nav className="menu__nav">
-          <a href="/" className="menu__nav-link">Home</a>  
-          <a href="/" className="menu__nav-link">About</a>
-          <a href="/" className="menu__nav-link">Works</a>
-          <a href="/" className="menu__nav-link">Sociality</a>
-          <a href="/" className="menu__nav-link">Blog</a>
-          <a href="/" className="menu__nav-link">Career</a>
-          <a href="/" className="menu__nav-link">Media Kit</a>
-          <a href="/" className="menu__nav-link">Press</a>
-          <a href="/" className="menu__nav-link">Contacts</a>
-        </nav>
+        <SliderMenu />
       </div>
     </header>
   );

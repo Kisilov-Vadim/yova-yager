@@ -27,3 +27,17 @@
     }
   }
 }
+
+@media screen and (max-width: 699px) {
+  .featured {
+
+    &__projects {
+      grid-template-columns: 1fr;
+      grid-gap: 53px;
+
+      & > div:nth-child(even) img {
+        top: 0;
+      }
+    }
+  }
+}

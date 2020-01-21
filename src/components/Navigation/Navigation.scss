@@ -1,0 +1,38 @@
+.menu {
+
+  &__nav {
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 50px;
+
+    &-link {
+      color: #000;
+      font-family: Formular;
+      font-size: 16px;
+      line-height: 46px;
+      text-decoration: none; 
+      
+      &:hover {
+        color: #1518ff;
+      }
+    }
+  }
+}
+
+.footer__nav {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  letter-spacing: 0.35px;
+  line-height: 39px;
+
+
+  &-link {
+    color: #ffffff;
+    font-family: Formular;
+    font-size: 16px;
+    margin-right: 4.5%;
+    font-weight: 400px;
+  }
+}

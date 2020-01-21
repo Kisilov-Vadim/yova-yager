@@ -3,6 +3,7 @@ import "./MainSociality.scss";
 import Fade from 'react-reveal/Fade';
 
 const MainSociality = () => {
+
   return ( 
       <section className="mainSociality">
         <div className="wrapper">

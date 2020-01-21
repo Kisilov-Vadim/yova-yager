@@ -8,7 +8,6 @@
     left: 0;
     max-width: 420px;
     width: 420px;
-    min-width: 420px;
     margin-top: 142px;
 
     &-title {
@@ -49,6 +48,19 @@
     & > img {
       position: absolute;
       left: 220px;
+    }
+  }
+}
+
+@media screen and (max-width: 499px) {
+  .message {
+
+    &__info {
+      width: 100%;
+
+      &-title {
+        font-size: 50px;
+      }
     }
   }
 }
