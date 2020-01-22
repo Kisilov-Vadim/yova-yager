@@ -1,24 +1,25 @@
 {
   "files": {
-    "main.css": "/yova-yager/static/css/main.dbeb4e02.chunk.css",
-    "main.js": "/yova-yager/static/js/main.38408ede.chunk.js",
-    "main.js.map": "/yova-yager/static/js/main.38408ede.chunk.js.map",
+    "main.css": "/yova-yager/static/css/main.b5a3907f.chunk.css",
+    "main.js": "/yova-yager/static/js/main.1e630531.chunk.js",
+    "main.js.map": "/yova-yager/static/js/main.1e630531.chunk.js.map",
     "runtime-main.js": "/yova-yager/static/js/runtime-main.e5584b23.js",
     "runtime-main.js.map": "/yova-yager/static/js/runtime-main.e5584b23.js.map",
-    "static/js/2.d988eb20.chunk.js": "/yova-yager/static/js/2.d988eb20.chunk.js",
-    "static/js/2.d988eb20.chunk.js.map": "/yova-yager/static/js/2.d988eb20.chunk.js.map",
+    "static/js/2.12306a2f.chunk.js": "/yova-yager/static/js/2.12306a2f.chunk.js",
+    "static/js/2.12306a2f.chunk.js.map": "/yova-yager/static/js/2.12306a2f.chunk.js.map",
     "index.html": "/yova-yager/index.html",
-    "precache-manifest.fd39cc5137433023cafe620e32de66ac.js": "/yova-yager/precache-manifest.fd39cc5137433023cafe620e32de66ac.js",
+    "precache-manifest.1d6b5d9d073b62e24a78a56ccd51481b.js": "/yova-yager/precache-manifest.1d6b5d9d073b62e24a78a56ccd51481b.js",
     "service-worker.js": "/yova-yager/service-worker.js",
-    "static/css/main.dbeb4e02.chunk.css.map": "/yova-yager/static/css/main.dbeb4e02.chunk.css.map",
-    "static/js/2.d988eb20.chunk.js.LICENSE": "/yova-yager/static/js/2.d988eb20.chunk.js.LICENSE",
+    "static/css/main.b5a3907f.chunk.css.map": "/yova-yager/static/css/main.b5a3907f.chunk.css.map",
+    "static/js/2.12306a2f.chunk.js.LICENSE": "/yova-yager/static/js/2.12306a2f.chunk.js.LICENSE",
     "static/media/Header.scss": "/yova-yager/static/media/Proxima Nova Regular.410504d4.otf",
-    "static/media/Works.scss": "/yova-yager/static/media/button-background.98953312.svg"
+    "static/media/Works.scss": "/yova-yager/static/media/button-background.98953312.svg",
+    "static/media/WorksCard.scss": "/yova-yager/static/media/hoverbackground.d8422983.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.e5584b23.js",
-    "static/js/2.d988eb20.chunk.js",
-    "static/css/main.dbeb4e02.chunk.css",
-    "static/js/main.38408ede.chunk.js"
+    "static/js/2.12306a2f.chunk.js",
+    "static/css/main.b5a3907f.chunk.css",
+    "static/js/main.1e630531.chunk.js"
   ]
 }
