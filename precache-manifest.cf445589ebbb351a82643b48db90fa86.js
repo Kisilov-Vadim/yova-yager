@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "65221d4cde48edfd7c260c66bbb4f868",
+    "revision": "7d8f3117a0232c0c0488d58b0e450c18",
     "url": "/yova-yager/index.html"
   },
   {
-    "revision": "7a001f9af32df3fa090d",
+    "revision": "91cfee354d8e35bd1a79",
     "url": "/yova-yager/static/css/main.b5a3907f.chunk.css"
   },
   {
-    "revision": "95959625c7696e4ebb23",
-    "url": "/yova-yager/static/js/2.12306a2f.chunk.js"
+    "revision": "2df345c2718787fcff6b",
+    "url": "/yova-yager/static/js/2.5703bd9f.chunk.js"
   },
   {
     "revision": "e928fe768baa9832b5bc57eae021f30c",
-    "url": "/yova-yager/static/js/2.12306a2f.chunk.js.LICENSE"
+    "url": "/yova-yager/static/js/2.5703bd9f.chunk.js.LICENSE"
   },
   {
-    "revision": "7a001f9af32df3fa090d",
-    "url": "/yova-yager/static/js/main.1e630531.chunk.js"
+    "revision": "91cfee354d8e35bd1a79",
+    "url": "/yova-yager/static/js/main.ff6654fc.chunk.js"
   },
   {
     "revision": "b1a4c8c547c012532984",
