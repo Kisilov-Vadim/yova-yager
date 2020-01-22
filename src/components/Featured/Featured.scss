@@ -1,7 +1,6 @@
 .featured {
   position: relative;
-  height: max-content;
-  top: -340px;
+  height: 1425px;
 
   &__projects {
     justify-self: center;
@@ -21,7 +20,7 @@
       object-fit: cover;
     }
 
-    & > div:nth-child(even) img {
+    & > div:nth-child(even) {
       position: relative;
       top: 60px;
     }

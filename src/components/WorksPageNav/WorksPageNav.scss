@@ -1,0 +1,57 @@
+.workspage {
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    margin-top: 94px;
+
+    &-title {
+      font-family: Formular;
+      font-size: 60px;
+      letter-spacing: 12.5px;
+      text-transform: uppercase;
+      margin: 0 50px 0 0;
+    }
+
+    &-sort {
+      width: 43%;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      & > button { 
+        font-family: "Proxima Nova - Regular";
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 34px;
+        text-transform: uppercase;
+        margin: 5px;
+
+        &:hover {
+          color: #0004ff;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 549px) {
+
+  .workspage {
+
+    &__nav {
+      margin-top: 2px;
+      
+      &-title {
+        font-size: 36px;
+        
+      }
+
+      &-sort {
+        display: none;
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@ const MainSociality = () => {
 
   return ( 
       <section className="mainSociality">
-        <div className="wrapper">
+        {/* <div className="wrapper"> */}
           <h3 className="mainSociality__title">Sociality</h3>
           <div className="mainSociality__gallery">
             <Fade bottom delay={200}>
@@ -21,7 +21,7 @@ const MainSociality = () => {
             </Fade>
           </div>
           <button className="mainSociality__gallery-button">View All</button>
-      </div> 
+      {/* </div>  */}
     </section>
   );
 }

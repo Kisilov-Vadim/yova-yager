@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Footer.scss";
 
-import Navigation from '../Navigation/Navigation';
+import {Navigation} from '../Navigation/index';
 import Social from '../Social/Social';
 
 const Footer = () => {

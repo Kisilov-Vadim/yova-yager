@@ -1,0 +1,58 @@
+.works {
+
+  &__info {
+    position: absolute; 
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    background-image: url('./hoverbackground.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: all 0.5s;
+
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    & > div {
+      position: absolute;
+      left: 52px;
+      bottom: 78px;
+      color: #ffffff;
+      font-family: Formular;
+
+      & > span {
+        font-size: 24px;
+      }
+
+      & > p {
+        margin: 10px 0 0 0;
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__Y {
+    position: absolute;
+    top: -180px;
+    right: 0;
+    left: 0;
+    width: 110%;
+    height: 150%;
+    background-image: url('../Works/img/26-Y.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+  }
+}
+
+@media screen and (max-width: 699px) {
+  .works {
+
+    &__Y {
+      display: none;
+    }
+  }
+}

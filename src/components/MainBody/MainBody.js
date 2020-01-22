@@ -11,9 +11,11 @@ const MainBody = () => {
   return ( 
     <main>
       <Message />
-      <Featured />
-      <Works />
-      <MainSociality />
+      <div className="wrapper">
+        <Featured />
+        <Works />
+        <MainSociality />
+      </div>
     </main>
    );
 }

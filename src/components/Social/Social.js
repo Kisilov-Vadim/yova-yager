@@ -22,4 +22,4 @@ const Social = ({place}) => {
   );
 }
  
-export default Social;
+export default React.memo(Social);

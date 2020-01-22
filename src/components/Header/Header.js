@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import './Header.scss'; 
+import {Link} from 'react-router-dom';
 
 import Social from '../Social/Social';
 import SliderMenu from '../SliderMenu/SliderMenu';
 
-const Header = () => {
+const Header = ({menuShow, setMenuShow}) => {
 
   const textInput = React.createRef();
   const [formActive, setFormActive] = useState(false); 
-  const [menuShow, setMenuShow] = useState(false)
   const [scrollPosition, setScrollPosition] = useState(0);  
   const [scrollStop, setScrollStop] = useState(true);  
   let timer;
@@ -56,7 +56,7 @@ const Header = () => {
       </div>
       <a href="/">
         <div className="header__logo">
-          <img src="img/header/yovayager.svg" alt="Yova Yager" />
+          <Link to="/" exact onClick={() => setMenuShow(false)}><img src="img/header/yovayager.svg" alt="Yova Yager" /></Link> 
         </div>
       </a>
       <div className="header__info">

@@ -1,10 +1,10 @@
 import React from 'react';
 import './SliderMenu.scss'; 
 
-import Navigation from '../Navigation/Navigation'; 
+import {Navigation} from '../Navigation/index'; 
 import Social from '../Social/Social'; 
 
-const SliderMenu = () => {
+const SliderMenu = ({closeMenu}) => {
 
   return ( 
     <>
@@ -24,4 +24,4 @@ const SliderMenu = () => {
   );
 }
  
-export default SliderMenu;
+export default React.memo(SliderMenu);

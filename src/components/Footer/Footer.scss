@@ -1,6 +1,5 @@
 .footer {
   position: relative;
-  top: 30px;
   width: 100%;
   height: max-content;
   background-color: #000000;
@@ -83,8 +82,9 @@
 
     &-sendmail {
       max-width: 200px;
-      width: max-content;
+      width: 200px;
       height: max-content;
+      margin-bottom: 67px;
     }
   }
 
@@ -141,7 +141,8 @@
 
     &__content {
       align-items: flex-start;
-      height: 550px;
+      justify-content: flex-start;
+      height: 430px;
 
       &-mobimage {
         display: block;
