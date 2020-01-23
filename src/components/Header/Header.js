@@ -54,11 +54,9 @@ const Header = ({menuShow, setMenuShow}) => {
           <img src="img/header/YY.png" alt="YY" />
         </div>
       </div>
-      <a href="/">
         <div className="header__logo">
-          <Link to="/" exact onClick={() => setMenuShow(false)}><img src="img/header/yovayager.svg" alt="Yova Yager" /></Link> 
+          <Link to="/" exact="true" onClick={() => setMenuShow(false)}><img src="img/header/yovayager.svg" alt="Yova Yager" /></Link> 
         </div>
-      </a>
       <div className="header__info">
         <div className="header__info-search">
           <button 

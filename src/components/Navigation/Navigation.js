@@ -11,10 +11,10 @@ const Navigation = ({place, showMenu, setMenuShow}) => {
   
   return ( 
     <nav className={`menu__nav ${place === 'footer' ? 'footer__nav' : null}`}>
-      <Link to="/" exac className={`menu__nav-link ${place === 'footer' ? 'footer__nav-link' : null}`} onClick={clickOnLink}>Home</Link>  
+      <Link to="/" className={`menu__nav-link ${place === 'footer' ? 'footer__nav-link' : null}`} onClick={clickOnLink}>Home</Link>  
       <a href="/" className={`menu__nav-link ${place === 'footer' ? 'footer__nav-link' : null}`}>About</a>
-      <Link to="/works" exac className={`menu__nav-link ${place === 'footer' ? 'footer__nav-link' : null}`} onClick={clickOnLink}>Works</Link>
-      <a href="/" className={`menu__nav-link ${place === 'footer' ? 'footer__nav-link' : null}`}>Sociality</a>
+      <Link to="/works" className={`menu__nav-link ${place === 'footer' ? 'footer__nav-link' : null}`} onClick={clickOnLink}>Works</Link>
+      <Link to="/social" className={`menu__nav-link ${place === 'footer' ? 'footer__nav-link' : null}`} onClick={clickOnLink}>Sociality</Link>
       <a href="/" className={`menu__nav-link ${place === 'footer' ? 'footer__nav-link' : null}`}>Blog</a>
       <a href="/" className={`menu__nav-link ${place === 'footer' ? 'footer__nav-link' : null}`}>Career</a>
       <a href="/" className={`menu__nav-link ${place === 'footer' ? 'footer__nav-link' : null}`}>Media Kit</a>

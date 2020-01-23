@@ -1,0 +1,84 @@
+.sociality {
+   
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 93px 0 54px 0;
+
+    &-title {
+      color: #da7f7e;
+      font-family: Formular;
+      font-size: 60px;
+      letter-spacing: 12.5px;
+      text-transform: uppercase;
+      margin: 0 40px 0 0;
+    }
+
+    &-sort {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 43%;
+
+      & > button {
+        color: #000000;
+        font-family: "Proxima Nova - Regular";
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 34px;
+        text-transform: uppercase;
+        margin: 0 5px;
+
+        &:hover {
+          color: #0004ff;
+        }
+      }
+    }
+  }
+
+  &__info {
+    width: 50%;
+    max-width: 540px;
+    margin-bottom: 50px;
+    color: #000000;
+    font-family: "Proxima Nova - Regular";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+}
+
+@media screen and (max-width: 699px) {
+  .sociality {
+
+    &__nav {
+
+      &-title {
+        font-size: 30px;
+        margin: 0 auto;
+      }
+
+      &-sort {
+        display: none;
+      }
+    }
+
+    &__info {
+      width: 90%;
+      max-width: 800px;
+    }
+  }
+}
+
+@media screen and (max-width: 329px) {
+  .sociality {
+
+    &__nav {
+
+      &-title {
+        font-size: 20px;
+      }
+    }
+  }
+}

@@ -243,9 +243,20 @@
 
 @media screen and (max-width: 349px) {
   .header {
+    grid-template-columns: 1fr 1fr;
   
     &__logo {
       display: none;
+    }
+
+    &__atmosphere-YY {
+      position: relative;
+      right: 30px;
+    }
+
+    &__info-burger {
+      position: relative;
+      left: 30px;
     }
   }
 

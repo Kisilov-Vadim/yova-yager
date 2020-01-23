@@ -1,8 +1,10 @@
 .featured {
   position: relative;
-  height: 1425px;
+  height: max-content;
+  margin-bottom: 150px;
 
   &__projects {
+    position: relative;
     justify-self: center;
     display: grid;
     grid-template-columns: repeat(2, minmax(100px, 1fr));   
@@ -10,9 +12,15 @@
     grid-gap: 7%; 
     justify-items: stretch;
     justify-content: center;
-    height: max-content;
     padding-top: 53px;
     margin: 0 auto; 
+
+    & > div {
+      position: relative;
+      margin-bottom: 10%;
+      display: flex;
+      justify-content: center;
+    }
 
     & > div > img {
       height: 100%;
@@ -34,7 +42,7 @@
       grid-template-columns: 1fr;
       grid-gap: 53px;
 
-      & > div:nth-child(even) img {
+      & > div:nth-child(even) {
         top: 0;
       }
     }

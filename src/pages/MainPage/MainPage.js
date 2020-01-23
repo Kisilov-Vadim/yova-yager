@@ -2,8 +2,8 @@ import React from 'react';
 
 import Message from '../../components/Message/Message'; 
 import Featured from '../../components/Featured/Featured'; 
-import Works from '../../components/Works/Works';
 import MainSociality from '../../components/MainSociality/MainSociality';
+import MassonryGallery from '../../components/MassonryGallery/MassonryGallery';
 
 const MainPage = () => {
   return ( 
@@ -11,7 +11,7 @@ const MainPage = () => {
       <Message />
       <div className="wrapper">
         <Featured />
-        <Works />
+        <MassonryGallery title='Works' backgroundY={true} button={true} />
         <MainSociality />
       </div>
     </main>

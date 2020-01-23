@@ -1,6 +1,6 @@
 import React from 'react';
 import './Featured.scss'; 
-import Fade from 'react-reveal/Fade';
+import WorksCard from '../WorksCard/WorksCard';
 
 const Featured = () => {
   return ( 
@@ -10,26 +10,10 @@ const Featured = () => {
           Featured Projects
         </h3>
         <div className='featured__projects'>
-          <div>
-            <Fade bottom delay={200}>
-              <img src='./img/body/featured/1.png' alt='1'/>
-            </Fade>
-          </div>
-          <div>
-            <Fade bottom delay={300}>
-              <img src='./img/body/featured/2.png' alt='2'/>
-            </Fade>
-          </div>
-          <div>
-            <Fade bottom delay={200}>
-              <img src='./img/body/featured/3.png' alt='3'/>
-            </Fade>
-          </div>
-          <div>
-            <Fade bottom delay={300}>
-              <img src='./img/body/featured/4.png' alt='4'/>
-            </Fade>
-          </div>
+          <WorksCard image="./img/body/featured/1.png" background={false} />
+          <WorksCard image="./img/body/featured/2.png" background={false} />
+          <WorksCard image="./img/body/featured/3.png" background={false} />
+          <WorksCard image="./img/body/featured/4.png" background={false} />
         </div>
       {/* </div> */}
     </section>

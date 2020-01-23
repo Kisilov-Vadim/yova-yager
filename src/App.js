@@ -6,6 +6,7 @@ import {Header} from './components/Header/index';
 import Footer from './components/Footer/Footer';
 import MainPage from './pages/MainPage/MainPage'; 
 import WorksPage from './pages/WorksPage/WorksPage'; 
+import SocialityPage from './pages/SocialityPage/SocialityPage';
 
 class App extends React.Component {
   
@@ -16,6 +17,7 @@ class App extends React.Component {
           <Switch>
             <Route path="/" exact component={MainPage} />
             <Route path="/works" exact component={WorksPage} />
+            <Route path="/social" exact component={SocialityPage} />
           </Switch>
         <Footer />
       </>

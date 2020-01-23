@@ -1,12 +1,11 @@
-.works {
-  position: relative;
-  overflow: hidden;
-  height: max-content;
+.massonry {
   padding-bottom: 70px;
-
-  &-title {
+  
+  &__title {
     font-size: 24px;
-    letter-spacing: 5px;    
+    letter-spacing: 5px;
+    font-family: Formular;
+    text-transform: uppercase;
   }
 
   &__gallery {
@@ -69,7 +68,7 @@
 }
 
 @media screen and (max-width: 699px) {
-  .works {
+  .massonry {
 
     &__gallery {
 
