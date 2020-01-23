@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/yova-yager/static/css/main.b5a3907f.chunk.css",
-    "main.js": "/yova-yager/static/js/main.ff6654fc.chunk.js",
-    "main.js.map": "/yova-yager/static/js/main.ff6654fc.chunk.js.map",
+    "main.css": "/yova-yager/static/css/main.70a026a7.chunk.css",
+    "main.js": "/yova-yager/static/js/main.206af4f9.chunk.js",
+    "main.js.map": "/yova-yager/static/js/main.206af4f9.chunk.js.map",
     "runtime-main.js": "/yova-yager/static/js/runtime-main.e5584b23.js",
     "runtime-main.js.map": "/yova-yager/static/js/runtime-main.e5584b23.js.map",
-    "static/js/2.5703bd9f.chunk.js": "/yova-yager/static/js/2.5703bd9f.chunk.js",
-    "static/js/2.5703bd9f.chunk.js.map": "/yova-yager/static/js/2.5703bd9f.chunk.js.map",
+    "static/js/2.88a3f596.chunk.js": "/yova-yager/static/js/2.88a3f596.chunk.js",
+    "static/js/2.88a3f596.chunk.js.map": "/yova-yager/static/js/2.88a3f596.chunk.js.map",
     "index.html": "/yova-yager/index.html",
-    "precache-manifest.cf445589ebbb351a82643b48db90fa86.js": "/yova-yager/precache-manifest.cf445589ebbb351a82643b48db90fa86.js",
+    "precache-manifest.6f2f5d6273c9aa223d7504e3eea5b186.js": "/yova-yager/precache-manifest.6f2f5d6273c9aa223d7504e3eea5b186.js",
     "service-worker.js": "/yova-yager/service-worker.js",
-    "static/css/main.b5a3907f.chunk.css.map": "/yova-yager/static/css/main.b5a3907f.chunk.css.map",
-    "static/js/2.5703bd9f.chunk.js.LICENSE": "/yova-yager/static/js/2.5703bd9f.chunk.js.LICENSE",
+    "static/css/main.70a026a7.chunk.css.map": "/yova-yager/static/css/main.70a026a7.chunk.css.map",
+    "static/js/2.88a3f596.chunk.js.LICENSE": "/yova-yager/static/js/2.88a3f596.chunk.js.LICENSE",
     "static/media/Header.scss": "/yova-yager/static/media/Proxima Nova Regular.410504d4.otf",
-    "static/media/Works.scss": "/yova-yager/static/media/button-background.98953312.svg",
+    "static/media/MassonryGallery.scss": "/yova-yager/static/media/button-background.98953312.svg",
     "static/media/WorksCard.scss": "/yova-yager/static/media/hoverbackground.d8422983.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.e5584b23.js",
-    "static/js/2.5703bd9f.chunk.js",
-    "static/css/main.b5a3907f.chunk.css",
-    "static/js/main.ff6654fc.chunk.js"
+    "static/js/2.88a3f596.chunk.js",
+    "static/css/main.70a026a7.chunk.css",
+    "static/js/main.206af4f9.chunk.js"
   ]
 }
