@@ -1,25 +1,24 @@
 {
   "files": {
-    "main.css": "/yova-yager/static/css/main.70a026a7.chunk.css",
-    "main.js": "/yova-yager/static/js/main.206af4f9.chunk.js",
-    "main.js.map": "/yova-yager/static/js/main.206af4f9.chunk.js.map",
-    "runtime-main.js": "/yova-yager/static/js/runtime-main.e5584b23.js",
-    "runtime-main.js.map": "/yova-yager/static/js/runtime-main.e5584b23.js.map",
-    "static/js/2.88a3f596.chunk.js": "/yova-yager/static/js/2.88a3f596.chunk.js",
-    "static/js/2.88a3f596.chunk.js.map": "/yova-yager/static/js/2.88a3f596.chunk.js.map",
-    "index.html": "/yova-yager/index.html",
-    "precache-manifest.6f2f5d6273c9aa223d7504e3eea5b186.js": "/yova-yager/precache-manifest.6f2f5d6273c9aa223d7504e3eea5b186.js",
-    "service-worker.js": "/yova-yager/service-worker.js",
-    "static/css/main.70a026a7.chunk.css.map": "/yova-yager/static/css/main.70a026a7.chunk.css.map",
-    "static/js/2.88a3f596.chunk.js.LICENSE": "/yova-yager/static/js/2.88a3f596.chunk.js.LICENSE",
-    "static/media/Header.scss": "/yova-yager/static/media/Proxima Nova Regular.410504d4.otf",
-    "static/media/MassonryGallery.scss": "/yova-yager/static/media/button-background.98953312.svg",
-    "static/media/WorksCard.scss": "/yova-yager/static/media/hoverbackground.d8422983.svg"
+    "main.css": "/static/css/main.ec524ff9.chunk.css",
+    "main.js": "/static/js/main.44a5a417.chunk.js",
+    "main.js.map": "/static/js/main.44a5a417.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.1af0291b.js",
+    "runtime-main.js.map": "/static/js/runtime-main.1af0291b.js.map",
+    "static/js/2.90e94458.chunk.js": "/static/js/2.90e94458.chunk.js",
+    "static/js/2.90e94458.chunk.js.map": "/static/js/2.90e94458.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.58883231ddc14780c11b18ec7cdcafc7.js": "/precache-manifest.58883231ddc14780c11b18ec7cdcafc7.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.ec524ff9.chunk.css.map": "/static/css/main.ec524ff9.chunk.css.map",
+    "static/js/2.90e94458.chunk.js.LICENSE": "/static/js/2.90e94458.chunk.js.LICENSE",
+    "static/media/Header.scss": "/static/media/ProximaNovaRegular.410504d4.otf",
+    "static/media/WorksCard.scss": "/static/media/hoverbackground.d8422983.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.e5584b23.js",
-    "static/js/2.88a3f596.chunk.js",
-    "static/css/main.70a026a7.chunk.css",
-    "static/js/main.206af4f9.chunk.js"
+    "static/js/runtime-main.1af0291b.js",
+    "static/js/2.90e94458.chunk.js",
+    "static/css/main.ec524ff9.chunk.css",
+    "static/js/main.44a5a417.chunk.js"
   ]
 }
