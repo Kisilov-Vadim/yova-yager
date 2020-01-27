@@ -37,13 +37,18 @@
 
 @media screen and (max-width: 699px) {
   .featured {
+    margin-bottom: 40px;
 
     &__projects {
-      grid-template-columns: 1fr;
-      grid-gap: 53px;
+      display: flex;
+      flex-direction: column;
 
       & > div:nth-child(even) {
         top: 0;
+      }
+
+      & > div > img {
+        object-fit: contain;
       }
     }
   }

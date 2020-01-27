@@ -1,4 +1,28 @@
 .menu {
+  position: fixed; 
+  right: 0;
+  top: 104px;
+  display: flex; 
+  flex-direction: column;
+  align-items: flex-end;
+  width: 360px;
+  box-sizing: border-box;
+  padding: 38px 85px 0 0;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  transform: translate(0); //365px
+  transition: all 0.5s ease-out;
+  z-index: 3;
+  height: calc(100vh - 104px);
+  overflow: scroll;
+
+  &-invisible {
+    transform: translate(365px);
+  }
+
+  &__social {
+    display: none;
+  }
   
   &__form {
   border-bottom: 2px solid rgba(151, 151, 151, .2);
@@ -22,9 +46,24 @@
 
 @media screen and (max-width: 949px) {
   .menu {
+    padding: 38px 9% 40px 0;
 
     &__form {
       display: flex;
     }
+
+    &__social {
+      display: flex;
+    }
+  }
+}
+
+@media screen and (max-width: 349px) {
+  .menu {
+    border: none;
+    box-shadow: none;
+    top: 100px;
+    padding: 0 10%;
+    width: 100vw;
   }
 }

@@ -46,29 +46,11 @@
       }
     }
   }
-
-  &__more {
-    width: 145px;
-    height: 85px;
-    display: flex;
-    align-items: center;
-    margin: -10px auto 0;
-    background-image: url('./img/button-background.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    
-    &-button {
-      font-family: "Formular - Bold";
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-  }
 }
 
-@media screen and (max-width: 699px) {
+@media screen and (max-width: 799px) {
   .massonry {
+    margin-bottom: 20px;
 
     &__gallery {
 

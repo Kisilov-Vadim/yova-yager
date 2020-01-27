@@ -4,8 +4,13 @@
 }
 
 @font-face {
-  font-family: "Proxima Nova - Regular";
-  src: url('../../fonts/Proxima/Proxima\ Nova\ Regular.otf');
+  font-family: ProximaRegular;
+  src: url('../../fonts/Proxima/ProximaNovaRegular.otf');
+}
+
+@font-face {
+  font-family: ProximaBold;
+  src: url('../../fonts/Proxima/ProximaNovaBold.otf');
 }
 
 .header {
@@ -135,11 +140,11 @@
         width: 80px;
         border: none;
         outline: none;
-        font-family: "Proxima Nova - Regular";
+        font-family: ProximaRegular, sans-serif;
         font-size: 14px;
 
         &::placeholder {
-          font-family: "Proxima Nova - Regular";
+          font-family: ProximaRegular, sans-serif;
           font-size: 14px;
         }
       }
@@ -158,33 +163,6 @@
         }
       }
     }
-  }
-}
-
-.menu {
-  position: fixed; 
-  right: 0;
-  top: 104px;
-  display: flex; 
-  flex-direction: column;
-  align-items: flex-end;
-  width: 360px;
-  box-sizing: border-box;
-  padding: 38px 85px 0 0;
-  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
-  transform: translate(0); //365px
-  transition: all 0.5s ease-out;
-  background-color: white;
-  z-index: 1;
-  height: 100vh;
-  overflow-y: hidden;
-
-  &-invisible {
-    transform: translate(365px);
-  }
-
-  &__social {
-    display: none;
   }
 }
 
@@ -231,14 +209,6 @@
       }
     }  
   }
-
-  .menu {
-    padding: 38px 9% 0 0;
-
-    &__social {
-      display: block;
-    }
-  }
 }
 
 @media screen and (max-width: 349px) {
@@ -258,12 +228,5 @@
       position: relative;
       left: 30px;
     }
-  }
-
-  .menu {
-    border: none;
-    box-shadow: none;
-    top: 100px;
-    padding: 0 6%;
   }
 }

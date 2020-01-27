@@ -36,6 +36,12 @@ const Header = ({menuShow, setMenuShow}) => {
     }
   }) 
 
+  if (menuShow) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "visible";
+  }
+
   return ( 
     <header 
       className={`header 
@@ -45,17 +51,17 @@ const Header = ({menuShow, setMenuShow}) => {
       >
       <div className="header__atmosphere">
         <div className="header__atmosphere-hospitality">
-          <img src="img/header/hospitality.svg" alt="Hospitality and Design"/>
+          <img src="/img/header/hospitality.svg" alt="Hospitality and Design"/>
         </div>
         <div className="header__atmosphere-design">
-          <img src="img/header/design.svg" alt="Hospitality and Design"/>
+          <img src="/img/header/design.svg" alt="Hospitality and Design"/>
         </div>
         <div className="header__atmosphere-YY">
-          <img src="img/header/YY.png" alt="YY" />
+          <img src="/img/header/YY.png" alt="YY" />
         </div>
       </div>
         <div className="header__logo">
-          <Link to="/" exact="true" onClick={() => setMenuShow(false)}><img src="img/header/yovayager.svg" alt="Yova Yager" /></Link> 
+          <Link to="/" exact="true" onClick={() => setMenuShow(false)}><img src="/img/header/yovayager.svg" alt="Yova Yager" /></Link> 
         </div>
       <div className="header__info">
         <div className="header__info-search">
@@ -63,7 +69,7 @@ const Header = ({menuShow, setMenuShow}) => {
             onClick={searchClick} 
             className={formActive === true ? 'invisible' : 'visible'}
           >
-            <img src="img/header/search.svg" alt="Search"/>
+            <img src="/img/header/search.svg" alt="Search"/>
           </button>
           <form className={`header__info-form ${formActive === false ? "invisible" : "visible"}`}>
             <input 
@@ -72,7 +78,7 @@ const Header = ({menuShow, setMenuShow}) => {
               ref={textInput}
             />
             <button className={`${formActive === true ? 'is-active-button' : null}`}>
-              <img src="img/header/search.svg" alt="Search"/>
+              <img src="/img/header/search.svg" alt="Search"/>
             </button>
           </form>
         </div>
@@ -83,7 +89,7 @@ const Header = ({menuShow, setMenuShow}) => {
           className="header__info-burger"
           onClick={() => setMenuShow(!menuShow)}
         >
-          <img src={`${menuShow === false ? 'img/header/burger.svg' : 'img/header/burger-close.svg'}`} alt="Menu" />
+          <img src={`${menuShow === false ? '/img/header/burger.svg' : '/img/header/burger-close.svg'}`} alt="Menu" />
         </button>
       </div>
       <div className={`menu ${menuShow === false ?  "menu-invisible" : null}`}>

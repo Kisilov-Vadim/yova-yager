@@ -1,0 +1,80 @@
+.workGallery {
+  display: grid;
+  grid-auto-rows: 525px;
+  gap: 108px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+    "one one"
+    "two three"
+    "four four"
+    "five six"
+    "seven eight";
+  width: 100%;
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &-one {
+    grid-area: one;
+  }
+
+  &-two {
+    grid-area: two;
+  }
+
+  &-three {
+    grid-area: three;
+  }
+
+  &-four {
+    grid-area: four;
+  }
+  
+  &-five {
+    grid-area: five;
+  }
+
+  &-six {
+    grid-area: six;
+  }
+
+  &-seven {
+    grid-area: seven;
+  }
+
+  &-eight {
+    grid-area: eight;
+  }
+
+  & > p {
+    font-family: ProximaRegular, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 32px;
+    max-width: 500px;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 799px) {
+  .workGallery {
+    display: flex;
+    flex-direction: column;
+
+    & > p, & > img {
+      margin-top: 54px;
+    }
+
+    & > p {
+      height: max-content;
+    }
+
+    & > img {
+      height: max-content;
+      object-fit: contain;
+    }
+  }
+}

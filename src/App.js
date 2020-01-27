@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer';
 import MainPage from './pages/MainPage/MainPage'; 
 import WorksPage from './pages/WorksPage/WorksPage'; 
 import SocialityPage from './pages/SocialityPage/SocialityPage';
+import WorkPage from './components/WorkPage/WorkPage';
 
 class App extends React.Component {
   
@@ -18,6 +19,7 @@ class App extends React.Component {
             <Route path="/" exact component={MainPage} />
             <Route path="/works" exact component={WorksPage} />
             <Route path="/social" exact component={SocialityPage} />
+            <Route path="/works/altruist" exact component={WorkPage} />
           </Switch>
         <Footer />
       </>

@@ -13,7 +13,7 @@ const SliderMenu = ({closeMenu}) => {
           placeholder='Search...'  
         />
         <button>
-          <img src="img/header/search.svg" alt="search" />
+          <img src="/img/header/search.svg" alt="search" />
         </button>
       </form>
       <Navigation />

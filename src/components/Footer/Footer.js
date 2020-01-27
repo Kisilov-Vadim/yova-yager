@@ -13,17 +13,17 @@ const Footer = () => {
         <div className="footer__content">
           <div className="footer__content-left">
             <div className="footer__content-mobimage">
-              <img src="img/footer/mobimg.png" alt="Yova" />
+              <img src="/img/footer/mobimg.png" alt="Yova" />
             </div>
             <span className="footer__content-name">It’s me, Yova Yager</span>
             <Switch> 
               <Route path="/" exact>
                 <div className="footer__content-image">
-                  <img src="img/footer/yova-face.png" alt="Yova" />
+                  <img src="/img/footer/yova-face.png" alt="Yova" />
                 </div>
               </Route>
               <div className="footer__content-imageFace">
-                <img src="img/footer/mobimg.png" alt="Yova" />
+                <img src="/img/footer/mobimg.png" alt="Yova" />
               </div>
             </Switch>
           </div>
