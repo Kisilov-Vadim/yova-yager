@@ -2,22 +2,60 @@
   position: fixed; 
   right: 0;
   top: 104px;
-  display: flex; 
-  flex-direction: column;
-  align-items: flex-end;
-  width: 360px;
-  box-sizing: border-box;
-  padding: 38px 85px 0 0;
-  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
-  background-color: white;
-  transform: translate(0); //365px
-  transition: all 0.5s ease-out;
-  z-index: 3;
-  height: calc(100vh - 104px);
-  overflow: scroll;
+  height: 100vh;
+  visibility: hidden; 
+  transition: all 0.3s easy-in; 
+
+  &-scroll {
+    top: 50px; 
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .6);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s;
+  }
+
+  &__before-visible {
+    visibility: visible;
+  }
+
+  &__before-visible:before {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__wrapper { 
+    transform: translate(0); //365px
+    transition: all 0.5s ease-out;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    height: calc(100vh - 142px);
+    width: 360px;
+    padding: 38px 85px 0 0;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
+    border-top: 1px solid #eee;
+    overflow-y: scroll;
+    z-index: 1;
+
+    &-scroll {
+      height: calc(100vh - 88px);
+    }
+  }
 
   &-invisible {
     transform: translate(365px);
+    visibility: hidden;
   }
 
   &__social {
@@ -46,7 +84,10 @@
 
 @media screen and (max-width: 949px) {
   .menu {
-    padding: 38px 9% 40px 0;
+
+    &__wrapper {
+      padding: 38px 70px 0 0;
+    }
 
     &__form {
       display: flex;
@@ -63,7 +104,14 @@
     border: none;
     box-shadow: none;
     top: 100px;
-    padding: 0 10%;
-    width: 100vw;
+    // padding: 0 10%;
+    // width: 100vw;
+
+    &__wrapper {
+      width: 100vw;
+      padding: 10px 40px 0 0;
+      height: calc(100vh - 110px);
+      border-top: none;
+    }
   }
 }

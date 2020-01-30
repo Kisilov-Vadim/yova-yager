@@ -2,6 +2,7 @@
 
   &__info {
     position: absolute; 
+    left: 0;
     width: 100%;
     height: 100%;
     opacity: 0;
@@ -9,6 +10,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     transition: all 0.5s;
+    z-index: 1;
 
     &:hover {
       cursor: pointer;
@@ -44,6 +46,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: right;
+    z-index: -1;
   }
 }
 

@@ -37,9 +37,8 @@
     border-bottom: 1px solid #e4e4e4;
   }
 
-  &-invisible {
-    visibility: hidden;
-    opacity: 0;
+  &-scroll {
+    height: 50px; 
   }
 
   &__atmosphere {
