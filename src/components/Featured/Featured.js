@@ -22,7 +22,7 @@ const Featured = ({featured}) => {
                 location={`${city}. ${country}`}
               />
             } else {
-              return;
+              return null;
             }
           })}
         </div>

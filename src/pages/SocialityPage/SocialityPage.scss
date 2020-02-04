@@ -21,8 +21,11 @@
       flex-wrap: wrap;
       width: 43%;
 
+      &-active {
+        color: #0004ff; 
+      }
+
       & > button {
-        color: #000000;
         font-family: ProximaRegular, sans-serif;
         font-size: 14px;
         font-weight: 400;

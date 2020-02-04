@@ -1,6 +1,5 @@
 import React from 'react';
 import './ButtonDecorate.scss'; 
-import Warp from 'warpjs'; 
 
 const ButtonDecorate = ({title, id, startAnimate, stopAnimate}) => {
 
@@ -14,8 +13,7 @@ const ButtonDecorate = ({title, id, startAnimate, stopAnimate}) => {
           </path>
         </g>
       </svg>
-    </div>
-    
+    </div>  
   );
 }
  

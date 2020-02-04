@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './SocialityPage.scss';
 import {Featured} from '../../components/Featured/index';
 import MassonryGallery from '../../components/MassonryGallery/MassonryGallery';
 
 const SocialityPage = ({allSocialities}) => {
+  const [filter, setFilter] = useState("VIEW ALL")
 
   return (  
     <section className="sociality">
@@ -11,10 +12,30 @@ const SocialityPage = ({allSocialities}) => {
         <div className="sociality__nav">
           <h1 className="sociality__nav-title">Sociality</h1>
           <div className="sociality__nav-sort">
-            <button>Zhuli-Buli</button>
-            <button>Zhuli-Buli</button>
-            <button>Zhuli-Buli</button>
-            <button>Zhuli-Buli</button>
+            <button 
+              onClick={() => setFilter('VIEW ALL')} 
+              className={filter === "VIEW ALL" ? "sociality__nav-sort-active" : null}
+            >
+              View all
+            </button>
+            <button 
+              onClick={() => setFilter('HOTELS')} 
+              className={filter === "HOTELS" ? "sociality__nav-sort-active" : null}
+            >
+              Hotels
+            </button>
+            <button 
+              onClick={() => setFilter('BARS')} 
+              className={filter === "BARS" ? "sociality__nav-sort-active" : null}
+            >
+              Bars
+            </button>
+            <button 
+              onClick={() => setFilter('RESTAURANTS')}
+              className={filter === "RESTAURANTS" ? "sociality__nav-sort-active" : null}
+            >
+              Restaurants
+          </button>
           </div>
         </div>
         <p className="sociality__info">
@@ -23,10 +44,11 @@ const SocialityPage = ({allSocialities}) => {
         </p>
         <Featured />
         <MassonryGallery 
-          worksArr={allSocialities}
+          worksArr={filter === 'VIEW ALL' ? allSocialities : allSocialities.filter(item => item.categoryName === filter)}
           count={4}
           title="All Sociality" 
           backgroundY={true} 
+          backgroundPici={true}
           button={true} 
           color="#da7f7e" 
         />

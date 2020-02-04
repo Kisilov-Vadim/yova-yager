@@ -19,6 +19,12 @@ const Message = () => {
         offset += 0.5;
       }, 1000 / 30);
     }
+
+    return () => {
+      clearTimeout(timeout)
+      cancelAnimationFrame(animId); 
+      animId = null;
+    }
   }); 
 
   const startAnimate = () => {

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import Warp from 'warpjs'; 
 
 
-const MassonryGallery = ({title, backgroundY, button, color, worksArr}) => {
+const MassonryGallery = ({title, backgroundY, backgroundPici, button, color, worksArr}) => {
   const [screenWidth, setScreenWidth] = useState(); 
   const [elementCount, setElementCount] = useState(4); 
   
@@ -82,6 +82,7 @@ const MassonryGallery = ({title, backgroundY, button, color, worksArr}) => {
               title={work.title}
               location={`${city}. ${country}`}
               backgroundY={backgroundY === true ? index === 1 ? true : false : false}
+              backgroundPici={backgroundPici === true ? index === 0 ? true : false : false}
             />
           })}
 

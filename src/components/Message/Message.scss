@@ -55,15 +55,61 @@
   }
 }
 
+@media screen and (max-width: 799px) {
+  .message {
+
+    &__animation {
+      top: -100px;
+    }
+  }
+}
+
+@media screen and (max-width: 699px) {
+  .message {
+
+    &__animation {
+      top: -150px;
+    }
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .message {
+
+    &__animation {
+      top: -200px;
+    }
+  }
+}
+
+
 @media screen and (max-width: 499px) {
   .message {
 
+    &__animation {
+      top: -250px;
+    }
+
     &__info {
       width: 100%;
+      top: 100px; 
 
       &-title {
         font-size: 50px;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 399px) {
+  .message {
+
+    &__info {
+      top: 50px
+    }
+
+    &__animation {
+      top: -300px;
     }
   }
 }

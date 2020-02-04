@@ -1,24 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import "./MainSociality.scss"; 
-import Fade from 'react-reveal/Fade';
 import WorksCard from '../WorksCard/WorksCard';
 import {Link} from 'react-router-dom';
 
 
 const MainSociality = ({allSocialities}) => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth); 
-
-  useEffect(() => {
-    document.addEventListener('resize', handleResize); 
-    
-    return () => {
-      document.removeEventListener('resize', handleResize); 
-    }
-  })
-
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth); 
-  }
 
   return ( 
     <section className="mainSociality">
@@ -36,6 +22,7 @@ const MainSociality = ({allSocialities}) => {
             image={item.projectImage}
             title={item.title}
             location={`${city}. ${country}`}
+            backgroundPici={i === 0 ? true : false}
             />
           })
         }

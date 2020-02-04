@@ -106,13 +106,13 @@
   }
 }
 
-@media screen and (max-width: 1099px) {
-  .footer {
-    &__menu {
-      display: none; 
-    }
-  }
-}
+// @media screen and (max-width: 1099px) {
+//   .footer {
+//     &__menu {
+//       display: none; 
+//     }
+//   }
+// }
 
 @media screen and (max-width: 999px) {
   .footer {
@@ -155,6 +155,10 @@
     flex-direction: column;
     align-items: flex-start;
     height: max-content;
+
+    &__nav {
+      display: none;
+    }
 
     &__title {
       font-size: 14px;

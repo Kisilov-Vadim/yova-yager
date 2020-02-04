@@ -37,11 +37,13 @@
     }
 
     &-button {
+      position: relative;
       font-family: Formular;
       font-size: 24px;
       letter-spacing: 3.33px;
       text-transform: uppercase;
-      margin-top: 40px;
+      top: 40px;
+      z-index: 1;
     }
   }
 }

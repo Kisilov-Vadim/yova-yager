@@ -3,9 +3,13 @@ import Fade from 'react-reveal/Fade';
 import './WorksCard.scss';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Warp from 'warpjs';
 
-const WorksCard = ({image, backgroundY, title, location}) => {
+const WorksCard = ({image, backgroundY, backgroundPici, title, location}) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth); 
+
+  let animIdPici, svgPici, warpPici, animatePici, timeoutPici; 
+  let offsetPici = 0
 
   const handleResize = () => {
     setWindowWidth(window.innerWidth); 
@@ -14,26 +18,62 @@ const WorksCard = ({image, backgroundY, title, location}) => {
   useEffect(() => {
     document.addEventListener('resize', handleResize); 
     
+    if (backgroundPici && windowWidth > 400) {
+      svgPici = document.getElementById('backgroundPici');
+      warpPici = new Warp(svgPici)
+      warpPici.interpolate(10)
+      warpPici.transform(([ x, y ]) => [ x, y, y ])
+      animatePici = () => {
+        timeoutPici = setTimeout(() => {
+          warpPici.transform(([ x, y, oy ]) => [ x + 4 * Math.sin(oy / 32 + offsetPici), oy + 4 * Math.sin(oy / 16 + offsetPici), oy ])
+          animIdPici = requestAnimationFrame(animatePici)
+          offsetPici += 0.3;
+        }, 1000 / 60);
+      }
+    }
+
     return () => {
       document.removeEventListener('resize', handleResize); 
+      clearTimeout(timeoutPici)
+      cancelAnimationFrame(animIdPici); 
+      animIdPici = null;
     }
   })
+
+  const startAnimate = () => {
+    if (!animIdPici && backgroundPici) {
+      animatePici();
+    } else {
+      return
+    }
+  }
+
+  const stopAnimate = () => {
+    setTimeout(() => {
+      clearTimeout(timeoutPici)
+      cancelAnimationFrame(animIdPici); 
+      animIdPici = null;
+    }, 1000) 
+  }
 
   if (windowWidth > 400) {
 
     return ( 
       <Fade bottom duration={1700} delay={100}>
-        <div className="card">
+        <div className="card" onMouseOver={startAnimate} onMouseLeave={stopAnimate}>
           {backgroundY === true ? <div className="card__Y"></div> : null}
           <img src={image} alt={title}/>
-          <Link to={`/works/${title}`} exact className="card__info" onClick={() => window.scrollTo(0, 0)}>
+          <Link to={`/works/${title}`} exact className="card__info" 
+            onClick={() => window.scrollTo(0, 0)}>
             <div>
               <span>{title}</span>
               <p>{location}</p>
             </div>
           </Link>
-          <div className="card__pici">
-            <svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1033" viewBox="0 0 1015 1033"><g opacity="0.483212">
+         {
+           backgroundPici === true ? 
+           <div className="card__pici">
+            <svg xmlns="http://www.w3.org/2000/svg" id="backgroundPici" width="1500" height="1033" viewBox="0 0 1015 1033"><g opacity="0.483212">
               <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1015" height="1033">
                 <path fillRule="evenodd" clipRule="evenodd" d="M0 0.549805H1015V1032.6H0V0.549805Z" fill="white"/>
               </mask>
@@ -48,14 +88,15 @@ const WorksCard = ({image, backgroundY, title, location}) => {
               </g>
             </svg>
           </div>
+          : null
+         }
         </div>
       </Fade>
     );
   } else {
-
+    console.log('yes')
     return (
       <div className="card">
-        {/* {backgroundY === true ? <div className="card__Y"></div> : null} */}
         <img src={image} alt='1'/>
         <Link to={`/works/${title}`} exact className="card__info" onClick={() => window.scrollTo(0, 0)}>
           <div>
@@ -74,11 +115,13 @@ WorksCard.protoTypes = {
   title: PropTypes.string.isRequired, 
   image: PropTypes.string.isRequired, 
   location: PropTypes.string.isRequired, 
-  background: PropTypes.bool, 
+  backgroundY: PropTypes.bool, 
+  backgroundPici: PropTypes.bool, 
 }
 
 WorksCard.defaultProps = {
-  background: false,
+  backgroundY: false,
+  backgroundPici: false, 
 }
 
 export default WorksCard;
