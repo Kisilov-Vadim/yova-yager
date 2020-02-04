@@ -2,20 +2,30 @@ import React from 'react';
 import './Featured.scss'; 
 import WorksCard from '../WorksCard/WorksCard';
 
-const Featured = () => {
+const Featured = ({featured}) => {
+
   return ( 
     <section className="featured">
-      {/* <div className="wrapper"> */}
         <h3>
           Featured Projects
         </h3>
         <div className='featured__projects'>
-          <WorksCard image="./img/body/featured/1.png" background={false} />
-          <WorksCard image="./img/body/featured/2.png" background={false} />
-          <WorksCard image="./img/body/featured/3.png" background={false} />
-          <WorksCard image="./img/body/featured/4.png" background={false} />
+          {(featured).map((item, i) => {
+            if (i < 4 ) {
+              let locationArr = item.location.split(',');
+              let city = locationArr[2]; 
+              let country = locationArr[3]; 
+              return <WorksCard 
+                key={item.id}
+                image={item.projectImage} 
+                title={item.title}
+                location={`${city}. ${country}`}
+              />
+            } else {
+              return;
+            }
+          })}
         </div>
-      {/* </div> */}
     </section>
   );
 }

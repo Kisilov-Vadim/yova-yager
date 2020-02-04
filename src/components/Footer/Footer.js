@@ -5,7 +5,8 @@ import {Navigation} from '../Navigation/index';
 import Social from '../Social/Social';
 import {Switch, Route} from 'react-router-dom';
 
-const Footer = () => {
+const Footer = ({settings}) => {
+
   return ( 
     <footer className='footer'>
       <div className="wrapper">
@@ -30,16 +31,15 @@ const Footer = () => {
           <div className="footer__content-right">
             <div className="footer__content-contacts">
               <span>Drop me aline:</span>
-              hello@yovayager.com
+              {settings[1].value}
               <span>Studio</span>
-              Tel.: +380955388407
-              Tel.: +380665388407
+              {settings[3].value}
             </div>
             <div className="footer__content-sendmail"> 
               <span>Send mail letters or card:</span>
-              YY Studio <br />
-              Ukraine, Kiev 01001 <br />
-              Mihaylivsky bystr, 9a, office 35 <br />
+              {settings[0].value}
+              <br/>
+              {settings[2].value}
             </div>
           </div>
         </div>

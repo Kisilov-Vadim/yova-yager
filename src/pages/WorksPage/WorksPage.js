@@ -1,14 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import WorksPageNav from '../../components/WorksPageNav/WorksPageNav';
 import MassonryGallery from '../../components/MassonryGallery/MassonryGallery';
 
-const WorksPage = () => {
+const WorksPage = ({works}) => {
+  const [filter, setFilter] = useState("VIEW ALL")
+
   return ( 
     <section className="workspage">
       <div className="wrapper">
-        <WorksPageNav />
-        <MassonryGallery title={false} backgroundY={false} button={true}/>
+        <WorksPageNav setFilter={setFilter} filter={filter}/>
+        <MassonryGallery 
+          worksArr={filter === 'VIEW ALL' ? works : works.filter(item => item.categoryName === filter)}
+          title={false} 
+          backgroundY={false} 
+          button={true} 
+        />
       </div>
     </section>
   );

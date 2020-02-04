@@ -5,22 +5,13 @@ import {Link} from 'react-router-dom';
 import Social from '../Social/Social';
 import {SliderMenu} from '../SliderMenu/index';
 
-const Header = ({menuShow, setMenuShow}) => {
+const Header = ({menuShow, setMenuShow, getAllData}) => {
   const textInput = React.createRef();
   const [formActive, setFormActive] = useState(false); 
   const [scrollPosition, setScrollPosition] = useState(0);  
-  // const [scrollStop, setScrollStop] = useState(true);  
-  let timer;
 
   const getScrollPosition = () => {
     setScrollPosition(window.pageYOffset)
-    // setScrollStop(false)
-    // clearTimeout(timer);
-    // if (scrollPosition > 0) {
-    //   timer = setTimeout(() => {
-    //     setScrollStop(true)
-    //   }, 1500)
-    // } 
   }
 
   const searchClick = () => {
@@ -28,7 +19,7 @@ const Header = ({menuShow, setMenuShow}) => {
   } 
 
   const unShowMenu = (e) => {
-    if (e.target.className === 'menu menu__before-visible') {
+    if (e.target.className.includes('menu__before-visible')) {
       setMenuShow(false);
     }
   }
@@ -50,6 +41,11 @@ const Header = ({menuShow, setMenuShow}) => {
     document.body.style.overflow = "visible";
   }
 
+  const clickOnLink = () => {
+    window.scrollTo(0,0)
+    setMenuShow(false)
+  }
+
   return ( 
     <>
       <header 
@@ -69,7 +65,7 @@ const Header = ({menuShow, setMenuShow}) => {
           </div>
         </div>
           <div className="header__logo">
-            <Link to="/" exact="true" onClick={() => setMenuShow(false)}><img src="/img/header/yovayager.svg" alt="Yova Yager" /></Link> 
+            <Link to="/" exact="true" onClick={clickOnLink}><img src="/img/header/yovayager.svg" alt="Yova Yager" /></Link> 
           </div>
         <div className="header__info">
           <div className="header__info-search">

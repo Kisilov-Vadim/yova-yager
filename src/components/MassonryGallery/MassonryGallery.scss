@@ -11,6 +11,10 @@
   &__gallery {
     position: relative;
 
+    &-button-invisible {
+      display: none;
+    }
+
     &-table {
       width: 100%;
       margin-top: 51px;
@@ -25,7 +29,7 @@
 
       & > div {
         position: relative;
-        margin-bottom: 10%;
+        margin-bottom: 106px;
         display: flex;
         justify-content: center;
       }

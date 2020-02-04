@@ -1,9 +1,10 @@
 import React from 'react';
 import './SocialityPage.scss';
-import Featured from '../../components/Featured/Featured';
+import {Featured} from '../../components/Featured/index';
 import MassonryGallery from '../../components/MassonryGallery/MassonryGallery';
 
-const SocialityPage = () => {
+const SocialityPage = ({allSocialities}) => {
+
   return (  
     <section className="sociality">
       <div className="wrapper">
@@ -22,6 +23,8 @@ const SocialityPage = () => {
         </p>
         <Featured />
         <MassonryGallery 
+          worksArr={allSocialities}
+          count={4}
           title="All Sociality" 
           backgroundY={true} 
           button={true} 

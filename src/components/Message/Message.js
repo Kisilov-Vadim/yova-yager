@@ -6,55 +6,19 @@ import Warp from 'warpjs';
 const Message = () => {
   let animId, svg, warp, animate, timeout; 
   let offset = 0
-  // const getToken = async (url) => {
-  //   let response = await fetch(url, {
-  //     method: 'POST', 
-  //     headers: {
-  //       "Content-Type": "application/json", 
-  //       "Accept": "application/json"
-  //     }, 
-  //     body: JSON.stringify({
-  //       email: "admin@admin.com", 
-  //       password: "admin"
-  //     })
-  //   })
-
-  //   return response.json(); 
-  // }
-
-  // const getData = async (url, token) => {
-  //   let response = await fetch(url, {
-  //     method: "POST", 
-  //     headers: {
-  //       "Content-Type": "application/json", 
-  //       "Accept": "application/json"
-  //     }, 
-  //     body: JSON.stringify({
-  //       "api_token": token       
-  //     })
-  //   })
-  //   return response.json(); 
-  // }
-
 
   useEffect(() => {
-
-    // getToken('http://yova.praid.com.ua/api/login')
-    //   .then(data => data.data['api_token'])
-    //   .then(token =>  getData("http://yova.praid.com.ua/api/category", token)) 
-    //   .then(category => console.log(category))
-
-      svg = document.getElementById('piciRock');
-      warp = new Warp(svg)
-      warp.interpolate(10)
-      warp.transform(([ x, y ]) => [ x, y, y ])
-      animate = () => {
-        timeout = setTimeout(() => {
-          warp.transform(([ x, y, oy ]) => [ x + 4 * Math.sin(oy / 32 + offset), oy + 4 * Math.sin(oy / 16 + offset), oy ])
-          animId = requestAnimationFrame(animate)
-          offset += 0.5;
-        }, 1000 / 60);
-      }
+    svg = document.getElementById('piciRock');
+    warp = new Warp(svg)
+    warp.interpolate(10)
+    warp.transform(([ x, y ]) => [ x, y, y ])
+    animate = () => {
+      timeout = setTimeout(() => {
+        warp.transform(([ x, y, oy ]) => [ x + 4 * Math.sin(oy / 32 + offset), oy + 4 * Math.sin(oy / 16 + offset), oy ])
+        animId = requestAnimationFrame(animate)
+        offset += 0.5;
+      }, 1000 / 30);
+    }
   }); 
 
   const startAnimate = () => {

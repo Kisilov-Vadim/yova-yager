@@ -1,14 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import "./MainSociality.scss"; 
 import Fade from 'react-reveal/Fade';
+import WorksCard from '../WorksCard/WorksCard';
+import {Link} from 'react-router-dom';
 
-const MainSociality = () => {
-  
+
+const MainSociality = ({allSocialities}) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth); 
-
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth); 
-  }
 
   useEffect(() => {
     document.addEventListener('resize', handleResize); 
@@ -18,31 +16,31 @@ const MainSociality = () => {
     }
   })
 
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth); 
+  }
+
   return ( 
-      <section className="mainSociality">
-        <h3 className="mainSociality__title">Sociality</h3>
-        <div className="mainSociality__gallery">
-          {
-            windowWidth > 400 ? 
-            <Fade bottom delay={200}>
-              <div>
-                <img src="/img/body/sociality/1.png" alt="Sociality" />
-              </div>
-              <div>
-                <img src="/img/body/sociality/2.png" alt="Sociality" />
-              </div>
-            </Fade> : 
-            <>
-              <div>
-                <img src="/img/body/sociality/1.png" alt="Sociality" />
-              </div>
-              <div>
-                <img src="/img/body/sociality/2.png" alt="Sociality" />
-              </div>
-            </>
+    <section className="mainSociality">
+      <h3 className="mainSociality__title">Sociality</h3>
+      <div className="mainSociality__gallery">
+        {allSocialities.map((item, i) => {
+          if (i >= 2) {
+            return
           }
-        </div>
-        <button className="mainSociality__gallery-button">View All</button>
+          let locationArr = item.location.split(','); 
+          let city = locationArr[2]; 
+          let country = locationArr[3]; 
+          return <WorksCard 
+            key={item.id}
+            image={item.projectImage}
+            title={item.title}
+            location={`${city}. ${country}`}
+            />
+          })
+        }
+      </div>
+      <Link to="/sociality" className="mainSociality__gallery-button" onClick={() => window.scrollTo(0,0)}>View All</Link>
     </section>
   );
 }

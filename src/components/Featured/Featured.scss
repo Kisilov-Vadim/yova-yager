@@ -8,8 +8,8 @@
     justify-self: center;
     display: grid;
     grid-template-columns: repeat(2, minmax(100px, 1fr));   
-    grid-template-rows: 525px 525px;
     grid-gap: 7%; 
+    grid-auto-rows: 525px;
     justify-items: stretch;
     justify-content: center;
     padding-top: 53px;

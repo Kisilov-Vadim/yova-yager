@@ -1,4 +1,5 @@
 .card {
+  position: relative;
 
   &__info {
     position: absolute; 
@@ -45,7 +46,7 @@
     background-image: url('../MassonryGallery/img/26-Y.png');
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: right;
+    background-position: top;
     z-index: -1;
   }
 }
