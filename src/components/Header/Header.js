@@ -27,11 +27,9 @@ const Header = ({menuShow, setMenuShow, getAllData}) => {
   useEffect(() => {
     textInput.current.focus();
     window.addEventListener('scroll', getScrollPosition)
-    document.addEventListener('click', unShowMenu)
     
     return () => {
       window.removeEventListener('scroll', getScrollPosition);
-      document.removeEventListener('click', unShowMenu);
     }
   }) 
 
@@ -96,7 +94,7 @@ const Header = ({menuShow, setMenuShow, getAllData}) => {
             <img src={`${menuShow === false ? '/img/header/burger.svg' : '/img/header/burger-close.svg'}`} alt="Menu" />
           </button>
         </div>
-        <SliderMenu scrollPosition={scrollPosition}/>
+        <SliderMenu scrollPosition={scrollPosition} unShowMenu={unShowMenu} />
       </header>
     </>
   );

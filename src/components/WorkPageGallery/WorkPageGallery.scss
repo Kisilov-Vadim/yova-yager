@@ -49,13 +49,13 @@
     grid-area: eight;
   }
 
-  & > p {
+  & div > p {
     font-family: ProximaRegular, sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: 32px;
     max-width: 500px;
-    margin: 0;
+    margin: 0 0 20px 0;
   }
 }
 

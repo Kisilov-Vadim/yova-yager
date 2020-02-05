@@ -11,6 +11,7 @@ const initialState = {
   allSocialities: [], 
   settings: [], 
   allImages: [], 
+  currentWorkData: false, 
 }; 
 
 const reducer = (state, action) => {
@@ -54,6 +55,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         allImages: action.images
+      }
+    case ACTIONS.SET_CURRENTWORKPAGE: 
+      return {
+        ...state, 
+        currentWorkData: action.work
       }
     default: 
       return state; 

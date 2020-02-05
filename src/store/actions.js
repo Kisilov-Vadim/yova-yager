@@ -6,19 +6,22 @@ export const ACTIONS = {
   SET_SETTINGS: 'SET_SETTINGS', 
   SET_ISLOADED: 'SET_ISLOADED', 
   SET_ALLSOCIALITIES: 'SET_ALLSOCIALITIES',
-  SET_ALLIMAGES: 'SET_ALLIMAGES'  
+  SET_ALLIMAGES: 'SET_ALLIMAGES', 
+  SET_CURRENTWORKPAGE: 'SET_CURRENTWORKPAGE',
 }
 
 export const setMenuShow = (status) => ({ type: ACTIONS.SET_MENU_SHOW, status });
+export const setCurrentWorkData = (work) => ({ type: ACTIONS.SET_CURRENTWORKPAGE, work })
 const setCategories = (categories) => ({ type: ACTIONS.SET_CATEGORIES, categories }); 
 const setFeatured = (featured) => ({ type: ACTIONS.SET_FEATURED, featured }); 
 const setAllWorks = (works) => ({ type: ACTIONS.SET_WORKS, works }); 
 const setAllSocialities = (allSocialities) => ({ type: ACTIONS.SET_ALLSOCIALITIES, allSocialities }); 
 const setSettings = (settings) => ({ type: ACTIONS.SET_SETTINGS, settings }); 
-const setIsLoaded = (value) => ({ type: ACTIONS.SET_ISLOADED, value }); 
+export const setIsLoaded = (value) => ({ type: ACTIONS.SET_ISLOADED, value }); 
 const setAllImages = (images) => ({ type: ACTIONS.SET_ALLIMAGES, images }); 
 
-const getToken = async (url) => {
+
+export const getToken = async (url) => {
   let response = await fetch(url, {
     method: 'POST', 
     headers: {
@@ -33,7 +36,7 @@ const getToken = async (url) => {
   return response.json(); 
 }
 
-const getData = async (url, token) => {
+export const getData = async (url, token) => {
   let response = await fetch(url, {
     method: "POST", 
     headers: {

@@ -37,12 +37,12 @@
 
     &-table {
 
-      & > tr > td {
+      & > tbody > tr > td {
         height: 20px;
         width: max-content;
       }
 
-      & > tr > td:nth-child(odd) {
+      & > tbody > tr > td:nth-child(odd) {
         font-family: ProximaBold, sans-serif;
         font-size: 18px;
         font-weight: 600;
@@ -50,7 +50,7 @@
         width: 140px;
       }
 
-      & > tr > td:nth-child(even) {
+      & > tbody > tr > td:nth-child(even) {
         font-family: ProximaRegular, sans-serif;
         font-size: 18px;
         font-weight: 400;

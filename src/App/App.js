@@ -31,7 +31,7 @@ const App = ({isLoaded, getAllData, works}) => {
           <Header />
             <Switch>
               {works.map(work => 
-                <Route path={`/works/${work.title}`} exact component={() => <WorkPage data={work} />} /> 
+                <Route path={`/works/${work.title}`} exact key={work.id} component={() => <WorkPage data={work} />} /> 
               )}
               <Route path="/" exact component={MainPage} />
               <Route path="/works" exact component={WorksPage} />

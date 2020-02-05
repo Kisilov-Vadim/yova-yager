@@ -1,10 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './SliderMenu.scss'; 
 
 import {Navigation} from '../Navigation/index'; 
 import Social from '../Social/Social'; 
 
-const SliderMenu = ({menuShow, setMenuShow, scrollPosition}) => {
+const SliderMenu = ({menuShow, setMenuShow, scrollPosition, unShowMenu}) => {
+
+  useEffect(() => {
+    document.addEventListener('click', unShowMenu)
+
+    return () => {
+      document.removeEventListener('click', unShowMenu);
+    }
+  }, [])
 
   return ( 
     <div className={`

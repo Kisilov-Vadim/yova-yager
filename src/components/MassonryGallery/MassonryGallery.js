@@ -8,7 +8,7 @@ import Warp from 'warpjs';
 
 
 const MassonryGallery = ({title, backgroundY, backgroundPici, button, color, worksArr}) => {
-  const [screenWidth, setScreenWidth] = useState(); 
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth); 
   const [elementCount, setElementCount] = useState(4); 
   
   let animIdGallery, svgGallery, warpGallery, animateGallery; 
@@ -18,19 +18,19 @@ const MassonryGallery = ({title, backgroundY, backgroundPici, button, color, wor
   countWorks.length = elementCount;  
 
   useEffect(() => {
-    window.addEventListener("resize", resize.bind(this));
-    resize(); 
-
-    svgGallery = document.getElementById('buttonMassonry');
-    warpGallery = new Warp(svgGallery)
-    warpGallery.interpolate(10)
-    warpGallery.transform(([ x, y ]) => [ x, y, y ])
-    animateGallery = () => {
-      warpGallery.transform(([ x, y, oy ]) => [ x, oy + 4 * Math.sin(x / 16 + offsetGallery), oy ])
-      animIdGallery = requestAnimationFrame(animateGallery)
-      offsetGallery += 0.2;
-    } 
-
+    window.addEventListener('resize', resize);
+    if (screenWidth > 800) {
+      svgGallery = document.getElementById('buttonMassonry');
+      warpGallery = new Warp(svgGallery)
+      warpGallery.interpolate(10)
+      warpGallery.transform(([ x, y ]) => [ x, y, y ])
+      animateGallery = () => {
+        warpGallery.transform(([ x, y, oy ]) => [ x, oy + 4 * Math.sin(x / 16 + offsetGallery), oy ])
+        animIdGallery = requestAnimationFrame(animateGallery)
+        offsetGallery += 0.2;
+      } 
+    }
+    
     return () => {
       window.removeEventListener('resize', resize); 
       cancelAnimationFrame(animIdGallery); 
@@ -57,7 +57,6 @@ const MassonryGallery = ({title, backgroundY, backgroundPici, button, color, wor
     }, 1000) 
   }
 
- 
 
   return (  
     <div className="massonry">
@@ -68,7 +67,7 @@ const MassonryGallery = ({title, backgroundY, backgroundPici, button, color, wor
       }
       <div className="massonry__gallery">
         <Masonry 
-          breakpointCols={`${screenWidth < 800 ? 1 : 2}`}
+          breakpointCols={`${screenWidth < 899 ? 1 : 2}`}
           className="massonry__gallery-table"
           columnClassName="massonry__gallery-columns"> 
 
