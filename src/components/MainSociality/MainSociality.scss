@@ -1,6 +1,7 @@
 .mainSociality {
   height: max-content;
   padding-bottom: 106px;
+  position: relative; 
 
   &__title {
     color: #da7f7e;
@@ -53,6 +54,7 @@
 
     &__gallery {
       grid-template-columns: 1fr;
+      grid-gap: 40px; 
     }
   }
 }

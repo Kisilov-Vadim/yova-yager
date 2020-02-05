@@ -6,7 +6,7 @@ import ButtonDecorate from '../ButtonDecorate/ButtonDecorate';
 import WorkPageGallery from '../WorkPageGallery/WorkPageGallery';
 import MassonryGallery from '../MassonryGallery/MassonryGallery';
 
-const WorkPage = ({data, works}) => {
+const WorkPage = ({data, works, allImages}) => {
   const [showDetails, setShowDetails] = useState(false); 
   let animIdMedia, svgMedia, warpMedia, animateMedia; 
   let offsetMedia = 0;
@@ -37,6 +37,10 @@ const WorkPage = ({data, works}) => {
       animIdMedia = null;
     }, 1000) 
   }
+
+  const currentAllImages = allImages
+    .filter(item => item.worksID === data.id)
+    .sort((first, second) => second.order - first.order); 
 
   return (  
     <section className="work">
@@ -104,7 +108,7 @@ const WorkPage = ({data, works}) => {
           </div>
         </div>
         <button className="work__details" onClick={() => setShowDetails(!showDetails)}>MORE DETAILS {`${showDetails === true ? '-' : '+'}`}</button>
-        <WorkPageGallery />
+        <WorkPageGallery images={currentAllImages} />
         <h3 className='work__also'>YOU MIGHT ALSO LIKE</h3>
         <MassonryGallery title={false} backgroundY={true} button={true} worksArr={works} count={4} />
       </div>

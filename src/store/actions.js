@@ -5,7 +5,8 @@ export const ACTIONS = {
   SET_WORKS: 'SET_WORKS',  
   SET_SETTINGS: 'SET_SETTINGS', 
   SET_ISLOADED: 'SET_ISLOADED', 
-  SET_ALLSOCIALITIES: 'SET_ALLSOCIALITIES',  
+  SET_ALLSOCIALITIES: 'SET_ALLSOCIALITIES',
+  SET_ALLIMAGES: 'SET_ALLIMAGES'  
 }
 
 export const setMenuShow = (status) => ({ type: ACTIONS.SET_MENU_SHOW, status });
@@ -14,7 +15,8 @@ const setFeatured = (featured) => ({ type: ACTIONS.SET_FEATURED, featured });
 const setAllWorks = (works) => ({ type: ACTIONS.SET_WORKS, works }); 
 const setAllSocialities = (allSocialities) => ({ type: ACTIONS.SET_ALLSOCIALITIES, allSocialities }); 
 const setSettings = (settings) => ({ type: ACTIONS.SET_SETTINGS, settings }); 
-const setIsLoaded = (value) => ({ type: ACTIONS.SET_ISLOADED, value })
+const setIsLoaded = (value) => ({ type: ACTIONS.SET_ISLOADED, value }); 
+const setAllImages = (images) => ({ type: ACTIONS.SET_ALLIMAGES, images }); 
 
 const getToken = async (url) => {
   let response = await fetch(url, {
@@ -56,7 +58,8 @@ export const getAllData = () => {
             getData("http://yova.praid.com.ua/api/category", token), 
             getData("http://yova.praid.com.ua/api/featured", token),
             getData("http://yova.praid.com.ua/api/allworks", token),
-            getData("http://yova.praid.com.ua/api/allsocialities", token)
+            getData("http://yova.praid.com.ua/api/allsocialities", token),
+            getData("http://yova.praid.com.ua/api/images", token)
           ])
           .then(data => {
             dispatch(setSettings(data[0]))
@@ -64,6 +67,7 @@ export const getAllData = () => {
             dispatch(setFeatured(data[2]))
             dispatch(setAllWorks(data[3]))
             dispatch(setAllSocialities(data[4])) 
+            dispatch(setAllImages(data[5]))
             dispatch(setIsLoaded(true)); 
           })
           .catch(err => console.log(err)); 

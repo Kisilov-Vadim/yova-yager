@@ -1,4 +1,5 @@
 import React from 'react';
+import "./MainPage.scss"; 
 
 import {Message} from '../../components/Message/index'; 
 import {Featured} from '../../components/Featured/index'; 
@@ -12,14 +13,16 @@ const MainPage = ({works}) => {
       <Message />
       <div className="wrapper">
         <Featured />
-        <MassonryGallery 
-          worksArr={works} 
-          count={4}
-          title='Works' 
-          backgroundY={true} 
-          button={true} 
-        />
-        <MainSociality />
+        <div className="main__work">
+          <MassonryGallery 
+            worksArr={works} 
+            count={4}
+            title='Works' 
+            backgroundY={true} 
+            button={true} 
+          />
+          </div>
+          <MainSociality />
       </div>
     </main>
   );

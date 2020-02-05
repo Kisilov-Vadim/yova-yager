@@ -10,6 +10,7 @@ const initialState = {
   works: [], 
   allSocialities: [], 
   settings: [], 
+  allImages: [], 
 }; 
 
 const reducer = (state, action) => {
@@ -48,6 +49,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         isLoaded: action.value
+      }
+    case ACTIONS.SET_ALLIMAGES: 
+      return {
+        ...state,
+        allImages: action.images
       }
     default: 
       return state; 

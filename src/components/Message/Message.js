@@ -47,7 +47,7 @@ const Message = () => {
     <section className="message">
       <div className="message__animation" >
         <svg onMouseOver={startAnimate} onMouseLeave={stopAnimate} xmlns="http://www.w3.org/2000/svg" id="piciRock" width="1500" height="1033" viewBox="0 0 1015 1033"><g opacity="0.483212">
-          <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1015" height="1033">
+          <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="-20" y="-20" width="1015" height="1033">
             <path fillRule="evenodd" clipRule="evenodd" d="M0 0.549805H1015V1032.6H0V0.549805Z" fill="white"/>
           </mask>
           <g mask="url(#mask0)">
