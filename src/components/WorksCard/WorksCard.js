@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Warp from 'warpjs';
 
-const WorksCard = ({image, backgroundY, backgroundPici, title, location}) => {
+const WorksCard = ({image, backgroundY, backgroundPici, title, location, area}) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth); 
 
   let animIdPici, svgPici, warpPici, animatePici, timeoutPici; 
@@ -14,7 +14,7 @@ const WorksCard = ({image, backgroundY, backgroundPici, title, location}) => {
   useEffect(() => {
     window.addEventListener('resize', resize);
     
-    if (backgroundPici && screenWidth > 899) {
+    if (backgroundPici && screenWidth > 699) {
       svgPici = document.getElementById('backgroundPici');
       warpPici = new Warp(svgPici)
       warpPici.interpolate(10)
@@ -56,14 +56,14 @@ const WorksCard = ({image, backgroundY, backgroundPici, title, location}) => {
     }, 1000) 
   }
 
-  if (screenWidth > 899) {
+  if (screenWidth > 699) {
 
     return ( 
       <Fade bottom duration={1700} delay={100}>
         <div className="card" onMouseOver={startAnimate} onMouseLeave={stopAnimate}>
           {backgroundY === true ? <div className="card__Y"></div> : null}
           <img src={image} alt={title}/>
-          <Link to={`/works/${title}`} exact className="card__info" 
+          <Link to={`/${area}/${title}`} exact className="card__info" 
             onClick={() => window.scrollTo(0, 0)}>
             <div>
               <span>{title}</span>
@@ -73,7 +73,7 @@ const WorksCard = ({image, backgroundY, backgroundPici, title, location}) => {
          {
            backgroundPici === true ? 
            <div className="card__pici">
-           <svg xmlns="http://www.w3.org/2000/svg" clip-path="fill-box" id="backgroundPici" width="1500" height="1033" viewBox="200 0 800 900">
+           <svg xmlns="http://www.w3.org/2000/svg" id="backgroundPici" width="1500" height="1033" viewBox="200 0 800 900">
             <g opacity="0.483212">
             <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="30" y="-20" width="1015" height="1033">
               <clipPath fillRule="evenodd" clipRule="evenodd" d="M0 0.549805H1015V1032.6H0V0.549805Z" fill="white" />
@@ -99,7 +99,7 @@ const WorksCard = ({image, backgroundY, backgroundPici, title, location}) => {
     return (
       <div className="card">
         <img src={image} alt='1'/>
-        <Link to={`/works/${title}`} exact className="card__info" onClick={() => window.scrollTo(0, 0)}>
+        <Link to={`/${area}/${title}`} exact className="card__info" onClick={() => window.scrollTo(0, 0)}>
           <div>
               <span>{title}</span>
               <p>{location}</p>
@@ -118,6 +118,7 @@ WorksCard.protoTypes = {
   location: PropTypes.string.isRequired, 
   backgroundY: PropTypes.bool, 
   backgroundPici: PropTypes.bool, 
+  area: PropTypes.string.isRequired
 }
 
 WorksCard.defaultProps = {

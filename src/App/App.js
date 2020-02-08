@@ -10,7 +10,7 @@ import {WorksPage} from '../pages/WorksPage/index';
 import {SocialityPage} from '../pages/SocialityPage/index';
 import {WorkPage} from '../components/WorkPage/index';
 
-const App = ({isLoaded, getAllData, works}) => {
+const App = ({isLoaded, getAllData, works, allSocialities}) => {
  
     useEffect(() => {
       getAllData()
@@ -31,11 +31,16 @@ const App = ({isLoaded, getAllData, works}) => {
           <Header />
             <Switch>
               {works.map(work => 
-                <Route path={`/works/${work.title}`} exact key={work.id} component={() => <WorkPage data={work} />} /> 
+                <Route exact path={`/works/${work.title}`} key={work.id} component={
+                  () => <WorkPage data={work} area={work.categoryUrl} />} /> 
               )}
-              <Route path="/" exact component={MainPage} />
-              <Route path="/works" exact component={WorksPage} />
-              <Route path="/sociality" exact component={SocialityPage} />
+              {allSocialities.map(sociality => 
+                <Route exact path={`/socialities/${sociality.title}`}  key={sociality.id} component={
+                  () => <WorkPage data={sociality} area={sociality.categoryUrl} />} />
+              )}
+              <Route exact path="/" component={MainPage} />
+              <Route exact path="/works" component={WorksPage} />
+              <Route exact path="/sociality" component={SocialityPage} />
             </Switch>
           <Footer />
         </>

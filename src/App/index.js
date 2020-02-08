@@ -8,7 +8,8 @@ const mapStateToPros = state => ({
   featured: state.featured, 
   works: state.works, 
   settings: state.settings, 
-  isLoaded: state.isLoaded
+  isLoaded: state.isLoaded, 
+  allSocialities: state.allSocialities
 })
 
 const mapToDispatch = {

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import WorkPage from './WorkPage';
-import {setCurrentWorkData, setIsLoaded} from '../../store/actions';
+import {setCurrentWorkData} from '../../store/actions';
 
 const mapStateToPros = state => ({
   works: state.works,
@@ -10,7 +10,6 @@ const mapStateToPros = state => ({
 
 const mapDispatchToProps = {
   setCurrentWorkData,
-  setIsLoaded
 }
 
 const newWorkPage = connect(

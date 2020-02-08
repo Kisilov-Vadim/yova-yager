@@ -68,6 +68,12 @@
   }
 }
 
+@media screen and (max-width: 899) {
+  #backgroundPici { 
+    display: none; 
+  }
+}
+
 @media screen and (max-width: 799px) {
   .card {
 

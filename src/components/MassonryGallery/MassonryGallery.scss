@@ -29,7 +29,7 @@
 
       & > div {
         position: relative;
-        margin-bottom: 106px;
+        margin-bottom: 50px;
         display: flex;
         justify-content: center;
       }
@@ -41,18 +41,18 @@
       }
 
       &:nth-child(even) {
-        margin-left: 3%; /* gutter size */
+        margin-left: 25px; /* gutter size */
         padding-top: 104px;
       }
 
       &:nth-child(odd) {
-        margin-right: 3%; /* gutter size */
+        margin-right: 25px; /* gutter size */
       }
     }
   }
 }
 
-@media screen and (max-width: 799px) {
+@media screen and (max-width: 699px) {
   .massonry {
     margin-bottom: 20px;
 

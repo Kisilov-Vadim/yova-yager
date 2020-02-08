@@ -67,7 +67,7 @@ const MassonryGallery = ({title, backgroundY, backgroundPici, button, color, wor
       }
       <div className="massonry__gallery">
         <Masonry 
-          breakpointCols={`${screenWidth < 899 ? 1 : 2}`}
+          breakpointCols={`${screenWidth < 699 ? 1 : 2}`}
           className="massonry__gallery-table"
           columnClassName="massonry__gallery-columns"> 
 
@@ -82,6 +82,7 @@ const MassonryGallery = ({title, backgroundY, backgroundPici, button, color, wor
               location={`${city}. ${country}`}
               backgroundY={backgroundY === true ? index === 1 ? true : false : false}
               backgroundPici={backgroundPici === true ? index === 0 ? true : false : false}
+              area={work.categoryUrl}
             />
           })}
 

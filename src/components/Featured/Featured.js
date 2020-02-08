@@ -4,13 +4,15 @@ import WorksCard from '../WorksCard/WorksCard';
 
 const Featured = ({featured}) => {
 
+  let sortedFeatured = featured.sort((one, two) => one.numberInFeatured - two.numberInFeatured); 
+  console.log(sortedFeatured)
   return ( 
     <section className="featured">
         <h3>
           Featured Projects
         </h3>
         <div className='featured__projects'>
-          {(featured).map((item, i) => {
+          {sortedFeatured.map((item, i) => {
             if (i < 4 ) {
               let locationArr = item.location.split(',');
               let city = locationArr[2]; 
@@ -20,6 +22,7 @@ const Featured = ({featured}) => {
                 image={item.projectImage} 
                 title={item.title}
                 location={`${city}. ${country}`}
+                area={item.categoryUrl}
               />
             } else {
               return null;
