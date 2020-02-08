@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/static/css/main.f4f0f0b6.chunk.css",
-    "main.js": "/static/js/main.ce742979.chunk.js",
-    "main.js.map": "/static/js/main.ce742979.chunk.js.map",
+    "main.js": "/static/js/main.2c353eac.chunk.js",
+    "main.js.map": "/static/js/main.2c353eac.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.1af0291b.js",
     "runtime-main.js.map": "/static/js/runtime-main.1af0291b.js.map",
-    "static/js/2.61218d33.chunk.js": "/static/js/2.61218d33.chunk.js",
-    "static/js/2.61218d33.chunk.js.map": "/static/js/2.61218d33.chunk.js.map",
+    "static/js/2.f5112893.chunk.js": "/static/js/2.f5112893.chunk.js",
+    "static/js/2.f5112893.chunk.js.map": "/static/js/2.f5112893.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.5fdeca4bd099c092838ca3fb9069e7fb.js": "/precache-manifest.5fdeca4bd099c092838ca3fb9069e7fb.js",
+    "precache-manifest.83c5caead26c19484bc47195610187b8.js": "/precache-manifest.83c5caead26c19484bc47195610187b8.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.f4f0f0b6.chunk.css.map": "/static/css/main.f4f0f0b6.chunk.css.map",
-    "static/js/2.61218d33.chunk.js.LICENSE": "/static/js/2.61218d33.chunk.js.LICENSE",
+    "static/js/2.f5112893.chunk.js.LICENSE": "/static/js/2.f5112893.chunk.js.LICENSE",
     "static/media/Header.scss": "/static/media/ProximaNovaRegular.410504d4.otf",
     "static/media/WorksCard.scss": "/static/media/hoverbackground.d8422983.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.1af0291b.js",
-    "static/js/2.61218d33.chunk.js",
+    "static/js/2.f5112893.chunk.js",
     "static/css/main.f4f0f0b6.chunk.css",
-    "static/js/main.ce742979.chunk.js"
+    "static/js/main.2c353eac.chunk.js"
   ]
 }
