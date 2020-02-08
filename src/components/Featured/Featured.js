@@ -5,7 +5,7 @@ import WorksCard from '../WorksCard/WorksCard';
 const Featured = ({featured}) => {
 
   let sortedFeatured = featured.sort((one, two) => one.numberInFeatured - two.numberInFeatured); 
-  console.log(sortedFeatured)
+
   return ( 
     <section className="featured">
         <h3>
