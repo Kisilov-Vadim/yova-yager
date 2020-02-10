@@ -23,7 +23,7 @@ const MainSociality = ({allSocialities}) => {
             title={item.title}
             location={`${city}. ${country}`}
             backgroundPici={i === 0 ? true : false}
-            area={item.categoryUrl}
+            area='socialities'
             />
           })
         }

@@ -7,7 +7,7 @@ import WorkPageGallery from '../WorkPageGallery/WorkPageGallery';
 import MassonryGallery from '../MassonryGallery/MassonryGallery';
 import {getToken, getData} from '../../store/actions'; 
 
-const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, area}) => {
+const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, setIsLoaded, isLoaded, area}) => {
   const [showDetails, setShowDetails] = useState(false);
   let animIdMedia, svgMedia, warpMedia, animateMedia;
   let offsetMedia = 0;
@@ -16,7 +16,7 @@ const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, 
     getToken('http://yova.praid.com.ua/api/login')
       .then(data => data.data['api_token'])
       .then(token => {
-        getData(`http://yova.praid.com.ua/api/works/${data.id}`, token)
+        getData(`http://yova.praid.com.ua/api/${area}/${data.id}`, token)
           .then(data => setCurrentWorkData(data))
           .catch(err => console.log(err))
       })
@@ -53,10 +53,9 @@ const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, 
   }
 
   const currentAllImages = allImages
-    .filter(item => item.worksID === data.id)
+    .filter(item => (area === 'works' ? item.worksID : item.socialityID) === data.id)
     .sort((first, second) => first.order - second.order); 
 
-  
   return (  
     <section className="work">
       <div className="wrapper">
@@ -133,7 +132,7 @@ const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, 
           <button className="work__details" onClick={() => setShowDetails(!showDetails)}>MORE DETAILS {`${showDetails === true ? '-' : '+'}`}</button>
           <WorkPageGallery images={currentAllImages} text={data.description.split('\r\n\r\n')} />
         <h3 className='work__also'>YOU MIGHT ALSO LIKE</h3>
-        <MassonryGallery title={false} backgroundY={true} button={true} worksArr={works} count={4} />
+        <MassonryGallery title={false} backgroundY={true} button={true} worksArr={works} count={4} area='works' />
       </div>
     </section>
   );

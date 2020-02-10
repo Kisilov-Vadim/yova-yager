@@ -4,7 +4,7 @@ import WorksCard from '../WorksCard/WorksCard';
 
 const Featured = ({featured}) => {
 
-  let sortedFeatured = featured.sort((one, two) => one.numberInFeatured - two.numberInFeatured); 
+  let sortedFeatured = featured.sort((first, second) => first.numberInFeatured - second.numberInFeatured); 
 
   return ( 
     <section className="featured">
@@ -22,7 +22,7 @@ const Featured = ({featured}) => {
                 image={item.projectImage} 
                 title={item.title}
                 location={`${city}. ${country}`}
-                area={item.categoryUrl}
+                area={item.type}
               />
             } else {
               return null;

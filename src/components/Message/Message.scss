@@ -34,6 +34,10 @@
       letter-spacing: 1px;
       line-height: 39px;
       margin-top: 60px;
+
+      & > p {
+        margin: 0;
+      }
     }
   }
 

@@ -3,7 +3,7 @@ import './SocialityPage.scss';
 import {Featured} from '../../components/Featured/index';
 import MassonryGallery from '../../components/MassonryGallery/MassonryGallery';
 
-const SocialityPage = ({allSocialities}) => {
+const SocialityPage = ({allSocialities, categories}) => {
   const [filter, setFilter] = useState("VIEW ALL")
 
   return (  
@@ -18,24 +18,15 @@ const SocialityPage = ({allSocialities}) => {
             >
               View all
             </button>
-            <button 
-              onClick={() => setFilter('HOTELS')} 
-              className={filter === "HOTELS" ? "sociality__nav-sort-active" : null}
-            >
-              Hotels
-            </button>
-            <button 
-              onClick={() => setFilter('BARS')} 
-              className={filter === "BARS" ? "sociality__nav-sort-active" : null}
-            >
-              Bars
-            </button>
-            <button 
-              onClick={() => setFilter('RESTAURANTS')}
-              className={filter === "RESTAURANTS" ? "sociality__nav-sort-active" : null}
-            >
-              Restaurants
-          </button>
+            {categories.map(item => (
+              <button 
+                key={item.id}
+                onClick={() => setFilter(item.name)} 
+                className={filter === `${item.name}` ? "workspage__nav-sort-active" : null}
+              >
+                {item.name}
+              </button>
+            ))}
           </div>
         </div>
         <p className="sociality__info">
@@ -51,6 +42,7 @@ const SocialityPage = ({allSocialities}) => {
           backgroundPici={true}
           button={true} 
           color="#da7f7e" 
+          area='socialities'
         />
       </div>
     </section>

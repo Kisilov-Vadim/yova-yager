@@ -4,7 +4,7 @@ import './SliderMenu.scss';
 import {Navigation} from '../Navigation/index'; 
 import Social from '../Social/Social'; 
 
-const SliderMenu = ({menuShow, setMenuShow, scrollPosition, unShowMenu}) => {
+const SliderMenu = ({menuShow, scrollPosition, unShowMenu}) => {
 
   useEffect(() => {
     document.addEventListener('click', unShowMenu)

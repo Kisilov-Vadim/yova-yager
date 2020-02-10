@@ -32,11 +32,11 @@ const App = ({isLoaded, getAllData, works, allSocialities}) => {
             <Switch>
               {works.map(work => 
                 <Route exact path={`/works/${work.title}`} key={work.id} component={
-                  () => <WorkPage data={work} area={work.categoryUrl} />} /> 
+                  () => <WorkPage data={work} area='works' />} /> 
               )}
               {allSocialities.map(sociality => 
                 <Route exact path={`/socialities/${sociality.title}`}  key={sociality.id} component={
-                  () => <WorkPage data={sociality} area={sociality.categoryUrl} />} />
+                  () => <WorkPage data={sociality} area='socialities' />} />
               )}
               <Route exact path="/" component={MainPage} />
               <Route exact path="/works" component={WorksPage} />

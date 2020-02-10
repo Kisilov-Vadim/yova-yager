@@ -20,6 +20,7 @@ const MainPage = ({works}) => {
             title='Works' 
             backgroundY={true} 
             button={true} 
+            area='works'
           />
           </div>
           <MainSociality />

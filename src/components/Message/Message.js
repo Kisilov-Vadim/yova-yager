@@ -2,14 +2,15 @@ import React, {useEffect, useState} from 'react';
 import Typist from 'react-typist';
 import './Message.scss';
 import Warp from 'warpjs'; 
-import {useTransition, animated} from 'react-spring'; 
+import {useTrail, animated, config} from 'react-spring'; 
 
 const Message = () => {
-  const [showText, setShowText] = useState(false)
-  const showAnimation = useTransition(showText, null, {
-    from: { opacity: 0, transform: 'translate(-30%)'}, 
-    enter: { opacity: 1, transform: 'translate(0)' }, 
-    config: {duration: 1000}
+  const [showText, setShowText] = useState(false); 
+  const infoText = ['The way we live', 'The way we eat', 'The materials we use']; 
+
+  const showAnimation = useTrail(infoText.length, {
+    to: { opacity: showText ? 1 : 0, transform: showText ? 'translate(0)' : 'translate(-30%)' },
+    config: config.molasses
   })
 
   let animId, svg, warp, animate, timeout; 
@@ -51,6 +52,7 @@ const Message = () => {
     }, 1000) 
   }
 
+
   return ( 
     <section className="message">
       <div className="message__animation" >
@@ -71,20 +73,20 @@ const Message = () => {
       </div> 
       <div className="wrapper">
         <div className="message__info"> 
-          <Typist onTypingDone={() => setShowText(true)} avgTypingDelay={100} cursor={{show: false}}>
+          <Typist startDelay={500} onTypingDone={() => setShowText(true)} avgTypingDelay={100} cursor={{show: false}}>
             <h1 className="message__info-title">
               IT'S TIME <br /> TO <span>RETHINK</span>
             </h1>
           </Typist>
-          {showAnimation.map(({item, props, key}) => (
-            item && 
-            <animated.div class="message__info-text" style={props} key={key}>
-              The way we live <br />
-              The way we eat <br />
-              The materials we use
-            </animated.div>
-          ))}
-        </div> 
+            <div class="message__info-text">
+              {showAnimation.map((item, index) => (
+                showText &&
+                <animated.p style={item} key={index}>
+                  {infoText[index]}
+                </animated.p>
+              ))}
+            </div>
+        </div>
       </div>
     </section>
    );

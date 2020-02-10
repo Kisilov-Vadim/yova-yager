@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import WorksPageNav from '../../components/WorksPageNav/WorksPageNav';
+import {WorksPageNav} from '../../components/WorksPageNav/index';
 import MassonryGallery from '../../components/MassonryGallery/MassonryGallery';
 
 const WorksPage = ({works}) => {
@@ -15,6 +15,7 @@ const WorksPage = ({works}) => {
           title={false} 
           backgroundY={false} 
           button={true} 
+          area='works'
         />
       </div>
     </section>

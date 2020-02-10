@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 const mapStateToPros = state => ({
   allSocialities: state.allSocialities, 
+  categories: state.categories
 })
 
 const newSocialityPage = connect(

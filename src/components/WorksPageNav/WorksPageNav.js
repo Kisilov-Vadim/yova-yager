@@ -1,7 +1,7 @@
 import React from 'react';
 import './WorksPageNav.scss';
 
-const WorksPageNav = ({setFilter, filter}) => {
+const WorksPageNav = ({setFilter, filter, categories}) => {
   return (  
     <div className="workspage__nav">
       <h1 className="workspage__nav-title">Works</h1>
@@ -12,24 +12,15 @@ const WorksPageNav = ({setFilter, filter}) => {
         >
           View all
         </button>
-        <button 
-          onClick={() => setFilter('HOTELS')} 
-          className={filter === "HOTELS" ? "workspage__nav-sort-active" : null}
-        >
-          Hotels
-        </button>
-        <button 
-          onClick={() => setFilter('BARS')} 
-          className={filter === "BARS" ? "workspage__nav-sort-active" : null}
-        >
-          Bars
-        </button>
-        <button 
-          onClick={() => setFilter('RESTAURANTS')}
-          className={filter === "RESTAURANTS" ? "workspage__nav-sort-active" : null}
-        >
-          Restaurants
-        </button>
+        {categories.map(item => (
+          <button 
+            key={item.id}
+            onClick={() => setFilter(item.name)} 
+            className={filter === `${item.name}` ? "workspage__nav-sort-active" : null}
+          >
+            {item.name}
+          </button>
+        ))}
       </div>
     </div>
   );
