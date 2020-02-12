@@ -16,7 +16,7 @@
   &__info {
     display: flex;
     margin: 86px 0 111px 0;
-    animation: showDetails 2s ease-in-out;
+    // animation: showDetails 3s ease-in-out;
   }
 
   &__left, &__right {
@@ -25,7 +25,6 @@
 
   &__left {
     margin-top: 56px;
-    height: 441px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -38,16 +37,17 @@
     &-table {
 
       & > tbody > tr > td {
-        height: 20px;
         width: max-content;
       }
 
       & > tbody > tr > td:nth-child(odd) {
+        display: flex;
+        align-items: flex-start;
         font-family: ProximaBold, sans-serif;
         font-size: 18px;
         font-weight: 600;
         line-height: 30px;
-        width: 140px;
+        min-width: 140px;
       }
 
       & > tbody > tr > td:nth-child(even) {
@@ -124,7 +124,6 @@
     &__left {
       width: 100%;
       align-items: center;
-      height: max-content;
       margin: 0;
 
       &-mobtitle {
@@ -164,7 +163,7 @@
 
     &__right {
       width: 100%;
-      margin-top: 30px;
+      margin-top: 50px;
       
       &-text {
         margin: 0 auto;
@@ -187,14 +186,14 @@
 }
 
 
-@keyframes showDetails {
-  from {
-    height: 0;
-    opacity: 0;
-  }
+// @keyframes showDetails {
+//   from {
+//     height: 0;
+//     opacity: 0;
+//   }
 
-  to {
-    height: 650px;
-    opacity: 1;
-  }
-}
+//   to {
+//     height: max-content;
+//     opacity: 1;
+//   }
+// }

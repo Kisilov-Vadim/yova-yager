@@ -5,6 +5,7 @@ import Warp from 'warpjs';
 import {useTrail, animated, config} from 'react-spring'; 
 
 const Message = () => {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [showText, setShowText] = useState(false); 
   const infoText = ['The way we live', 'The way we eat', 'The materials we use']; 
 
@@ -17,24 +18,32 @@ const Message = () => {
   let offset = 0
 
   useEffect(() => {
-    svg = document.getElementById('piciRock');
-    warp = new Warp(svg)
-    warp.interpolate(10)
-    warp.transform(([ x, y ]) => [ x, y, y ])
-    animate = () => {
-      timeout = setTimeout(() => {
-        warp.transform(([ x, y, oy ]) => [ x + 4 * Math.sin(oy / 32 + offset), oy + 4 * Math.sin(oy / 16 + offset), oy ])
-        animId = requestAnimationFrame(animate)
-        offset += 0.5;
-      }, 1000 / 30);
+    window.addEventListener('resize', resize);
+    if (screenWidth > 800) {
+      svg = document.getElementById('piciRock');
+      warp = new Warp(svg)
+      warp.interpolate(10)
+      warp.transform(([ x, y ]) => [ x, y, y ])
+      animate = () => {
+        timeout = setTimeout(() => {
+          warp.transform(([ x, y, oy ]) => [ x + 4 * Math.sin(oy / 32 + offset), oy + 4 * Math.sin(oy / 16 + offset), oy ])
+          animId = requestAnimationFrame(animate)
+          offset += 0.5;
+        }, 1000 / 30);
+      }
     }
-
+    
     return () => {
       clearTimeout(timeout)
       cancelAnimationFrame(animId); 
       animId = null;
+      window.removeEventListener('resize', resize); 
     }
   }); 
+
+  const resize = () => {
+    setScreenWidth(window.innerWidth);
+  }
 
   const startAnimate = () => {
     if (!animId) {

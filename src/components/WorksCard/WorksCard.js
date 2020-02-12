@@ -14,7 +14,7 @@ const WorksCard = ({image, backgroundY, backgroundPici, title, location, area}) 
   useEffect(() => {
     window.addEventListener('resize', resize);
     
-    if (backgroundPici && screenWidth > 699) {
+    if (backgroundPici && screenWidth > 800) {
       svgPici = document.getElementById('backgroundPici');
       warpPici = new Warp(svgPici)
       warpPici.interpolate(10)
@@ -56,7 +56,7 @@ const WorksCard = ({image, backgroundY, backgroundPici, title, location, area}) 
     }, 1000) 
   }
 
-  if (screenWidth > 699) {
+  if (screenWidth > 800) {
 
     return ( 
       <Fade bottom duration={1700} delay={100}>

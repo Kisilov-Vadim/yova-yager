@@ -25,14 +25,14 @@ const SliderMenu = ({menuShow, scrollPosition, unShowMenu}) => {
         ${menuShow === false ?  "menu-invisible" : null}
         ${scrollPosition > 0 ? "menu__wrapper-scroll" : null}  
        `}>
-        <form className="menu__form">
+        {/* <form className="menu__form">
           <input 
             placeholder='Search...'  
           />
           <button>
             <img src="/img/header/search.svg" alt="search" />
           </button>
-        </form>
+        </form> */}
         <Navigation />
         <div className="menu__social">
           <Social place='menu' />

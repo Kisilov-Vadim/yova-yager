@@ -47,7 +47,6 @@ const reducer = (state, action) => {
         settings: action.settings
       }
     case ACTIONS.SET_ISLOADED:
-      console.log(action.value)
       return {
         ...state,
         isLoaded: action.value

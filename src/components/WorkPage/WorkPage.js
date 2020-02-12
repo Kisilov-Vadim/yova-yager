@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './WorkPage.scss';
 import Warp from 'warpjs'; 
+import {useSpring, animated} from 'react-spring'; 
 
 import ButtonDecorate from '../ButtonDecorate/ButtonDecorate';
 import WorkPageGallery from '../WorkPageGallery/WorkPageGallery';
@@ -8,7 +9,8 @@ import MassonryGallery from '../MassonryGallery/MassonryGallery';
 import {getToken, getData} from '../../store/actions'; 
 
 const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, setIsLoaded, isLoaded, area}) => {
-  const [showDetails, setShowDetails] = useState(false);
+  const [showDetails, setShowDetails] = useState(true);
+  const [contentHeight, setContentHeight] = useState(0)
   let animIdMedia, svgMedia, warpMedia, animateMedia;
   let offsetMedia = 0;
 
@@ -20,6 +22,11 @@ const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, 
           .then(data => setCurrentWorkData(data))
           .catch(err => console.log(err))
       })
+  }, [])
+
+  useEffect(() => {
+    setContentHeight(document.getElementById('contentShow').scrollHeight); 
+    setShowDetails(false)
   }, [])
 
   useEffect(() => {
@@ -56,6 +63,8 @@ const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, 
     .filter(item => (area === 'works' ? item.worksID : item.socialityID) === data.id)
     .sort((first, second) => first.order - second.order); 
 
+  const showContentAnimation = useSpring({ height: showDetails ? 'auto' : 0, opacity: showDetails ? 1 : 0, visibility: showDetails ? 'visible' : 'hidden' })
+
   return (  
     <section className="work">
       <div className="wrapper">
@@ -65,7 +74,7 @@ const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, 
         <h1 className="work__left-mobtitle">
           {data.title}
         </h1>
-          <div className={`work__info ${showDetails === true ? null : 'work__info-invisible'}`}>
+          <animated.div id="contentShow" className="work__info" style={window.innerWidth < 799 ? showContentAnimation : null}>
             <div className="work__left">
               <table className="work__left-table">
                 <tbody>
@@ -128,7 +137,7 @@ const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, 
                 }
               )}
             </div>
-          </div>
+          </animated.div>
           <button className="work__details" onClick={() => setShowDetails(!showDetails)}>MORE DETAILS {`${showDetails === true ? '-' : '+'}`}</button>
           <WorkPageGallery images={currentAllImages} text={data.description.split('\r\n\r\n')} />
         <h3 className='work__also'>YOU MIGHT ALSO LIKE</h3>

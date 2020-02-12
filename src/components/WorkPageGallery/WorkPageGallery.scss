@@ -73,8 +73,8 @@
     }
 
     & > img {
-      height: max-content;
-      object-fit: contain;
+      height: 525px; 
+      object-fit: cover;
     }
   }
 }

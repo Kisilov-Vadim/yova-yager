@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 
 import Social from '../Social/Social';
 import {SliderMenu} from '../SliderMenu/index';
-// import HeaderSearch from '../HeaderSearch/HeaderSearch';
 
 const Header = ({menuShow, setMenuShow, getAllData}) => {
   const [scrollPosition, setScrollPosition] = useState(0);  
