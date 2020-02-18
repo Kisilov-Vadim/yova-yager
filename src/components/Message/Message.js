@@ -10,12 +10,12 @@ const Message = () => {
   const infoText = ['The way we live', 'The way we eat', 'The materials we use']; 
 
   const showAnimation = useTrail(infoText.length, {
-    to: { opacity: showText ? 1 : 0, transform: showText ? 'translate(0)' : 'translate(-30%)' },
-    config: config.molasses
+    to: { opacity: showText ? 1 : 0, transform: showText ? 'translate(0)' : 'translate(-30%)' }
   })
 
   let animId, svg, warp, animate, timeout; 
   let offset = 0
+  let speed = 2
 
   useEffect(() => {
     window.addEventListener('resize', resize);
@@ -26,10 +26,10 @@ const Message = () => {
       warp.transform(([ x, y ]) => [ x, y, y ])
       animate = () => {
         timeout = setTimeout(() => {
-          warp.transform(([ x, y, oy ]) => [ x + 4 * Math.sin(oy / 32 + offset), oy + 4 * Math.sin(oy / 16 + offset), oy ])
+          warp.transform(([ x, y, oy ]) => [ x + speed * Math.sin(oy / 32 + offset), oy + 4 * Math.sin(oy / 16 + offset), oy ])
           animId = requestAnimationFrame(animate)
-          offset += 0.5;
-        }, 1000 / 30);
+          offset += 0.2;
+        }, 1000 / 60);
       }
     }
     
@@ -46,7 +46,8 @@ const Message = () => {
   }
 
   const startAnimate = () => {
-    if (!animId) {
+    if (!animId && showText) {
+      speed = 2
       animate();
     } else {
       return
@@ -54,11 +55,33 @@ const Message = () => {
   }
 
   const stopAnimate = () => {
+    clearTimeout(timeout)
+    cancelAnimationFrame(animId); 
+    animId = null
+    speed = 1.5 
+    animate()
+    
     setTimeout(() => {
       clearTimeout(timeout)
       cancelAnimationFrame(animId); 
-      animId = null;
-    }, 1000) 
+      animId = null
+      speed = 1
+      animate()
+    }, 600)
+
+    setTimeout(() => {
+      clearTimeout(timeout)
+      cancelAnimationFrame(animId); 
+      animId = null
+      speed = 0.5
+      animate()
+    }, 900)
+
+    setTimeout(() => {
+      clearTimeout(timeout)
+      cancelAnimationFrame(animId); 
+      animId = null
+    }, 1200)
   }
 
 
@@ -66,7 +89,7 @@ const Message = () => {
     <section className="message">
       <div className="message__animation" >
         <svg onMouseOver={startAnimate} onMouseLeave={stopAnimate} xmlns="http://www.w3.org/2000/svg" id="piciRock" width="1500" height="1033" viewBox="0 0 1015 1033"><g opacity="0.483212">
-          <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="-20" y="-20" width="1015" height="1033">
+          <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="-50" y="-20" width="1015" height="1033">
             <path fillRule="evenodd" clipRule="evenodd" d="M0 0.549805H1015V1032.6H0V0.549805Z" fill="white"/>
           </mask>
           <g mask="url(#mask0)">
@@ -84,7 +107,7 @@ const Message = () => {
         <div className="message__info"> 
           <Typist startDelay={500} onTypingDone={() => setShowText(true)} avgTypingDelay={100} cursor={{show: false}}>
             <h1 className="message__info-title">
-              IT'S TIME <br /> TO <span>RETHINK</span>
+              IT'S TIME <br /> TO RETHINK
             </h1>
           </Typist>
             <div class="message__info-text">

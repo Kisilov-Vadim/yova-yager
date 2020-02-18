@@ -47,13 +47,13 @@ const Header = ({menuShow, setMenuShow, getAllData}) => {
         >
         <div className="header__atmosphere">
           <div className="header__atmosphere-hospitality">
-            <img src="/img/header/hospitality.svg" alt="Hospitality and Design"/>
+            <img src="/img/header/hospitality.svg" alt="Hospitality"/>
           </div>
           <div className="header__atmosphere-design">
-            <img src="/img/header/design.svg" alt="Hospitality and Design"/>
+            <img src="/img/header/design.svg" alt="Design"/>
           </div>
           <div className="header__atmosphere-YY">
-            <img src="/img/header/YY.png" alt="YY" />
+            <img src="/img/header/YY.svg" alt="YY" />
           </div>
         </div>
           <div className="header__logo">

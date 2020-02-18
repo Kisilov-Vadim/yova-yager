@@ -10,6 +10,7 @@ const WorksCard = ({image, backgroundY, backgroundPici, title, location, area}) 
 
   let animIdPici, svgPici, warpPici, animatePici, timeoutPici; 
   let offsetPici = 0
+  let animSpeed = 2; 
 
   useEffect(() => {
     window.addEventListener('resize', resize);
@@ -21,9 +22,9 @@ const WorksCard = ({image, backgroundY, backgroundPici, title, location, area}) 
       warpPici.transform(([ x, y ]) => [ x, y, y ])
       animatePici = () => {
         timeoutPici = setTimeout(() => {
-          warpPici.transform(([ x, y, oy ]) => [ x + 4 * Math.sin(oy / 32 + offsetPici), oy + 4 * Math.sin(oy / 16 + offsetPici), oy ])
+          warpPici.transform(([ x, y, oy ]) => [ x + animSpeed * Math.sin(oy / 32 + offsetPici), oy + 4 * Math.sin(oy / 16 + offsetPici), oy ])
           animIdPici = requestAnimationFrame(animatePici)
-          offsetPici += 0.3;
+          offsetPici += 0.2;
         }, 1000 / 60);
       }
     }
@@ -42,6 +43,7 @@ const WorksCard = ({image, backgroundY, backgroundPici, title, location, area}) 
 
   const startAnimate = () => {
     if (!animIdPici && backgroundPici) {
+      animSpeed = 2; 
       animatePici();
     } else {
       return
@@ -49,11 +51,33 @@ const WorksCard = ({image, backgroundY, backgroundPici, title, location, area}) 
   }
 
   const stopAnimate = () => {
+    clearTimeout(timeoutPici)
+    cancelAnimationFrame(animIdPici); 
+    animIdPici = null;
+    animSpeed = 1.5; 
+    animatePici();
+
     setTimeout(() => {
       clearTimeout(timeoutPici)
       cancelAnimationFrame(animIdPici); 
       animIdPici = null;
-    }, 1000) 
+      animSpeed = 1
+      animatePici()
+    }, 600)
+
+    setTimeout(() => {
+      clearTimeout(timeoutPici)
+      cancelAnimationFrame(animIdPici); 
+      animIdPici = null;
+      animSpeed = 0.5
+      animatePici()
+    }, 900)
+
+    setTimeout(() => {
+      clearTimeout(timeoutPici)
+      cancelAnimationFrame(animIdPici); 
+      animIdPici = null;
+    }, 1200) 
   }
 
   if (screenWidth > 800) {

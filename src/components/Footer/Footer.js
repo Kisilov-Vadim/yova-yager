@@ -4,6 +4,7 @@ import "./Footer.scss";
 import {Navigation} from '../Navigation/index';
 import Social from '../Social/Social';
 import {Switch, Route} from 'react-router-dom';
+import Image from '../Image/Image'; 
 
 const Footer = ({settings}) => {
 
@@ -13,19 +14,13 @@ const Footer = ({settings}) => {
         <h2 className="footer__title">Be free to contact me</h2>
         <div className="footer__content">
           <div className="footer__content-left">
-            <div className="footer__content-mobimage">
-              <img src="/img/footer/mobimg.png" alt="Yova" />
-            </div>
+              <Image imageClass="footer__content-mobimage" src="/img/footer/mobimg.png" alt="Yova" />
             <span className="footer__content-name">It’s me, Yova Yager</span>
             <Switch> 
               <Route path="/" exact>
-                <div className="footer__content-image">
-                  <img src="/img/footer/yova-face.png" alt="Yova" />
-                </div>
+                <Image imageClass="footer__content-image" src="/img/footer/yova-face.png" alt="Yova" />
               </Route>
-              <div className="footer__content-imageFace">
-                <img src="/img/footer/mobimg.png" alt="Yova" />
-              </div>
+                <Image imageClass="footer__content-imageFace" src="/img/footer/mobimg.png" alt="Yova" /> 
             </Switch>
           </div>
           <div className="footer__content-right">

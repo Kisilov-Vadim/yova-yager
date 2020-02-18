@@ -13,6 +13,7 @@ const MassonryGallery = ({title, backgroundY, backgroundPici, button, color, wor
   
   let animIdGallery, svgGallery, warpGallery, animateGallery; 
   let offsetGallery = 0
+  let animateSpeed = 4; 
 
   let countWorks = [...worksArr]; 
   countWorks.length = elementCount;  
@@ -25,9 +26,9 @@ const MassonryGallery = ({title, backgroundY, backgroundPici, button, color, wor
       warpGallery.interpolate(10)
       warpGallery.transform(([ x, y ]) => [ x, y, y ])
       animateGallery = () => {
-        warpGallery.transform(([ x, y, oy ]) => [ x, oy + 4 * Math.sin(x / 16 + offsetGallery), oy ])
+        warpGallery.transform(([ x, y, oy ]) => [ x, oy + animateSpeed * Math.sin(x / 16 + offsetGallery), oy ])
         animIdGallery = requestAnimationFrame(animateGallery)
-        offsetGallery += 0.2;
+        offsetGallery += 0.08;
       } 
     }
     
@@ -44,6 +45,7 @@ const MassonryGallery = ({title, backgroundY, backgroundPici, button, color, wor
 
   const startAnimate = () => {
     if (!animIdGallery) {
+      animateSpeed = 4; 
       animateGallery();
     } else {
       return
@@ -51,10 +53,57 @@ const MassonryGallery = ({title, backgroundY, backgroundPici, button, color, wor
   }
 
   const stopAnimate = () => {
+    cancelAnimationFrame(animIdGallery); 
+    animIdGallery = null
+    animateSpeed = 3.5
+    animateGallery()
+    
     setTimeout(() => {
       cancelAnimationFrame(animIdGallery); 
-      animIdGallery = null;
-    }, 1000) 
+      animIdGallery = null
+      animateSpeed = 3
+      animateGallery()
+    }, 200)
+
+    setTimeout(() => {
+      cancelAnimationFrame(animIdGallery); 
+      animIdGallery = null
+      animateSpeed = 2.5
+      animateGallery()
+    }, 400)
+
+    setTimeout(() => {
+      cancelAnimationFrame(animIdGallery); 
+      animIdGallery = null
+      animateSpeed = 2
+      animateGallery()
+    }, 600)
+
+    setTimeout(() => {
+      cancelAnimationFrame(animIdGallery); 
+      animIdGallery = null
+      animateSpeed = 1.5
+      animateGallery()
+    }, 800)
+
+    setTimeout(() => {
+      cancelAnimationFrame(animIdGallery); 
+      animIdGallery = null
+      animateSpeed = 1
+      animateGallery()
+    },1000)
+
+    setTimeout(() => {
+      cancelAnimationFrame(animIdGallery); 
+      animIdGallery = null
+      animateSpeed = 0.5
+      animateGallery()
+    }, 1200)
+
+    setTimeout(() => {
+      cancelAnimationFrame(animIdGallery); 
+      animateGallery = null
+    }, 1400)
   }
 
 

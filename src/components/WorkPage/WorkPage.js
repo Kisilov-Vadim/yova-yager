@@ -2,16 +2,20 @@ import React, { useState, useEffect } from 'react';
 import './WorkPage.scss';
 import Warp from 'warpjs'; 
 import {useSpring, animated} from 'react-spring'; 
+import ImagesLoaded from 'react-images-loaded';
 
 import ButtonDecorate from '../ButtonDecorate/ButtonDecorate';
 import WorkPageGallery from '../WorkPageGallery/WorkPageGallery';
 import MassonryGallery from '../MassonryGallery/MassonryGallery';
 import {getToken, getData} from '../../store/actions'; 
 
+
 const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, setIsLoaded, isLoaded, area}) => {
   const [showDetails, setShowDetails] = useState(true);
   const [contentHeight, setContentHeight] = useState(0)
+  const [mainPhoto, setMainPhoto] = useState(false); 
   let animIdMedia, svgMedia, warpMedia, animateMedia;
+  let animateSpeed = 4; 
   let offsetMedia = 0;
 
   useEffect(() => {
@@ -38,14 +42,15 @@ const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, 
     warpMedia.interpolate(10);
     warpMedia.transform(([ x, y ]) => [ x, y, y ]);
     animateMedia = () => {
-      warpMedia.transform(([ x, y, oy ]) => [ x, oy + 4 * Math.sin(x / 16 + offsetMedia), oy ])
+      warpMedia.transform(([ x, y, oy ]) => [ x, oy + animateSpeed * Math.sin(x / 16 + offsetMedia), oy ])
       animIdMedia = requestAnimationFrame(animateMedia);
-      offsetMedia += 0.2;
+      offsetMedia += 0.08;
     } 
   })
 
   const startAnimate = () => {
     if (!animIdMedia) {
+      animateSpeed = 4; 
       animateMedia();
     } else {
       return
@@ -53,10 +58,57 @@ const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, 
   }
 
   const stopAnimate = () => {
+    cancelAnimationFrame(animIdMedia); 
+    animIdMedia = null
+    animateSpeed = 3.5
+    animateMedia()
+    
     setTimeout(() => {
       cancelAnimationFrame(animIdMedia); 
-      animIdMedia = null;
-    }, 1000) 
+      animIdMedia = null
+      animateSpeed = 3
+      animateMedia()
+    }, 200)
+
+    setTimeout(() => {
+      cancelAnimationFrame(animIdMedia); 
+      animIdMedia = null
+      animateSpeed = 2.5
+      animateMedia()
+    }, 400)
+
+    setTimeout(() => {
+      cancelAnimationFrame(animIdMedia); 
+      animIdMedia = null
+      animateSpeed = 2
+      animateMedia()
+    }, 600)
+
+    setTimeout(() => {
+      cancelAnimationFrame(animIdMedia); 
+      animIdMedia = null
+      animateSpeed = 1.5
+      animateMedia()
+    }, 800)
+
+    setTimeout(() => {
+      cancelAnimationFrame(animIdMedia); 
+      animIdMedia = null
+      animateSpeed = 1
+      animateMedia()
+    },1000)
+
+    setTimeout(() => {
+      cancelAnimationFrame(animIdMedia); 
+      animIdMedia = null
+      animateSpeed = 0.5
+      animateMedia()
+    }, 1200)
+
+    setTimeout(() => {
+      cancelAnimationFrame(animIdMedia); 
+      animIdMedia = null
+    }, 1400)
   }
 
   const currentAllImages = allImages
@@ -64,13 +116,26 @@ const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, 
     .sort((first, second) => first.order - second.order); 
 
   const showContentAnimation = useSpring({ height: showDetails ? 'auto' : 0, opacity: showDetails ? 1 : 0, visibility: showDetails ? 'visible' : 'hidden' })
+  const showMainPhoto = useSpring({ opacity: mainPhoto ? 1 : 0 })
+ 
 
   return (  
     <section className="work">
       <div className="wrapper">
-        <div className="work__image">
-          <img src={currentWorkData.mainImage} alt={currentWorkData.title || "Altruist"} />
-        </div>
+        {
+          currentWorkData 
+          ? 
+            <ImagesLoaded
+              elementType={'div'}
+              className={'work__image'}
+              done={() => setMainPhoto(true)}
+            >
+              <animated.img src={currentWorkData.mainImage} alt={currentWorkData.title || "Altruist"} style={showMainPhoto} />
+            </ImagesLoaded> 
+          : 
+            <div className="work__image"></div>
+        }
+        
         <h1 className="work__left-mobtitle">
           {data.title}
         </h1>
