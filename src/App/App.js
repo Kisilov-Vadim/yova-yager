@@ -20,7 +20,7 @@ const App = ({isLoaded, getAllData, works, allSocialities}) => {
       return (
         <div className="loading">
           <SemipolarLoading
-            color='#fff'
+            color='#000'
             sizr="large"
           /> 
         </div>
