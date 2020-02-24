@@ -18,7 +18,6 @@ const MainPage = ({works}) => {
             worksArr={works} 
             count={4}
             title='Works' 
-            backgroundY={true} 
             button={true} 
             area='works'
           />

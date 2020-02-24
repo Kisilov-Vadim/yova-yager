@@ -25,10 +25,10 @@ const Footer = ({settings}) => {
           </div>
           <div className="footer__content-right">
             <div className="footer__content-contacts">
-              <span>Drop me aline:</span>
-              {settings[1].value}
+              <span>Drop me a line:</span>
+              <a href="#">{settings[1].value}</a>
               <span>Studio</span>
-              {settings[3].value}
+              <a href="#">{settings[3].value}</a>
             </div>
             <div className="footer__content-sendmail"> 
               <span>Send mail letters or card:</span>

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import Warp from 'warpjs'; 
 
 
-const MassonryGallery = ({title, backgroundY, backgroundPici, button, color, worksArr, area}) => {
+const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area}) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth); 
   const [elementCount, setElementCount] = useState(4); 
   
@@ -129,7 +129,6 @@ const MassonryGallery = ({title, backgroundY, backgroundPici, button, color, wor
               image={work.projectImage} 
               title={work.title}
               location={`${city}. ${country}`}
-              backgroundY={backgroundY === true ? index === 1 ? true : false : false}
               backgroundPici={backgroundPici === true ? index === 0 ? true : false : false}
               area={area}
             />
@@ -157,12 +156,10 @@ const MassonryGallery = ({title, backgroundY, backgroundPici, button, color, wor
 MassonryGallery.propTypes = {
   count: PropTypes.number.isRequired,
   title: PropTypes.string, 
-  backgroundY: PropTypes.bool, 
   button: PropTypes.bool.isRequired
 }
 
 MassonryGallery.defaultProps = {
-  backgroundY: false, 
   count: 4
 }
 

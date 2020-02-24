@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Warp from 'warpjs';
 
-const WorksCard = ({image, backgroundY, backgroundPici, title, location, area}) => {
+const WorksCard = ({image, backgroundPici, title, location, area}) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth); 
 
   let animIdPici, svgPici, warpPici, animatePici, timeoutPici; 
@@ -85,7 +85,6 @@ const WorksCard = ({image, backgroundY, backgroundPici, title, location, area}) 
     return ( 
       <Fade bottom duration={1700} delay={100}>
         <div className="card" onMouseOver={startAnimate} onMouseLeave={stopAnimate}>
-          {backgroundY === true ? <div className="card__Y"></div> : null}
           <img src={image} alt={title}/>
           <Link to={`/${area}/${title}`} exact className="card__info" 
             onClick={() => window.scrollTo(0, 0)}>
@@ -140,13 +139,11 @@ WorksCard.protoTypes = {
   title: PropTypes.string.isRequired, 
   image: PropTypes.string.isRequired, 
   location: PropTypes.string.isRequired, 
-  backgroundY: PropTypes.bool, 
   backgroundPici: PropTypes.bool, 
   area: PropTypes.string.isRequired
 }
 
 WorksCard.defaultProps = {
-  backgroundY: false,
   backgroundPici: false, 
 }
 

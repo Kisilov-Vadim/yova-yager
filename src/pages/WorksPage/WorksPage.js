@@ -12,8 +12,7 @@ const WorksPage = ({works}) => {
         <WorksPageNav setFilter={setFilter} filter={filter}/>
         <MassonryGallery 
           worksArr={filter === 'VIEW ALL' ? works : works.filter(item => item.categoryName === filter)}
-          title={false} 
-          backgroundY={false} 
+          title={false}
           button={true} 
           area='works'
         />

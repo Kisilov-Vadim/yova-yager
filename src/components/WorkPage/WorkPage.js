@@ -206,7 +206,7 @@ const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, 
           <button className="work__details" onClick={() => setShowDetails(!showDetails)}>MORE DETAILS {`${showDetails === true ? '-' : '+'}`}</button>
           <WorkPageGallery images={currentAllImages} text={data.description.split('\r\n\r\n')} />
         <h3 className='work__also'>YOU MIGHT ALSO LIKE</h3>
-        <MassonryGallery title={false} backgroundY={true} button={true} worksArr={works} count={4} area='works' />
+        <MassonryGallery title={false} button={true} worksArr={works} count={4} area='works' />
       </div>
     </section>
   );

@@ -37,8 +37,7 @@ const SocialityPage = ({allSocialities, categories}) => {
         <MassonryGallery 
           worksArr={filter === 'VIEW ALL' ? allSocialities : allSocialities.filter(item => item.categoryName === filter)}
           count={4}
-          title="All Sociality" 
-          backgroundY={true} 
+          title="All Sociality"
           backgroundPici={true}
           button={true} 
           color="#da7f7e" 

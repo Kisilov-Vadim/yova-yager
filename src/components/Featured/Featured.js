@@ -1,17 +1,29 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './Featured.scss'; 
 import WorksCard from '../WorksCard/WorksCard';
+import $ from 'jquery'; 
 
 const Featured = ({featured}) => {
+  const [cardsHeight, setCardsHeight] = useState()
 
   let sortedFeatured = featured.sort((first, second) => first.numberInFeatured - second.numberInFeatured); 
 
+  // const calcCardHeight = () => {
+  //   let cw = $($('.card')[0]).width();
+  //   setCardsHeight(cw)
+  // }
+
+  useEffect(() => {
+    setCardsHeight($($('.card')[0]).width())
+  })
+
+  console.log(cardsHeight)
   return ( 
     <section className="featured">
         <h3>
           Featured Projects
         </h3>
-        <div className='featured__projects'>
+        <div className='featured__projects' style={{ gridAutoRows: `${cardsHeight}px` }}>
           {sortedFeatured.map((item, i) => {
             if (i < 4 ) {
               let locationArr = item.location.split(',');
