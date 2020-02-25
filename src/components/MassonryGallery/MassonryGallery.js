@@ -5,22 +5,28 @@ import WorksCard from '../WorksCard/WorksCard';
 import ButtonDecorate from '../ButtonDecorate/ButtonDecorate';
 import PropTypes from 'prop-types'
 import Warp from 'warpjs'; 
+import $ from 'jquery'
 
 
-const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area}) => {
+const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, photoLoadButton, count}) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth); 
-  const [elementCount, setElementCount] = useState(4); 
-  
+  const [elementCount, setElementCount] = useState(count); 
+
   let animIdGallery, svgGallery, warpGallery, animateGallery; 
   let offsetGallery = 0
   let animateSpeed = 4; 
 
-  let countWorks = [...worksArr]; 
-  countWorks.length = elementCount;  
+  let countWorks = [...worksArr, ...worksArr, ...worksArr]; 
+  let testCountWorks = [...countWorks]
+  testCountWorks.length = elementCount; 
+  
+  useEffect(() => {
+    setElementCount(count)
+  }, [worksArr])
 
   useEffect(() => {
     window.addEventListener('resize', resize);
-    if (screenWidth > 800) {
+    if (photoLoadButton && screenWidth > 800) {
       svgGallery = document.getElementById('buttonMassonry');
       warpGallery = new Warp(svgGallery)
       warpGallery.interpolate(10)
@@ -31,11 +37,19 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area})
         offsetGallery += 0.08;
       } 
     }
+
+    if (!photoLoadButton) {
+      window.addEventListener('scroll', onScrollList);
+    }
     
     return () => {
       window.removeEventListener('resize', resize); 
       cancelAnimationFrame(animIdGallery); 
       animIdGallery = null;
+      
+      if (!photoLoadButton) {
+        window.removeEventListener('scroll', onScrollList);
+      }
     }
   })
 
@@ -106,6 +120,16 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area})
     }, 1400)
   }
 
+  const onScrollList = () => {
+    let gallery = $('.massonry .massonry__gallery'); 
+    const scrollBottom = gallery.scrollTop() + gallery.outerHeight() - ($(window).scrollTop() + $(window).innerHeight() / 2); 
+
+    if (scrollBottom < 0) {
+      setElementCount(elementCount + 6)
+    }
+  }
+
+  console.log(testCountWorks)  
 
   return (  
     <div className="massonry">
@@ -120,7 +144,7 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area})
           className="massonry__gallery-table"
           columnClassName="massonry__gallery-columns"> 
 
-          {countWorks.map((work, index) => {
+          {testCountWorks.map((work, index) => {
             let locationArr = work.location.split(',');
             let city = locationArr[2]; 
             let country = locationArr[3];
@@ -136,19 +160,21 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area})
 
         </Masonry>   
       </div>
-      <div 
-        onClick={() => setElementCount(elementCount + 2)} 
-        className={elementCount >= worksArr.length ? 'massonry__gallery-button-invisible' : null}
-      >
-        {button === false ? null : 
-          <ButtonDecorate 
-            title='Load More' 
-            id={'buttonMassonry'} 
-            startAnimate={startAnimate}
-            stopAnimate={stopAnimate} 
-          />
-        }
-      </div>
+      {
+        photoLoadButton && button ?
+          <div 
+            onClick={() => setElementCount(elementCount + 6)} 
+            className={elementCount >= countWorks.length ? 'massonry__gallery-button-invisible' : null}
+          >
+            <ButtonDecorate 
+              title='Load More' 
+              id={'buttonMassonry'} 
+              startAnimate={startAnimate}
+              stopAnimate={stopAnimate} 
+            />
+          </div> 
+          : null
+      }
     </div>
   );
 }
@@ -156,11 +182,12 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area})
 MassonryGallery.propTypes = {
   count: PropTypes.number.isRequired,
   title: PropTypes.string, 
-  button: PropTypes.bool.isRequired
+  button: PropTypes.bool.isRequired, 
+  photoLoadButton: PropTypes.bool
 }
 
 MassonryGallery.defaultProps = {
-  count: 4
+  photoLoadButton: true
 }
 
 export default MassonryGallery;

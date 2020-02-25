@@ -10,10 +10,11 @@ import MassonryGallery from '../MassonryGallery/MassonryGallery';
 import {getToken, getData} from '../../store/actions'; 
 
 
-const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, setIsLoaded, isLoaded, area}) => {
+const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, area}) => {
   const [showDetails, setShowDetails] = useState(true);
   const [contentHeight, setContentHeight] = useState(0)
   const [mainPhoto, setMainPhoto] = useState(false); 
+
   let animIdMedia, svgMedia, warpMedia, animateMedia;
   let animateSpeed = 4; 
   let offsetMedia = 0;
@@ -206,7 +207,14 @@ const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, 
           <button className="work__details" onClick={() => setShowDetails(!showDetails)}>MORE DETAILS {`${showDetails === true ? '-' : '+'}`}</button>
           <WorkPageGallery images={currentAllImages} text={data.description.split('\r\n\r\n')} />
         <h3 className='work__also'>YOU MIGHT ALSO LIKE</h3>
-        <MassonryGallery title={false} button={true} worksArr={works} count={4} area='works' />
+        <MassonryGallery 
+          title={false} 
+          button={true} 
+          worksArr={works} 
+          count={4} 
+          area='works' 
+          photoLoadButton={true}
+        />
       </div>
     </section>
   );

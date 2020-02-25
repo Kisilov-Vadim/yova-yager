@@ -14,7 +14,9 @@ const WorksPage = ({works}) => {
           worksArr={filter === 'VIEW ALL' ? works : works.filter(item => item.categoryName === filter)}
           title={false}
           button={true} 
+          photoLoadButton={false}
           area='works'
+          count={4}
         />
       </div>
     </section>

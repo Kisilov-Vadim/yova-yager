@@ -6,6 +6,10 @@ import MassonryGallery from '../../components/MassonryGallery/MassonryGallery';
 const SocialityPage = ({allSocialities, categories}) => {
   const [filter, setFilter] = useState("VIEW ALL")
 
+  let set = new Set(); 
+  allSocialities.forEach(item => set.add(item.categoryName))
+  let actualCategories = Array.from(set)
+
   return (  
     <section className="sociality">
       <div className="wrapper">
@@ -18,15 +22,16 @@ const SocialityPage = ({allSocialities, categories}) => {
             >
               View all
             </button>
-            {categories.map(item => (
-              <button 
-                key={item.id}
-                onClick={() => setFilter(item.name)} 
-                className={filter === `${item.name}` ? "workspage__nav-sort-active" : null}
+            {actualCategories.map(item => {
+              let currentCategory = categories.find(category => category.name === item) 
+              return <button 
+                key={currentCategory.id}
+                onClick={() => setFilter(currentCategory.name)} 
+                className={filter === `${currentCategory.name}` ? "workspage__nav-sort-active" : null}
               >
-                {item.name}
+                {currentCategory.name}
               </button>
-            ))}
+            })}
           </div>
         </div>
         <p className="sociality__info">
@@ -42,6 +47,7 @@ const SocialityPage = ({allSocialities, categories}) => {
           button={true} 
           color="#da7f7e" 
           area='socialities'
+          photoLoadButton={true}
         />
       </div>
     </section>

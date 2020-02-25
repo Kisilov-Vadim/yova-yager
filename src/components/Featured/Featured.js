@@ -8,16 +8,10 @@ const Featured = ({featured}) => {
 
   let sortedFeatured = featured.sort((first, second) => first.numberInFeatured - second.numberInFeatured); 
 
-  // const calcCardHeight = () => {
-  //   let cw = $($('.card')[0]).width();
-  //   setCardsHeight(cw)
-  // }
-
   useEffect(() => {
     setCardsHeight($($('.card')[0]).width())
   })
 
-  console.log(cardsHeight)
   return ( 
     <section className="featured">
         <h3>
