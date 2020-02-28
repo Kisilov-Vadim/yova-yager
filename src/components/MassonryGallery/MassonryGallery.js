@@ -26,7 +26,7 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
 
   useEffect(() => {
     window.addEventListener('resize', resize);
-    if (photoLoadButton && screenWidth > 800) {
+    if (photoLoadButton && screenWidth > 800 && button) {
       svgGallery = document.getElementById('buttonMassonry');
       warpGallery = new Warp(svgGallery)
       warpGallery.interpolate(10)
