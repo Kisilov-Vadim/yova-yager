@@ -10,7 +10,7 @@ const WorksCard = ({image, backgroundPici, title, location, area}) => {
 
   let animIdPici, svgPici, warpPici, animatePici, timeoutPici; 
   let offsetPici = 0
-  let animSpeed = 2; 
+  let animSpeed = 0; 
 
   useEffect(() => {
     window.addEventListener('resize', resize);
@@ -22,9 +22,9 @@ const WorksCard = ({image, backgroundPici, title, location, area}) => {
       warpPici.transform(([ x, y ]) => [ x, y, y ])
       animatePici = () => {
         timeoutPici = setTimeout(() => {
-          warpPici.transform(([ x, y, oy ]) => [ x + animSpeed * Math.sin(oy / 32 + offsetPici), oy + 4 * Math.sin(oy / 16 + offsetPici), oy ])
+          warpPici.transform(([ x, y, oy ]) => [ x , oy + animSpeed * 8 * Math.sin(oy / 32 + offsetPici), oy ])
           animIdPici = requestAnimationFrame(animatePici)
-          offsetPici += 0.2;
+          offsetPici -= 0.3;
         }, 1000 / 60);
       }
     }
@@ -42,49 +42,56 @@ const WorksCard = ({image, backgroundPici, title, location, area}) => {
   }
 
   const startAnimate = () => {
-    if (!animIdPici && backgroundPici) {
-      animSpeed = 2; 
+    if (!animIdPici) {
+      animSpeed = 0.1
       animatePici();
+      let timer = 50; 
+
+      for (let i = 0.2; i <= 1.2; i += 0.1) {
+        setTimeout(() => {
+          clearTimeout(timeoutPici)
+          cancelAnimationFrame(animIdPici); 
+          animIdPici = null
+          animSpeed = i
+          animatePici()
+        }, timer)
+        timer += 50; 
+      } 
     } else {
       return
     }
   }
 
   const stopAnimate = () => {
-    clearTimeout(timeoutPici)
-    cancelAnimationFrame(animIdPici); 
-    animIdPici = null;
-    animSpeed = 1.5; 
-    animatePici();
-
     setTimeout(() => {
       clearTimeout(timeoutPici)
       cancelAnimationFrame(animIdPici); 
-      animIdPici = null;
-      animSpeed = 1
+      animIdPici = null
+      animSpeed = 1.1
       animatePici()
-    }, 600)
+      let timer = 50; 
 
-    setTimeout(() => {
-      clearTimeout(timeoutPici)
-      cancelAnimationFrame(animIdPici); 
-      animIdPici = null;
-      animSpeed = 0.5
-      animatePici()
-    }, 900)
-
-    setTimeout(() => {
-      clearTimeout(timeoutPici)
-      cancelAnimationFrame(animIdPici); 
-      animIdPici = null;
-    }, 1200) 
+      for (let i = 1; i >= -0.8; i -= 0.1) {
+        setTimeout(() => {
+          clearTimeout(timeoutPici)
+          cancelAnimationFrame(animIdPici); 
+          animIdPici = null;
+          if (i < 0) {
+            return 
+          }
+          animSpeed = i
+          animatePici()
+        }, timer)
+        timer += 50;
+      }
+    }, 700)
   }
 
   if (screenWidth > 800) {
 
     return ( 
       <Fade bottom duration={1700} delay={100}>
-        <div className="card" onMouseOver={startAnimate} onMouseLeave={stopAnimate}>
+        <div className="card" onMouseOver={backgroundPici ? startAnimate : null} onMouseLeave={backgroundPici ? stopAnimate : null}>
           <img src={image} alt={title}/>
           <Link to={`/${area}/${title}`} exact className="card__info" 
             onClick={() => window.scrollTo(0, 0)}>

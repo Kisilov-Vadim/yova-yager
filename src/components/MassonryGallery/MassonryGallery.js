@@ -14,7 +14,7 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
 
   let animIdGallery, svgGallery, warpGallery, animateGallery; 
   let offsetGallery = 0
-  let animateSpeed = 4; 
+  let animateSpeed = 0; 
 
   let countWorks = [...worksArr, ...worksArr, ...worksArr]; 
   let testCountWorks = [...countWorks]
@@ -59,65 +59,46 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
 
   const startAnimate = () => {
     if (!animIdGallery) {
-      animateSpeed = 4; 
+      animateSpeed = 0.2; 
       animateGallery();
+      let timer = 50; 
+
+      for (let i = 0.4; i < 4; i += 0.2) {
+        setTimeout(() => {
+        cancelAnimationFrame(animIdGallery); 
+        animIdGallery = null
+        animateSpeed = i
+        animateGallery()
+      }, timer)
+        timer += 50; 
+      }
     } else {
       return
     }
   }
 
   const stopAnimate = () => {
-    cancelAnimationFrame(animIdGallery); 
-    animIdGallery = null
-    animateSpeed = 3.5
-    animateGallery()
-    
     setTimeout(() => {
       cancelAnimationFrame(animIdGallery); 
       animIdGallery = null
-      animateSpeed = 3
+      animateSpeed = 3.8
       animateGallery()
-    }, 200)
-
-    setTimeout(() => {
-      cancelAnimationFrame(animIdGallery); 
-      animIdGallery = null
-      animateSpeed = 2.5
-      animateGallery()
-    }, 400)
-
-    setTimeout(() => {
-      cancelAnimationFrame(animIdGallery); 
-      animIdGallery = null
-      animateSpeed = 2
-      animateGallery()
-    }, 600)
-
-    setTimeout(() => {
-      cancelAnimationFrame(animIdGallery); 
-      animIdGallery = null
-      animateSpeed = 1.5
-      animateGallery()
-    }, 800)
-
-    setTimeout(() => {
-      cancelAnimationFrame(animIdGallery); 
-      animIdGallery = null
-      animateSpeed = 1
-      animateGallery()
-    },1000)
-
-    setTimeout(() => {
-      cancelAnimationFrame(animIdGallery); 
-      animIdGallery = null
-      animateSpeed = 0.5
-      animateGallery()
-    }, 1200)
-
-    setTimeout(() => {
-      cancelAnimationFrame(animIdGallery); 
-      animateGallery = null
-    }, 1400)
+      let timer = 50; 
+  
+      for (let i = 3.6; i >= -0.8; i -= 0.2) {
+        setTimeout(() => {
+          cancelAnimationFrame(animIdGallery); 
+          animIdGallery = null
+          if (i < 0) {
+            return 
+          } else {
+            animateSpeed = i
+            animateGallery()
+          }
+        }, timer)
+        timer += 50; 
+      }
+    }, 1000)
   }
 
   const onScrollList = () => {
@@ -128,8 +109,6 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
       setElementCount(elementCount + 6)
     }
   }
-
-  console.log(testCountWorks)  
 
   return (  
     <div className="massonry">
