@@ -10,7 +10,7 @@ const Featured = ({featured}) => {
 
   useEffect(() => {
     setCardsHeight($($('.card')[0]).width())
-  })
+  }, [])
 
   return ( 
     <section className="featured">

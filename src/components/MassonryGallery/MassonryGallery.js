@@ -26,7 +26,7 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
 
   useEffect(() => {
     window.addEventListener('resize', resize);
-    if (photoLoadButton && screenWidth > 800) {
+    if (photoLoadButton && screenWidth > 800 && button) {
       svgGallery = document.getElementById('buttonMassonry');
       warpGallery = new Warp(svgGallery)
       warpGallery.interpolate(10)
@@ -59,6 +59,7 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
 
   const startAnimate = () => {
     if (!animIdGallery) {
+      console.log(animateGallery)
       animateSpeed = 4; 
       animateGallery();
     } else {
@@ -67,6 +68,7 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
   }
 
   const stopAnimate = () => {
+    console.log(animateGallery)
     cancelAnimationFrame(animIdGallery); 
     animIdGallery = null
     animateSpeed = 3.5
@@ -116,7 +118,7 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
 
     setTimeout(() => {
       cancelAnimationFrame(animIdGallery); 
-      animateGallery = null
+      animIdGallery = null
     }, 1400)
   }
 
@@ -128,8 +130,6 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
       setElementCount(elementCount + 6)
     }
   }
-
-  console.log(testCountWorks)  
 
   return (  
     <div className="massonry">

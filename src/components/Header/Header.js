@@ -13,7 +13,7 @@ const Header = ({menuShow, setMenuShow, getAllData}) => {
   }
 
   const unShowMenu = (e) => {
-    if (e.target.tagName != 'DIV') {return}; 
+    if (e.target.tagName !== 'DIV') {return}; 
     if (e.target.className.includes('menu__before-visible')) {
       setMenuShow(false);
     }

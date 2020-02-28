@@ -9,6 +9,16 @@ import WorkPageGallery from '../WorkPageGallery/WorkPageGallery';
 import MassonryGallery from '../MassonryGallery/MassonryGallery';
 import {getToken, getData} from '../../store/actions'; 
 
+const shuffle = (arr) => {
+	var j, temp;
+	for(var i = arr.length - 1; i > 0; i--){
+		j = Math.floor(Math.random()*(i + 1));
+		temp = arr[j];
+		arr[j] = arr[i];
+		arr[i] = temp;
+	}
+	return arr;
+}
 
 const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, area}) => {
   const [showDetails, setShowDetails] = useState(true);
@@ -47,70 +57,71 @@ const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, 
       animIdMedia = requestAnimationFrame(animateMedia);
       offsetMedia += 0.08;
     } 
+    animateMedia();
   })
 
-  const startAnimate = () => {
-    if (!animIdMedia) {
-      animateSpeed = 4; 
-      animateMedia();
-    } else {
-      return
-    }
-  }
+  // const startAnimate = () => {
+  //   if (!animIdMedia) {
+  //     animateSpeed = 4; 
+  //     animateMedia();
+  //   } else {
+  //     return
+  //   }
+  // }
 
-  const stopAnimate = () => {
-    cancelAnimationFrame(animIdMedia); 
-    animIdMedia = null
-    animateSpeed = 3.5
-    animateMedia()
+  // const stopAnimate = () => {
+  //   cancelAnimationFrame(animIdMedia); 
+  //   animIdMedia = null
+  //   animateSpeed = 3.5
+  //   animateMedia()
     
-    setTimeout(() => {
-      cancelAnimationFrame(animIdMedia); 
-      animIdMedia = null
-      animateSpeed = 3
-      animateMedia()
-    }, 200)
+  //   setTimeout(() => {
+  //     cancelAnimationFrame(animIdMedia); 
+  //     animIdMedia = null
+  //     animateSpeed = 3
+  //     animateMedia()
+  //   }, 200)
 
-    setTimeout(() => {
-      cancelAnimationFrame(animIdMedia); 
-      animIdMedia = null
-      animateSpeed = 2.5
-      animateMedia()
-    }, 400)
+  //   setTimeout(() => {
+  //     cancelAnimationFrame(animIdMedia); 
+  //     animIdMedia = null
+  //     animateSpeed = 2.5
+  //     animateMedia()
+  //   }, 400)
 
-    setTimeout(() => {
-      cancelAnimationFrame(animIdMedia); 
-      animIdMedia = null
-      animateSpeed = 2
-      animateMedia()
-    }, 600)
+  //   setTimeout(() => {
+  //     cancelAnimationFrame(animIdMedia); 
+  //     animIdMedia = null
+  //     animateSpeed = 2
+  //     animateMedia()
+  //   }, 600)
 
-    setTimeout(() => {
-      cancelAnimationFrame(animIdMedia); 
-      animIdMedia = null
-      animateSpeed = 1.5
-      animateMedia()
-    }, 800)
+  //   setTimeout(() => {
+  //     cancelAnimationFrame(animIdMedia); 
+  //     animIdMedia = null
+  //     animateSpeed = 1.5
+  //     animateMedia()
+  //   }, 800)
 
-    setTimeout(() => {
-      cancelAnimationFrame(animIdMedia); 
-      animIdMedia = null
-      animateSpeed = 1
-      animateMedia()
-    },1000)
+  //   setTimeout(() => {
+  //     cancelAnimationFrame(animIdMedia); 
+  //     animIdMedia = null
+  //     animateSpeed = 1
+  //     animateMedia()
+  //   },1000)
 
-    setTimeout(() => {
-      cancelAnimationFrame(animIdMedia); 
-      animIdMedia = null
-      animateSpeed = 0.5
-      animateMedia()
-    }, 1200)
+  //   setTimeout(() => {
+  //     cancelAnimationFrame(animIdMedia); 
+  //     animIdMedia = null
+  //     animateSpeed = 0.5
+  //     animateMedia()
+  //   }, 1200)
 
-    setTimeout(() => {
-      cancelAnimationFrame(animIdMedia); 
-      animIdMedia = null
-    }, 1400)
-  }
+  //   setTimeout(() => {
+  //     cancelAnimationFrame(animIdMedia); 
+  //     animIdMedia = null
+  //   }, 1400)
+  // }
 
   const currentAllImages = allImages
     .filter(item => (area === 'works' ? item.worksID : item.socialityID) === data.id)
@@ -119,6 +130,10 @@ const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, 
   const showContentAnimation = useSpring({ height: showDetails ? 'auto' : 0, opacity: showDetails ? 1 : 0, visibility: showDetails ? 'visible' : 'hidden' })
   const showMainPhoto = useSpring({ opacity: mainPhoto ? 1 : 0 })
  
+  const worksForAlsoLike = (arr) => {
+    let newWorks = arr.filter(item => item.id != data.id)
+    return shuffle(newWorks)
+  }
 
   return (  
     <section className="work">
@@ -183,8 +198,9 @@ const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, 
                   <ButtonDecorate 
                     title="media kit" 
                     id={'buttonMedia'} 
-                    startAnimate={startAnimate}
-                    stopAnimate={stopAnimate} 
+                    // startAnimate={startAnimate}
+                    // stopAnimate={stopAnimate} 
+                    autoStart={true}
                   />
                 </a>
               </div>
@@ -209,8 +225,8 @@ const WorkPage = ({data, works, allImages, currentWorkData, setCurrentWorkData, 
         <h3 className='work__also'>YOU MIGHT ALSO LIKE</h3>
         <MassonryGallery 
           title={false} 
-          button={true} 
-          worksArr={works} 
+          button={false} 
+          worksArr={worksForAlsoLike(works)} 
           count={4} 
           area='works' 
           photoLoadButton={true}

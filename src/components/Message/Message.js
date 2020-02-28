@@ -15,7 +15,7 @@ const Message = () => {
 
   let animId, svg, warp, animate, timeout; 
   let offset = 0
-  let speed = 2
+  let speed = 0
 
   useEffect(() => {
     window.addEventListener('resize', resize);
@@ -26,13 +26,13 @@ const Message = () => {
       warp.transform(([ x, y ]) => [ x, y, y ])
       animate = () => {
         timeout = setTimeout(() => {
-          warp.transform(([ x, y, oy ]) => [ x + speed * Math.sin(oy / 32 + offset), oy + 4 * Math.sin(oy / 16 + offset), oy ])
+          warp.transform(([ x, y, oy ]) => [ x, oy + speed * 8 * Math.sin(oy / 32 + offset), oy])
           animId = requestAnimationFrame(animate)
-          offset += 0.2;
+          offset -= 0.3;
         }, 1000 / 60);
       }
     }
-    
+
     return () => {
       clearTimeout(timeout)
       cancelAnimationFrame(animId); 
@@ -47,48 +47,195 @@ const Message = () => {
 
   const startAnimate = () => {
     if (!animId && showText) {
-      speed = 2
+      speed = 0.2
       animate();
+
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 0.3
+        animate()
+      }, 100)
+
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 0.4
+        animate()
+      }, 200)
+  
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 0.5
+        animate()
+      }, 300)
+
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 0.6
+        animate()
+      }, 400)
+
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 0.7
+        animate()
+      }, 500)
+
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 0.8
+        animate()
+      }, 600)
+
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 0.9
+        animate()
+      }, 700)
+
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 1
+        animate()
+      }, 800)
+
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 1.1
+        animate()
+      }, 900)
+
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 1.2
+        animate()
+      }, 1000)
     } else {
       return
     }
   }
 
   const stopAnimate = () => {
-    clearTimeout(timeout)
-    cancelAnimationFrame(animId); 
-    animId = null
-    speed = 1.5 
-    animate()
-    
     setTimeout(() => {
       clearTimeout(timeout)
       cancelAnimationFrame(animId); 
       animId = null
-      speed = 1
+      speed = 1.1
       animate()
-    }, 600)
 
-    setTimeout(() => {
-      clearTimeout(timeout)
-      cancelAnimationFrame(animId); 
-      animId = null
-      speed = 0.5
-      animate()
-    }, 900)
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 1
+        animate()
+      }, 100)
+      
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 0.9
+        animate()
+      }, 200)
 
-    setTimeout(() => {
-      clearTimeout(timeout)
-      cancelAnimationFrame(animId); 
-      animId = null
-    }, 1200)
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 0.8
+        animate()
+      }, 300)
+
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 0.7
+        animate()
+      }, 400)
+
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 0.6
+        animate()
+      }, 500)
+
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 0.5
+        animate()
+      }, 600)
+
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 0.4
+        animate()
+      }, 700)
+
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 0.3
+        animate()
+      }, 800)
+
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 0.2
+        animate()
+      }, 900)
+
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 0.1
+        animate()
+      }, 1000)
+
+      setTimeout(() => {
+        clearTimeout(timeout)
+        cancelAnimationFrame(animId); 
+        animId = null
+        speed = 0
+      }, 1100)
+    }, 1000)
   }
 
 
   return ( 
     <section className="message">
       <div className="message__animation" >
-        <svg onMouseOver={startAnimate} onMouseLeave={stopAnimate} xmlns="http://www.w3.org/2000/svg" id="piciRock" width="1500" height="1033" viewBox="0 0 1015 1033"><g opacity="0.483212">
+        <svg onMouseEnter={startAnimate} onMouseLeave={stopAnimate} xmlns="http://www.w3.org/2000/svg" id="piciRock" width="1500" height="1033" viewBox="0 0 1015 1033"><g opacity="0.483212">
           <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="-50" y="-20" width="1015" height="1033">
             <path fillRule="evenodd" clipRule="evenodd" d="M0 0.549805H1015V1032.6H0V0.549805Z" fill="white"/>
           </mask>
@@ -110,7 +257,7 @@ const Message = () => {
               IT'S TIME <br /> TO RETHINK
             </h1>
           </Typist>
-            <div class="message__info-text">
+            <div className="message__info-text">
               {showAnimation.map((item, index) => (
                 showText &&
                 <animated.p style={item} key={index}>

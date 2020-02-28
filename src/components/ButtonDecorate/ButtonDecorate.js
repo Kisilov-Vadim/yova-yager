@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './ButtonDecorate.scss'; 
+import PropTypes from 'prop-types';
 
-const ButtonDecorate = ({title, id, startAnimate, stopAnimate}) => {
+const ButtonDecorate = ({title, id, startAnimate, stopAnimate, autoStart}) => {
 
   return (  
-    <div className="decorateButton" onMouseOver={startAnimate} onMouseLeave={stopAnimate}>
+    <div className="decorateButton" onMouseEnter={autoStart ? null : startAnimate} onMouseLeave={autoStart ? null : stopAnimate}>
       <button className="decorateButton-button">{title}</button>
       <svg xmlns="http://www.w3.org/2000/svg" width="145" height="82" viewBox="0 0 145 82" id={id}>
         <g>
@@ -18,3 +19,14 @@ const ButtonDecorate = ({title, id, startAnimate, stopAnimate}) => {
 }
  
 export default React.memo(ButtonDecorate);
+
+ButtonDecorate.propTypes = {
+  title: PropTypes.string.isRequired, 
+  id: PropTypes.string.isRequired, 
+  startAnimate: PropTypes.func, 
+  stopAnimate: PropTypes.func
+};
+
+ButtonDecorate.defaultProps = {
+  autoStart: false
+}
