@@ -14,7 +14,7 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
 
   let animIdGallery, svgGallery, warpGallery, animateGallery; 
   let offsetGallery = 0
-  let animateSpeed = 0; 
+  let animateSpeed = 4; 
 
   let countWorks = [...worksArr, ...worksArr, ...worksArr]; 
   let testCountWorks = [...countWorks]
@@ -36,6 +36,7 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
         animIdGallery = requestAnimationFrame(animateGallery)
         offsetGallery += 0.08;
       } 
+      animateGallery()
     }
 
     if (!photoLoadButton) {
@@ -57,49 +58,49 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
     setScreenWidth(window.innerWidth);
   }
 
-  const startAnimate = () => {
-    if (!animIdGallery) {
-      animateSpeed = 0.2; 
-      animateGallery();
-      let timer = 50; 
+  // const startAnimate = () => {
+  //   if (!animIdGallery) {
+  //     animateSpeed = 0.2; 
+  //     animateGallery();
+  //     let timer = 50; 
 
-      for (let i = 0.4; i < 4; i += 0.2) {
-        setTimeout(() => {
-        cancelAnimationFrame(animIdGallery); 
-        animIdGallery = null
-        animateSpeed = i
-        animateGallery()
-      }, timer)
-        timer += 50; 
-      }
-    } else {
-      return
-    }
-  }
+  //     for (let i = 0.4; i < 4; i += 0.2) {
+  //       setTimeout(() => {
+  //       cancelAnimationFrame(animIdGallery); 
+  //       animIdGallery = null
+  //       animateSpeed = i
+  //       animateGallery()
+  //     }, timer)
+  //       timer += 50; 
+  //     }
+  //   } else {
+  //     return
+  //   }
+  // }
 
-  const stopAnimate = () => {
-    setTimeout(() => {
-      cancelAnimationFrame(animIdGallery); 
-      animIdGallery = null
-      animateSpeed = 3.8
-      animateGallery()
-      let timer = 50; 
+  // const stopAnimate = () => {
+  //   setTimeout(() => {
+  //     cancelAnimationFrame(animIdGallery); 
+  //     animIdGallery = null
+  //     animateSpeed = 3.8
+  //     animateGallery()
+  //     let timer = 50; 
   
-      for (let i = 3.6; i >= -0.8; i -= 0.2) {
-        setTimeout(() => {
-          cancelAnimationFrame(animIdGallery); 
-          animIdGallery = null
-          if (i < 0) {
-            return 
-          } else {
-            animateSpeed = i
-            animateGallery()
-          }
-        }, timer)
-        timer += 50; 
-      }
-    }, 1000)
-  }
+  //     for (let i = 3.6; i >= -0.8; i -= 0.2) {
+  //       setTimeout(() => {
+  //         cancelAnimationFrame(animIdGallery); 
+  //         animIdGallery = null
+  //         if (i < 0) {
+  //           return 
+  //         } else {
+  //           animateSpeed = i
+  //           animateGallery()
+  //         }
+  //       }, timer)
+  //       timer += 50; 
+  //     }
+  //   }, 1000)
+  // }
 
   const onScrollList = () => {
     let gallery = $('.massonry .massonry__gallery'); 
@@ -148,8 +149,9 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
             <ButtonDecorate 
               title='Load More' 
               id={'buttonMassonry'} 
-              startAnimate={startAnimate}
-              stopAnimate={stopAnimate} 
+              // startAnimate={startAnimate}
+              // stopAnimate={stopAnimate}
+              autoStart={true}
             />
           </div> 
           : null
