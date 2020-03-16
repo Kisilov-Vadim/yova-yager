@@ -39,7 +39,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
@@ -65,8 +65,6 @@
     "gh-pages": "^2.2.0",
     "warpjs": "^1.0.8",
     "jest": "^22.1.4",
-    "jest-enzyme": "^7.0.1",
-    "@types/enzyme": "^3.1.0",
-    "react-scripts-ts": "2.8.0"
+    "jest-enzyme": "^7.0.1"
   }
 }
