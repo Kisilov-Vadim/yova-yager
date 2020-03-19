@@ -8,9 +8,10 @@ import Warp from 'warpjs';
 const WorksCard = ({image, backgroundPici, title, location, area}) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth); 
 
-  let animIdPici, svgPici, warpPici, animatePici, timeoutPici; 
-  let offsetPici = 0
+  let animIdPici, mainTimer, svgPici, warpPici, animatePici, timeoutPici; 
+  let offsetPici = 0;
   let animSpeed = 0; 
+  let animStop = false;
 
   useEffect(() => {
     window.addEventListener('resize', resize);
@@ -42,49 +43,49 @@ const WorksCard = ({image, backgroundPici, title, location, area}) => {
   }
 
   const startAnimate = () => {
-    if (!animIdPici) {
-      animSpeed = 0.1
-      animatePici();
-      let timer = 50; 
+    let timer = 50;
+    clearTimeout(mainTimer) 
 
-      for (let i = 0.2; i <= 1.2; i += 0.1) {
-        setTimeout(() => {
-          clearTimeout(timeoutPici)
-          cancelAnimationFrame(animIdPici); 
-          animIdPici = null
-          animSpeed = i
-          animatePici()
-        }, timer)
-        timer += 50; 
-      } 
-    } else {
-      return
-    }
+    for (let i = animSpeed; i <= 1.2; i += 0.1) {
+      mainTimer = setTimeout(() => {
+        clearTimeout(timeoutPici)
+        cancelAnimationFrame(animIdPici); 
+        animIdPici = null
+        animSpeed = i
+        animatePici()
+      }, timer)
+      timer += 50; 
+    } 
   }
 
   const stopAnimate = () => {
-    setTimeout(() => {
+    clearTimeout(mainTimer) 
+
+    mainTimer = setTimeout(() => {
       clearTimeout(timeoutPici)
       cancelAnimationFrame(animIdPici); 
       animIdPici = null
-      animSpeed = 1.1
-      animatePici()
       let timer = 50; 
 
-      for (let i = 1; i >= -0.8; i -= 0.1) {
-        setTimeout(() => {
+      for (let i = animSpeed; i >= -0.8; i -= 0.1) {
+        if (i < 0) {
+          mainTimer = setTimeout(() => {
+            clearTimeout(timeoutPici)
+            cancelAnimationFrame(animIdPici); 
+            animIdPici = null;
+          }, timer)
+          return
+        }
+        mainTimer = setTimeout(() => {
           clearTimeout(timeoutPici)
           cancelAnimationFrame(animIdPici); 
           animIdPici = null;
-          if (i < 0) {
-            return 
-          }
           animSpeed = i
           animatePici()
         }, timer)
         timer += 50;
       }
-    }, 700)
+    }, 1100)
   }
 
   if (screenWidth > 800) {

@@ -6,14 +6,14 @@ import {useTrail, animated, config} from 'react-spring';
 
 const Message = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const [showText, setShowText] = useState(false); 
+  const [showText, setShowText] = useState(false);
   const infoText = ['The way we live', 'The way we eat', 'The materials we use']; 
 
   const showAnimation = useTrail(infoText.length, {
     to: { opacity: showText ? 1 : 0, transform: showText ? 'translate(0)' : 'translate(-30%)' }
   })
 
-  let animId, svg, warp, animate, timeout; 
+  let animId, svg, warp, animate, timeout, mainTimer; 
   let offset = 0
   let speed = 0
 
@@ -46,13 +46,12 @@ const Message = () => {
   }
 
   const startAnimate = () => {
-    if (!animId && showText) {
-      speed = 0.1
-      animate();
+    if (showText) {
       let timer = 50; 
+      clearTimeout(mainTimer)
 
-      for (let i = 0.2; i <= 1.2; i += 0.1) {
-        setTimeout(() => {
+      for (let i = speed; i <= 1.2; i += 0.1) {
+        mainTimer = setTimeout(() => {
           clearTimeout(timeout)
           cancelAnimationFrame(animId); 
           animId = null
@@ -67,29 +66,33 @@ const Message = () => {
   }
 
   const stopAnimate = () => {
-    setTimeout(() => {
+    clearTimeout(mainTimer)
+
+    mainTimer = setTimeout(() => {
       clearTimeout(timeout)
       cancelAnimationFrame(animId); 
       animId = null
-      speed = 1.1
-      animate()
       let timer = 50; 
 
-      for (let i = 1; i >= -0.8; i -= 0.1) {
-        setTimeout(() => {
+      for (let i = speed; i >= -0.8; i -= 0.1) {
+        if (i < 0) {
+          mainTimer = setTimeout(() => {
+            clearTimeout(timeout)
+            cancelAnimationFrame(animId); 
+            animId = null;
+          }, timer)
+          return
+        }
+        mainTimer = setTimeout(() => {
           clearTimeout(timeout)
           cancelAnimationFrame(animId); 
           animId = null;
-          if (i < 0) {
-            return 
-          }
-          animId = null
           speed = i
           animate()
         }, timer)
         timer += 50;
       }
-    }, 700)
+    }, 1100)
   }
 
 

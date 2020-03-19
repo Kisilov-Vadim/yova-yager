@@ -6,11 +6,12 @@ import ButtonDecorate from '../ButtonDecorate/ButtonDecorate';
 import PropTypes from 'prop-types'
 import Warp from 'warpjs'; 
 import $ from 'jquery'
-
+import LazyLoad from 'react-lazyload'; 
 
 const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, photoLoadButton, count}) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth); 
-  const [elementCount, setElementCount] = useState(count); 
+  const [elementCount, setElementCount] = useState(count);
+  const [animButton, setAnimButton] = useState(null)
 
   let animIdGallery, svgGallery, warpGallery, animateGallery; 
   let offsetGallery = 0
@@ -25,18 +26,22 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
   }, [worksArr])
 
   useEffect(() => {
+    window.addEventListener('scroll', getAnimateButton);
     window.addEventListener('resize', resize);
     if (photoLoadButton && screenWidth > 800 && button) {
-      svgGallery = document.getElementById('buttonMassonry');
-      warpGallery = new Warp(svgGallery)
-      warpGallery.interpolate(10)
-      warpGallery.transform(([ x, y ]) => [ x, y, y ])
-      animateGallery = () => {
-        warpGallery.transform(([ x, y, oy ]) => [ x, oy + animateSpeed * Math.sin(x / 16 + offsetGallery), oy ])
-        animIdGallery = requestAnimationFrame(animateGallery)
-        offsetGallery += 0.08;
-      } 
-      animateGallery()
+      svgGallery = animButton;
+
+      if (svgGallery) {
+        warpGallery = new Warp(svgGallery)
+        warpGallery.interpolate(10)
+        warpGallery.transform(([ x, y ]) => [ x, y, y ])
+        animateGallery = () => {
+          warpGallery.transform(([ x, y, oy ]) => [ x, oy + animateSpeed * Math.sin(x / 16 + offsetGallery), oy ])
+          animIdGallery = requestAnimationFrame(animateGallery)
+          offsetGallery += 0.08;
+        } 
+        animateGallery()
+      }
     }
 
     if (!photoLoadButton) {
@@ -47,6 +52,7 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
       window.removeEventListener('resize', resize); 
       cancelAnimationFrame(animIdGallery); 
       animIdGallery = null;
+      window.removeEventListener('scroll', getAnimateButton);
       
       if (!photoLoadButton) {
         window.removeEventListener('scroll', onScrollList);
@@ -103,11 +109,21 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
   // }
 
   const onScrollList = () => {
+    
     let gallery = $('.massonry .massonry__gallery'); 
     const scrollBottom = gallery.scrollTop() + gallery.outerHeight() - ($(window).scrollTop() + $(window).innerHeight() / 2); 
 
     if (scrollBottom < 0) {
       setElementCount(elementCount + 6)
+    }
+  }
+
+  const getAnimateButton = () => {
+    svgGallery = document.getElementById('buttonMassonry') || null;
+    if (svgGallery) {
+      setAnimButton(svgGallery)
+    } else {
+      setAnimButton(null)
     }
   }
 
@@ -146,13 +162,15 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
             onClick={() => setElementCount(elementCount + 6)} 
             className={elementCount >= countWorks.length ? 'massonry__gallery-button-invisible' : null}
           >
-            <ButtonDecorate 
-              title='Load More' 
-              id={'buttonMassonry'} 
-              // startAnimate={startAnimate}
-              // stopAnimate={stopAnimate}
-              autoStart={true}
-            />
+            <LazyLoad height={85} unmountIfInvisible={true}>
+              <ButtonDecorate 
+                title='Load More' 
+                id={'buttonMassonry'} 
+                // startAnimate={startAnimate}
+                // stopAnimate={stopAnimate}
+                autoStart={true}
+              />
+            </LazyLoad>
           </div> 
           : null
       }

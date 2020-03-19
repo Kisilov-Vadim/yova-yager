@@ -43,7 +43,7 @@ const Header = ({menuShow, setMenuShow, getAllData}) => {
       <header 
         className={`header 
           ${scrollPosition > 0 ? 'header-underline header-scroll' : null}
-          `}
+          `} data-test={scrollPosition}
         >
         <div className="header__atmosphere">
           <div className="header__atmosphere-hospitality">

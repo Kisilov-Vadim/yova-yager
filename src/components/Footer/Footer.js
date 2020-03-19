@@ -14,21 +14,26 @@ const Footer = ({settings}) => {
         <h2 className="footer__title">Be free to contact me</h2>
         <div className="footer__content">
           <div className="footer__content-left">
-              <Image imageClass="footer__content-mobimage" src="/img/footer/mobimg.png" alt="Yova" />
+              <Image imageClass="footer__content-mobimage" src="/img/footer/mobimg.jpg" alt="Yova" />
             <span className="footer__content-name">It’s me, Yova Yager</span>
             <Switch> 
               <Route path="/" exact>
                 <Image imageClass="footer__content-image" src="/img/footer/yova-face.png" alt="Yova" />
               </Route>
-                <Image imageClass="footer__content-imageFace" src="/img/footer/mobimg.png" alt="Yova" /> 
+                <Image imageClass="footer__content-imageFace" src="/img/footer/mobimg.jpg" alt="Yova" /> 
             </Switch>
           </div>
           <div className="footer__content-right">
             <div className="footer__content-contacts">
               <span>Drop me a line:</span>
-              <a href="#">{settings[1].value}</a>
+              <a href={`mailto:${settings[1].value}`}>{settings[1].value}</a>
               <span>Studio</span>
-              <a href="#">{settings[3].value}</a>
+              {
+                settings[3].value.map(item => 
+                  <a href={`tel:${item.split(' ')[1]}`}>{`Tel.: ${item.split(' ')[1]}`}</a>
+                )
+              }
+              
             </div>
             <div className="footer__content-sendmail"> 
               <span>Send mail letters or card:</span>
