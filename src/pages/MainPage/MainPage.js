@@ -32,6 +32,7 @@ const MainPage = ({works}) => {
         <LazyLoad scroll={true} height={400}>
           <Featured />
         </LazyLoad>
+        <LazyLoad scroll={true}>
         <div className="main__work">
           <MassonryGallery 
             worksArr={works} 
@@ -42,9 +43,8 @@ const MainPage = ({works}) => {
             photoLoadButton={true}
           />
         </div>
-        <LazyLoad scroll={true} height={1000} unmountIfInvisible={true}>
-          <MainSociality />
-        </LazyLoad> 
+        </LazyLoad>
+        <MainSociality />
       </div>
     </main>
   );

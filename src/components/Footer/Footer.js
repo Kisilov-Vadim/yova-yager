@@ -14,13 +14,13 @@ const Footer = ({settings}) => {
         <h2 className="footer__title">Be free to contact me</h2>
         <div className="footer__content">
           <div className="footer__content-left">
-              <Image imageClass="footer__content-mobimage" src="/img/footer/mobimg.jpg" alt="Yova" />
+              <Image imageClass="footer__content-mobimage" src="/img/footer/mobimg.png" alt="Yova" />
             <span className="footer__content-name">It’s me, Yova Yager</span>
             <Switch> 
               <Route path="/" exact>
                 <Image imageClass="footer__content-image" src="/img/footer/yova-face.png" alt="Yova" />
               </Route>
-                <Image imageClass="footer__content-imageFace" src="/img/footer/mobimg.jpg" alt="Yova" /> 
+                <Image imageClass="footer__content-imageFace" src="/img/footer/mobimg.png" alt="Yova" /> 
             </Switch>
           </div>
           <div className="footer__content-right">
@@ -30,7 +30,7 @@ const Footer = ({settings}) => {
               <span>Studio</span>
               {
                 settings[3].value.map(item => 
-                  <a href={`tel:${item.split(' ')[1]}`}>{`Tel.: ${item.split(' ')[1]}`}</a>
+                  <a key={item} href={`tel:${item.split(' ')[1]}`}>{`Tel.: ${item.split(' ')[1]}`}</a>
                 )
               }
               

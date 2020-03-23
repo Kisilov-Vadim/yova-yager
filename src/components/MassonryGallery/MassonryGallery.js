@@ -158,11 +158,11 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
       </div>
       {
         photoLoadButton && button ?
-          <div 
-            onClick={() => setElementCount(elementCount + 6)} 
-            className={elementCount >= countWorks.length ? 'massonry__gallery-button-invisible' : null}
-          >
-            <LazyLoad height={85} unmountIfInvisible={true}>
+          <LazyLoad height={80} unmountIfInvisible={true} offset={1000}>
+            <div 
+              onClick={() => setElementCount(elementCount + 6)} 
+              className={elementCount >= countWorks.length ? 'massonry__gallery-button-invisible' : null}
+            >
               <ButtonDecorate 
                 title='Load More' 
                 id={'buttonMassonry'} 
@@ -170,8 +170,8 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
                 // stopAnimate={stopAnimate}
                 autoStart={true}
               />
-            </LazyLoad>
-          </div> 
+            </div> 
+          </LazyLoad>
           : null
       }
     </div>

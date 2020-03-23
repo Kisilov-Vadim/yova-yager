@@ -41,37 +41,40 @@ const Header = ({menuShow, setMenuShow, getAllData}) => {
   return ( 
     <>
       <header 
-        className={`header 
-          ${scrollPosition > 0 ? 'header-underline header-scroll' : null}
-          `} data-test={scrollPosition}
-        >
-        <div className="header__atmosphere">
-          <div className="header__atmosphere-hospitality">
-            <img src="/img/header/hospitality.svg" alt="Hospitality"/>
-          </div>
-          <div className="header__atmosphere-design">
-            <img src="/img/header/design.svg" alt="Design"/>
-          </div>
-          <div className="header__atmosphere-YY">
-            <img src="/img/header/YY.svg" alt="YY" />
-          </div>
-        </div>
-          <div className="header__logo">
-            <Link to="/" exact="true" onClick={clickOnLink}><img src="/img/header/yovayager.svg" alt="Yova Yager" /></Link> 
-          </div>
-        <div className="header__info">
-          {/* <HeaderSearch /> */}
-          <div className="header__info-social">
-            <Social />
-          </div>
-          <button 
-            className="header__info-burger"
-            onClick={() => setMenuShow(!menuShow)}
+        className="header">
+        <div className="wrapper">
+          <div
+            className={`header__wrapper 
+            ${scrollPosition > 0 ? 'header-scroll' : null}
+            `}
           >
-            <img src={`${menuShow === false ? '/img/header/burger.svg' : '/img/header/burger-close.svg'}`} alt="Menu" />
-          </button>
+            <div className="header__atmosphere">
+              <div className="header__atmosphere-hospitality">
+                <img src="/img/header/hospitality.svg" alt="Hospitality"/>
+              </div>
+              <div className="header__atmosphere-design">
+                <img src="/img/header/design.svg" alt="Design"/>
+              </div>
+              <div className="header__atmosphere-YY">
+                <img src="/img/header/YY.png" alt="YY" />
+              </div>
+            </div>
+              <Link to="/" className="header__logo" exact onClick={clickOnLink}><img src="/img/header/yovayager.svg" alt="Yova Yager" /></Link> 
+            <div className="header__info">
+              {/* <HeaderSearch /> */}
+              <div className="header__info-social">
+                <Social />
+              </div>
+              <button 
+                className="header__info-burger"
+                onClick={() => setMenuShow(!menuShow)}
+              >
+                <img src={`${menuShow === false ? '/img/header/burger.svg' : '/img/header/burger-close.svg'}`} alt="Menu" />
+              </button>
+            </div>
+            <SliderMenu scrollPosition={scrollPosition} unShowMenu={unShowMenu} />
+          </div>
         </div>
-        <SliderMenu scrollPosition={scrollPosition} unShowMenu={unShowMenu} />
       </header>
     </>
   );

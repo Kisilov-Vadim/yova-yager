@@ -1,7 +1,7 @@
 .workGallery {
   display: grid;
   grid-auto-rows: 525px;
-  gap: 50px;
+  gap: 100px;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: 
     "one one"

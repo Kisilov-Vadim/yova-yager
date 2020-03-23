@@ -29,7 +29,7 @@
 
       & > div {
         position: relative;
-        margin-bottom: 50px;
+        margin-bottom: 100px;
         display: flex;
         justify-content: center;
       }
@@ -41,12 +41,12 @@
       }
 
       &:nth-child(even) {
-        margin-left: 25px; /* gutter size */
-        padding-top: 104px;
+        margin-left: 50px; /* gutter size */
+        padding-top: 100px;
       }
 
       &:nth-child(odd) {
-        margin-right: 25px; /* gutter size */
+        margin-right: 50px; /* gutter size */
       }
     }
   }
