@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'; 
+import React, { useEffect, useState } from 'react'; 
 import './App.scss';
 import { Route, Switch } from 'react-router-dom';
-import { SemipolarLoading } from 'react-loadingg';
+// import TextLoop from "react-text-loop";
+import {useTrail, animated, config} from 'react-spring'; 
 
 import {Header} from '../components/Header/index'; 
 import {Footer} from '../components/Footer/index';
@@ -11,21 +12,61 @@ import {SocialityPage} from '../pages/SocialityPage/index';
 import {WorkPage} from '../components/WorkPage/index';
 
 const App = ({isLoaded, getAllData, works, allSocialities}) => {
- 
-    useEffect(() => {
-      getAllData()
-    }, [])
+  const leftWord = ['Y', 'O', 'V', 'A'];  
+  const rightWord = ['Y', 'A', 'G', 'E', 'R'];  
+  const [firstLetter, setFirstLetter] = useState('Y')
+  const [secondLetter, setSecondLetter] = useState('Y')
+  let firstCount = 0, secondCount = 0, interval;  
+
+  const letterChangeAnim = () => {
+    
+    if (firstCount === leftWord.length - 1) {
+      firstCount = 0; 
+    } else {
+      firstCount++
+    }
+
+    if (secondCount === rightWord.length - 1) {
+      secondCount = 0; 
+    } else {
+      secondCount++
+    }
+
+    setFirstLetter(leftWord[firstCount])
+    setSecondLetter(rightWord[secondCount])
 
     if (!isLoaded) {
+      setTimeout(() => {
+        interval = requestAnimationFrame(letterChangeAnim)
+        setTimeout(() => {
+          cancelAnimationFrame(interval)
+        }, 1000)
+      }, 1000 / 5)
+    } 
+  }
+
+  useEffect(() => {
+    letterChangeAnim()
+    getAllData()
+  }, [])
+
+
+    if (!isLoaded) {
+    
       return (
         <div className="loading">
-          <SemipolarLoading
-            color='#000'
-            sizr="large"
-          /> 
+          <div className="loading__main">
+            <div className='loading__main-left'>
+              <span>{firstLetter}</span>
+            </div>
+            <div className="loading__main-right">
+              <span>{secondLetter}</span>
+            </div>
+          </div>
         </div>
       )
     } else {
+     
       return (
         <>
           <Header />

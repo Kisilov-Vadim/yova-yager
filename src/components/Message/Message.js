@@ -26,7 +26,7 @@ const Message = () => {
       warp.transform(([ x, y ]) => [ x, y, y ])
       animate = () => {
         timeout = setTimeout(() => {
-          warp.transform(([ x, y, oy ]) => [ x, oy + speed * 8 * Math.sin(oy / 32 + offset), oy])
+          warp.transform(([ x, y, oy ]) => [ Math.round(x), Math.round(oy) + speed * 8 * Math.sin(Math.round(oy) / 32 + offset), Math.round(oy)])
           animId = requestAnimationFrame(animate)
           offset -= 0.3;
         }, 1000 / 60);

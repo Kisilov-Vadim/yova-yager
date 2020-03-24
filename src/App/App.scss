@@ -45,8 +45,34 @@ a {
   width: 100vw;
   height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: white;
+  
+
+
+  &__main {
+    display: flex;
+    width: 200px; 
+    height: 90px;
+    border: 1px solid #221D00;
+
+    &-left, &-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      height: 100%;
+
+      span {
+        font-family: ProximaRegular, sans-serif;
+        font-size: 48px;
+      }
+    }
+
+    &-left {
+      border-right: 1px solid #221D00;  
+    }
+  }
+  
 }

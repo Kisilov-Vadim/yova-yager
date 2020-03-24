@@ -49,14 +49,14 @@ const Header = ({menuShow, setMenuShow, getAllData}) => {
             `}
           >
             <div className="header__atmosphere">
-              <div className="header__atmosphere-hospitality">
-                <img src="/img/header/hospitality.svg" alt="Hospitality"/>
-              </div>
-              <div className="header__atmosphere-design">
-                <img src="/img/header/design.svg" alt="Design"/>
-              </div>
               <div className="header__atmosphere-YY">
                 <img src="/img/header/YY.png" alt="YY" />
+              </div>
+              <div className="header__atmosphere-hospitality">
+                <span>HOSPITALITY</span>
+              </div>
+              <div className="header__atmosphere-design">
+                <span>DESIGN</span>
               </div>
             </div>
               <Link to="/" className="header__logo" exact onClick={clickOnLink}><img src="/img/header/yovayager.svg" alt="Yova Yager" /></Link> 

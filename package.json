@@ -30,6 +30,7 @@
     "react-show": "^3.0.4",
     "react-spring": "^8.0.27",
     "react-test-renderer": "^16.13.1",
+    "react-text-loop": "^2.3.0",
     "react-to-pdf": "0.0.8",
     "react-transition-group": "^1.2.1",
     "react-typist": "^2.0.5",
