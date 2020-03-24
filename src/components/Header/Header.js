@@ -59,7 +59,7 @@ const Header = ({menuShow, setMenuShow, getAllData}) => {
                 <span>DESIGN</span>
               </div>
             </div>
-              <Link to="/" className="header__logo" exact onClick={clickOnLink}><img src="/img/header/yovayager.svg" alt="Yova Yager" /></Link> 
+              <Link to="/" className="header__logo" exact onClick={clickOnLink}>YOVA YAGER</Link> 
             <div className="header__info">
               {/* <HeaderSearch /> */}
               <div className="header__info-social">

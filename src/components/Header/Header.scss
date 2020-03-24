@@ -171,6 +171,13 @@
       }
     }
   }
+
+  &__logo {
+    font-family: Formular, Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 2.2px;
+  }
 }
 
 .is-active-button path {
