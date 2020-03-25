@@ -1,13 +1,15 @@
 .message {
   position: relative;
   height: 730px;
+  margin-top: 104px;
 
   &__info {
     position: relative;
     left: 0;
     max-width: 420px;
     width: 420px; 
-    top: 178px;   
+    top: 178px; 
+    z-index: 2;   
 
     &-title {
       font-family: Formular, Arial, Helvetica, sans-serif;
@@ -40,13 +42,14 @@
     height: 140%;
     overflow: hidden;
     right: 0;
-    z-index: 0; 
+    top: 0;
+    z-index: 1; 
 
     & > svg {
       position: absolute;
       height: 110%;
       width: 110%;
-      left: 30%;
+      left: 10%;
       overflow: visible;
     }
   }
@@ -58,32 +61,11 @@
   }
 }
 
-@media screen and (max-width: 699px) {
-  .message {
-
-    &__animation {
-      top: -50px; 
-    }
-  }
-}
-
-@media screen and (max-width: 599px) {
-  .message {
-
-    &__animation {
-      top: -100px; 
-    }
-  }
-}
 
 
 @media screen and (max-width: 499px) {
   .message {
     height: 500px;
-
-    &__animation {
-      top: -100px; 
-    }
 
     &__info {
       width: 100%;
@@ -92,15 +74,6 @@
       &-title {
         font-size: 50px;
       }
-    }
-  }
-}
-
-@media screen and (max-width: 399px) {
-  .message {
-
-    &__animation {
-      top: -150px; 
     }
   }
 }

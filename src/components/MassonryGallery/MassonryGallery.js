@@ -36,6 +36,8 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
         warpGallery.interpolate(10)
         warpGallery.transform(([ x, y ]) => [ x, y, y ])
         animateGallery = () => {
+          console.log("warpGallery:", warpGallery ) 
+          
           warpGallery.transform(([ x, y, oy ]) => [ x, oy + animateSpeed * Math.sin(x / 16 + offsetGallery), oy ])
           animIdGallery = requestAnimationFrame(animateGallery)
           offsetGallery += 0.08;
@@ -158,7 +160,7 @@ const MassonryGallery = ({title, backgroundPici, button, color, worksArr, area, 
       </div>
       {
         photoLoadButton && button ?
-          <LazyLoad height={80} unmountIfInvisible={true} offset={1000}>
+          <LazyLoad height={elementCount >= countWorks.length ? 0 : 80} unmountIfInvisible={true} offset={1000}>
             <div 
               onClick={() => setElementCount(elementCount + 6)} 
               className={elementCount >= countWorks.length ? 'massonry__gallery-button-invisible' : null}

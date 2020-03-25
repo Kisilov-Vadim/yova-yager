@@ -14,7 +14,7 @@
 }
 
 .header {
-  position: sticky;
+  position: fixed;
   top: 0; 
   left: 0;
   right: 0;
@@ -22,7 +22,7 @@
   margin: 0 auto;
   border-bottom: none;
   background-color: white;
-  z-index: 2; 
+  z-index: 10; 
   opacity: 1;
   visibility: visible;
   transition: all 0.3s ease-in;
