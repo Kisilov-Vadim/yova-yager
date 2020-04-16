@@ -16,7 +16,7 @@ const Image = ({imageClass, src, alt}) => {
               className={imageClass}
               done={() => setDoneImage(true)}
             >
-              <animated.img src={src} alt={alt} style={showImage} />
+              <animated.img itemProp="image" src={src} alt={alt} style={showImage} />
             </ImagesLoaded> 
           : 
             <div className={imageClass}></div>

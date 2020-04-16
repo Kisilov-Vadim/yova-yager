@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 const mapStateToPros = state => ({
   works: state.works, 
+  allText: state.allText
 })
 
 const newMainPage = connect(

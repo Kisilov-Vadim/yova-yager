@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import WorksPageNav from './WorksPageNav';
 
 const mapStateToPros = state => ({
-  categories: state.categories,
+  language: state.language
 })
 
 

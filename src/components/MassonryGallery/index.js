@@ -2,8 +2,8 @@ import MassonryGallery from './MassonryGallery';
 import { connect } from 'react-redux';
 
 const mapStateToPros = state => ({
-  works: state.works, 
-  screenWidth: state.screenWidth
+  language: state.language,
+  allText: state.allText
 })
 
 const newMassonryGallery= connect(

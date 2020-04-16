@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import './Header.scss'; 
 import {Link} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import $ from 'jquery'
 
 import Social from '../Social/Social';
 import {SliderMenu} from '../SliderMenu/index';
 
-const Header = ({menuShow, setMenuShow, getAllData}) => {
+const Header = ({menuShow, setMenuShow, getAllData, changeLanguage, language}) => {
   const [scrollPosition, setScrollPosition] = useState(0);  
 
   const getScrollPosition = () => {
@@ -13,8 +15,7 @@ const Header = ({menuShow, setMenuShow, getAllData}) => {
   }
 
   const unShowMenu = (e) => {
-    if (e.target.tagName !== 'DIV') {return}; 
-    if (e.target.className.includes('menu__before-visible')) {
+    if (e.target.className === 'menu__front') {
       setMenuShow(false);
     }
   }
@@ -28,20 +29,25 @@ const Header = ({menuShow, setMenuShow, getAllData}) => {
   }) 
 
   if (menuShow) {
-    document.body.style.overflow = "hidden";
+    $('body').css('overflow', 'hidden')
+    $('.menu__front').css('display', 'block')
   } else {
-    document.body.style.overflow = "visible";
+    $('body').css('overflow', 'auto')
+    $('.menu__front').css('display', 'none')
   }
 
   const clickOnLink = () => {
-    window.scrollTo(0,0)
     setMenuShow(false)
+    window.scrollTo(0,0)
   }
 
   return ( 
     <>
-      <header 
-        className="header">
+      <header  
+        data-test="mainHeader"
+        className="header"
+        id="header"
+      >
         <div className="wrapper">
           <div
             className={`header__wrapper 
@@ -59,21 +65,38 @@ const Header = ({menuShow, setMenuShow, getAllData}) => {
                 <span>DESIGN</span>
               </div>
             </div>
-              <Link to="/" className="header__logo" exact onClick={clickOnLink}>YOVA YAGER</Link> 
+              <Switch>
+                <Route exact={true} path="/">
+                  <span className="header__logo">YOVA YAGER</span>
+                </Route> 
+                  <Link to='/' className="header__logo" exact={true} onClick={clickOnLink}>YOVA YAGER</Link>
+              </Switch>
             <div className="header__info">
               {/* <HeaderSearch /> */}
-              <div className="header__info-social">
-                <Social />
+              <div className="header__info-language">
+                <span 
+                  className={language === 'en' ? "active" : null}
+                  onClick = {() => changeLanguage('en')}
+                >
+                  EN
+                </span>
+                <span
+                  className={language === 'ua' ? "active" : null}
+                  onClick = {() => changeLanguage('ua')}
+                >
+                  UA
+                </span>
               </div>
-              <button 
-                className="header__info-burger"
+              <div 
+                className={`header__info-burger ${menuShow === true ? "header__info-burger-show" : null}`} 
                 onClick={() => setMenuShow(!menuShow)}
               >
-                <img src={`${menuShow === false ? '/img/header/burger.svg' : '/img/header/burger-close.svg'}`} alt="Menu" />
-              </button>
+                <div className="up_line" />
+                <div className="down_line" />
+              </div>
             </div>
-            <SliderMenu scrollPosition={scrollPosition} unShowMenu={unShowMenu} />
           </div>
+          <SliderMenu scrollPosition={scrollPosition} unShowMenu={unShowMenu} />
         </div>
       </header>
     </>

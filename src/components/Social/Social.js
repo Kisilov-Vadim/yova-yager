@@ -1,25 +1,25 @@
 import React from 'react';
 import "./Social.scss"; 
+import PropTypes from 'prop-types'
 
 const Social = ({place}) => {
   return ( 
     <div className={`social ${place === 'footer' ? 'social__footer' : null}`}>
-      <a href="/">
+      <a href="https://www.instagram.com/yovayager/" target="_blank">
         <span>Inst</span>
       </a>
-      <a href="/">
-        <span>Fb</span>
-      </a>
-      <a href="/">
+      <a href="https://www.behance.net/yovayager" target="_blank">
         <span>Be</span>
       </a>
-      {place === 'menu' ? 
-        <a href="/">
-          <span>Pnt</span>
-        </a>  : null
-      }
+      <a href="https://www.pinterest.com/yovayager/" target="_blank">
+        <span>Pnt</span>
+      </a> 
     </div>
   );
+}
+
+Social.propTypes = {
+  place: PropTypes.string, 
 }
  
 export default React.memo(Social);

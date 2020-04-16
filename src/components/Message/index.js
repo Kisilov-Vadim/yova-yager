@@ -2,9 +2,8 @@ import {connect} from 'react-redux';
 import Message from './Message'; 
 
 const mapStateToPros = state => ({
-  featured: state.featured, 
-  categories: state.categories,
-  works: state.works,
+  language: state.language, 
+  allText: state.allText
 })
 
 const newMessage = connect(

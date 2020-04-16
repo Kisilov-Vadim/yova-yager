@@ -11,10 +11,12 @@ const initialState = {
   allSocialities: [], 
   settings: [], 
   allImages: [], 
+  allText: [],
   currentWorkData: false, 
+  language: 'en'
 }; 
 
-const reducer = (state, action) => {
+export const reducer = (state, action) => {
   switch(action.type) {
     case ACTIONS.SET_MENU_SHOW: 
       return {
@@ -56,10 +58,20 @@ const reducer = (state, action) => {
         ...state,
         allImages: action.images
       }
+    case ACTIONS.SET_ALLTEXT: 
+      return {
+        ...state, 
+        allText: action.text
+      }
     case ACTIONS.SET_CURRENTWORKPAGE: 
       return {
         ...state, 
         currentWorkData: action.work
+      }
+    case ACTIONS.CHANGE_LANGUAGE: 
+      return {
+        ...state, 
+        language: action.language
       }
     default: 
       return state; 

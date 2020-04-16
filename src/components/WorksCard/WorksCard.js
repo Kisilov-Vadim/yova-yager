@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Warp from 'warpjs';
 
-const WorksCard = ({image, backgroundPici, title, location, area}) => {
+const WorksCard = ({image, backgroundPici, title, location, location_ua, area, language}) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth); 
 
   let animIdPici, mainTimer, svgPici, warpPici, animatePici, timeoutPici; 
@@ -15,8 +15,9 @@ const WorksCard = ({image, backgroundPici, title, location, area}) => {
 
   useEffect(() => {
     window.addEventListener('resize', resize);
+    window.addEventListener('orientationchange', resize);
     
-    if (backgroundPici && screenWidth > 800) {
+    if (backgroundPici && screenWidth > 850) {
       svgPici = document.getElementById('backgroundPici');
       warpPici = new Warp(svgPici)
       warpPici.interpolate(10)
@@ -25,13 +26,14 @@ const WorksCard = ({image, backgroundPici, title, location, area}) => {
         timeoutPici = setTimeout(() => {
           warpPici.transform(([ x, y, oy ]) => [ x , oy + animSpeed * 8 * Math.sin(oy / 32 + offsetPici), oy ])
           animIdPici = requestAnimationFrame(animatePici)
-          offsetPici -= 0.25;
+          offsetPici -= 0.27;
         }, 1000 / 60);
       }
     }
 
     return () => {
       window.removeEventListener('resize', resize); 
+      window.removeEventListener('orientationchange', resize);
       clearTimeout(timeoutPici)
       cancelAnimationFrame(animIdPici); 
       animIdPici = null;
@@ -88,23 +90,29 @@ const WorksCard = ({image, backgroundPici, title, location, area}) => {
     }, 1100)
   }
 
-  if (screenWidth > 800) {
+  if (screenWidth > 850) {
 
     return ( 
       <Fade bottom duration={1700} delay={100}>
         <div className="card" onMouseOver={backgroundPici ? startAnimate : null} onMouseLeave={backgroundPici ? stopAnimate : null}>
-          <img src={image} alt={title}/>
+          <img itemprop="image" src={`http://yova.praid.com.ua${image}`} alt={title}/>
           <Link to={`/${area}/${title}`} exact className="card__info" 
             onClick={() => window.scrollTo(0, 0)}>
             <div>
-              <span>{title}</span>
-              <p>{location}</p>
+              <span itemprop="name">{title}</span>
+              <p itemprop="contentLocation">{language === 'en' ? location : location_ua}</p>
             </div>
           </Link>
          {
             backgroundPici === true ? 
               <div className="card__pici">
-                <svg xmlns="http://www.w3.org/2000/svg" id="backgroundPici" width="655px" height="666px" viewBox="0 0 500 620">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  id="backgroundPici" 
+                  width="655px" 
+                  height="666px" 
+                  viewBox="30 0 600 620"
+                >
                   <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" opacity="0.483212426">
                     <g>
                       <path d="M181.737471,77.4276554 C173.763118,84.3330971 165.524568,91.4804491 157.409311,98.0955983 C141.729206,110.877263 123.358694,122.502156 105.591431,133.735594 C66.076335,158.762322 25.2006232,184.629139 13.6067689,224.029742 C4.91468067,253.569198 -2.50485767,304.036101 2.75707012,357.080449 C6.78607758,397.690604 19.8110001,454.319624 59.031076,493.504706 C95.9922658,530.424628 128.039387,537.541192 168.606869,546.540258 C205.585672,554.752015 247.48735,564.058967 305.452218,597.904428 C382.800355,643.088888 454.450638,666 518.421589,666 C544.449418,666 569.873996,662.2218 593.964379,654.766562 C654,636.187845 653.562866,538.992654 653.223813,460.890789 C653.148957,443.763535 653.074101,427.586328 653.633319,413.190461 C656.755249,331.846998 639.388686,282.844752 622.585743,235.443513 C609.116089,197.445991 575.338475,171.931044 536.237288,142.378392 C524.581788,133.581651 512.534395,124.477024 500.539842,114.642268 C485.401341,102.252058 472.037366,87.3723711 459.113719,72.994098 C426.652688,36.8614845 396.001409,2.73452787 338.291931,2 C337.547776,2 336.799217,2 336.059465,2 C268.772838,2 224.533015,40.3449939 181.737471,77.4276554 Z" stroke="#979797">
@@ -132,11 +140,11 @@ const WorksCard = ({image, backgroundPici, title, location, area}) => {
 
     return (
       <div className="card">
-        <img src={image} alt='1'/>
+        <img src={`http://yova.praid.com.ua${image}`} alt={title}/>
         <Link to={`/${area}/${title}`} exact className="card__info" onClick={() => window.scrollTo(0, 0)}>
           <div>
-              <span>{title}</span>
-              <p>{location}</p>
+              <span itemprop="name">{title}</span>
+              <p itemprop="contentLocation">{location}</p>
           </div>
         </Link>
       </div>
@@ -149,7 +157,8 @@ const WorksCard = ({image, backgroundPici, title, location, area}) => {
 WorksCard.protoTypes = {
   title: PropTypes.string.isRequired, 
   image: PropTypes.string.isRequired, 
-  location: PropTypes.string.isRequired, 
+  location: PropTypes.string.isRequired,
+  location_ua: PropTypes.string.isRequired, 
   backgroundPici: PropTypes.bool, 
   area: PropTypes.string.isRequired
 }

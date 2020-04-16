@@ -2,7 +2,9 @@ import Footer from './Footer';
 import { connect } from 'react-redux';
 
 const mapStateToPros = state => ({
-  settings: state.settings
+  settings: state.settings, 
+  language: state.language, 
+  allText: state.allText
 })
 
 const newFooter = connect(

@@ -6,24 +6,9 @@ import LazyLoad from 'react-lazyload';
 import {Message} from '../../components/Message/index'; 
 import {Featured} from '../../components/Featured/index'; 
 import {MainSociality} from '../../components/MainSociality/index';
-import MassonryGallery from '../../components/MassonryGallery/MassonryGallery';
+import {MassonryGallery} from '../../components/MassonryGallery/index';
 
-const MainPage = ({works}) => {
-  // const [massonryLoad, setMassonryLoad] = useState(false)
-
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handleScroll);
-
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   }
-  // })
-
-  // const handleScroll = (e) => {
-  //   let gallery = $('.massonry .massonry__gallery'); 
-  //   console.log($(window).scrollTop())
-  //   console.log(gallery.scrollTop())
-  // }
+const MainPage = ({works, allText}) => {
 
   return ( 
     <main>
@@ -37,10 +22,12 @@ const MainPage = ({works}) => {
           <MassonryGallery 
             worksArr={works} 
             count={4}
-            title='Works' 
+            title={allText['main_subtitle-second_en']}
+            title_ua={allText['main_subtitle-second_ua']}
             button={true} 
             area='works'
             photoLoadButton={true}
+            buttonAutoStart={true}
           />
         </div>
         </LazyLoad>
@@ -51,3 +38,4 @@ const MainPage = ({works}) => {
 }
  
 export default MainPage;
+

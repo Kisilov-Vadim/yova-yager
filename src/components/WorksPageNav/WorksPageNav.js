@@ -1,28 +1,29 @@
 import React from 'react';
 import './WorksPageNav.scss';
 
-const WorksPageNav = ({setFilter, filter, categories}) => {
+const WorksPageNav = ({setFilter, filter, categories, language}) => {
+  
   return (  
-    <div className="workspage__nav">
-      <h1 className="workspage__nav-title">Works</h1>
-      <div className="workspage__nav-sort">
-        <button 
-          onClick={() => setFilter('VIEW ALL')} 
-          className={filter === "VIEW ALL" ? "workspage__nav-sort-active" : null}
-        >
-          View all
-        </button>
-        {categories.map(item => (
-          <button 
-            key={item.id}
-            onClick={() => setFilter(item.name)} 
-            className={filter === `${item.name}` ? "workspage__nav-sort-active" : null}
-          >
-            {item.name}
-          </button>
-        ))}
-      </div>
-    </div>
+    <>
+      
+      {
+        categories.length === 0 
+          ? 
+            null 
+          :  
+            <div className="workspage__nav-sort">
+              {categories.map(item => (
+                <button 
+                  key={item}
+                  onClick={() => setFilter(item)} 
+                  className={filter === `${item}` ? "workspage__nav-sort-active" : null}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+      }
+    </>
   );
 }
  

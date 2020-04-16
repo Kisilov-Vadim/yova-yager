@@ -1,6 +1,6 @@
 .decorateButton {
   position: relative;
-  width: 145px;
+  width: max-content;
   height: 85px;
   display: flex;
   justify-content: center;
@@ -22,7 +22,7 @@
   &-button {
     font-family: Formular;
     font-size: 16px;
-    font-weight: 700;
+    font-weight: normal;
     letter-spacing: 3px;
     text-transform: uppercase;
   }

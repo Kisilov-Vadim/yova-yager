@@ -3,8 +3,12 @@
   padding-bottom: 106px;
   position: relative; 
 
+  @media screen and (max-width: 560px) {
+    padding-bottom: 60px;
+  }
+
   &__title {
-    color: #da7f7e;
+    color: #000;
     font-family: Formular;
     font-size: 24px;
     letter-spacing: 5px;
@@ -20,6 +24,10 @@
     grid-gap: 100px;
     align-items: center;
     justify-content: center;
+
+    @media screen and (max-width: 699px) {
+      margin-bottom: 30px;
+    }
 
     & > div:first-child {
       max-height: 525px;
@@ -38,13 +46,17 @@
     }
 
     &-button {
-      position: relative;
+      display: flex;
+      justify-content: flex-start;
       font-family: Formular;
       font-size: 24px;
       letter-spacing: 3.33px;
       text-transform: uppercase;
-      top: 40px;
       z-index: 1;
+
+      .decorateButton {
+        margin: 0;
+      }
     }
   }
 }

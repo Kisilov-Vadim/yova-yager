@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import {setMenuShow} from '../../store/actions'; 
 
 const mapStateToPros = state => ({
-  menuShow: state.menuShow
+  menuShow: state.menuShow,
+  language: state.language
 })
 
 const mapToDispatch = dispatch => ({

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 const mapStateToPros = state => ({
   works: state.works, 
+  language: state.language
 })
 
 const newWorksPage = connect(

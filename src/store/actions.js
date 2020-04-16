@@ -7,18 +7,22 @@ export const ACTIONS = {
   SET_ISLOADED: 'SET_ISLOADED', 
   SET_ALLSOCIALITIES: 'SET_ALLSOCIALITIES',
   SET_ALLIMAGES: 'SET_ALLIMAGES', 
+  SET_ALLTEXT: 'SET_ALLTEXT',
   SET_CURRENTWORKPAGE: 'SET_CURRENTWORKPAGE',
+  CHANGE_LANGUAGE: 'CHANGE_LANGUAGE', 
 }
 
 export const setMenuShow = (status) => ({ type: ACTIONS.SET_MENU_SHOW, status });
 export const setCurrentWorkData = (work) => ({ type: ACTIONS.SET_CURRENTWORKPAGE, work })
+export const setIsLoaded = (value) => ({ type: ACTIONS.SET_ISLOADED, value }); 
+export const changeLanguage = (language) => ({ type: ACTIONS.CHANGE_LANGUAGE, language }); 
 const setCategories = (categories) => ({ type: ACTIONS.SET_CATEGORIES, categories }); 
 const setFeatured = (featured) => ({ type: ACTIONS.SET_FEATURED, featured }); 
 const setAllWorks = (works) => ({ type: ACTIONS.SET_WORKS, works }); 
 const setAllSocialities = (allSocialities) => ({ type: ACTIONS.SET_ALLSOCIALITIES, allSocialities }); 
 const setSettings = (settings) => ({ type: ACTIONS.SET_SETTINGS, settings }); 
-export const setIsLoaded = (value) => ({ type: ACTIONS.SET_ISLOADED, value }); 
 const setAllImages = (images) => ({ type: ACTIONS.SET_ALLIMAGES, images }); 
+const setAllText = (text) => ({ type: ACTIONS.SET_ALLTEXT, text }); 
 
 
 export const getToken = async (url) => {
@@ -62,7 +66,8 @@ export const getAllData = () => {
             getData("http://yova.praid.com.ua/api/featured", token),
             getData("http://yova.praid.com.ua/api/allworks", token),
             getData("http://yova.praid.com.ua/api/allsocialities", token),
-            getData("http://yova.praid.com.ua/api/images", token)
+            getData("http://yova.praid.com.ua/api/images", token),
+            getData("http://yova.praid.com.ua/api/text", token)
           ])
           .then(data => {
             dispatch(setSettings(data[0]))
@@ -71,6 +76,7 @@ export const getAllData = () => {
             dispatch(setAllWorks(data[3]))
             dispatch(setAllSocialities(data[4])) 
             dispatch(setAllImages(data[5]))
+            dispatch(setAllText(data[6]))
             dispatch(setIsLoaded(true)); 
           })
           .catch(err => console.log(err)); 
