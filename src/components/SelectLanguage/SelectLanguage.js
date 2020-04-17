@@ -3,6 +3,7 @@ import React from 'react'
 export default function SelectLanguage({language, changeLanguage, getAllData, setIsLoaded}) {
 
   const handleChangeLanguage = (lang) => {
+    if (lang === language) return
     setIsLoaded(false)
     changeLanguage(lang)
     getAllData(lang)

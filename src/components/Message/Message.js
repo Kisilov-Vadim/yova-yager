@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Typist from 'react-typist';
 import './Message.scss';
 import $ from 'jquery'; 
-import {useTrail, animated} from 'react-spring'; 
+import {useTrail, animated, config} from 'react-spring'; 
 
 import {MainWaveAnimatione} from '../MainWaveAnimation/index';
 
@@ -13,7 +13,8 @@ const Message = ({language, allText}) => {
   const infoTextUa = allText.main_message_ua.split('\n')
 
   const showAnimation = useTrail(infoText.length, {
-    to: { opacity: showText ? 1 : 0, transform: showText ? 'translate(0)' : 'translate(-30%)' }
+    to: { opacity: showText ? 1 : 0, transform: showText ? 'translate(0, 0)' : 'translate(0, 100%)' },
+    config: { mass: 1, tension: 200, friction: 26 }
   })
 
   useEffect(() => {

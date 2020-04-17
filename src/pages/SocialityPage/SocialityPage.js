@@ -14,7 +14,6 @@ import Preloader from '../../components/Preloader/Preloader';
 const SocialityPage = ({screenWidth, allSocialities, setAllSocialities, setIsLoaded, language, allText}) => {
   const [filter, setFilter] = useState("VIEW ALL")
   const [elementCount, setElementCount] = useState(5)
-  const [textHeight, setTextHeight] = useState($('.sociality__gallery-text').height())
 
   useEffect(() => {
     setAllSocialities([])
