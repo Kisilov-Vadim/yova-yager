@@ -3,10 +3,9 @@ import "./Footer.scss";
 
 import {Navigation} from '../Navigation/index';
 import Social from '../Social/Social';
-import {Switch, Route} from 'react-router-dom';
 import Image from '../Image/Image'; 
 
-const Footer = ({settings, language, allText}) => {
+const Footer = ({language, allText}) => {
 
   return ( 
     <footer className='footer' id="footer">

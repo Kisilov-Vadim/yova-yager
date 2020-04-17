@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import WorkPage from './WorkPage';
-import {setCurrentWorkData, setIsLoaded} from '../../store/actions';
+import {setCurrentWorkData, setIsLoaded, setAllSocialities, setAllWorks} from '../../store/actions';
 
 const mapStateToPros = state => ({
   screenWidth: state.screenWidth,

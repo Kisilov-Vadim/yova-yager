@@ -9,7 +9,7 @@ import $ from 'jquery';
 
 import {ButtonDecorate} from '../../components/ButtonDecorate/index';
 import {WorkPageGallery} from '../../components/WorkPageGallery/index';
-import MassonryGallery from '../../components/MassonryGallery/MassonryGallery';
+import {MassonryGallery} from '../../components/MassonryGallery/index';
 import LazyPhotoLoad from '../../components/LazyPhotoLoad/LazyPhotoLoad';
 import {getToken, getData} from '../../store/actions'; 
 import Preloader from '../../components/Preloader/Preloader';
@@ -26,16 +26,15 @@ const shuffle = (arr) => {
 	return arr;
 }
 
-const WorkPage = ({screenWidth, id, language, works, currentWorkData, setCurrentWorkData, area}) => {
-  const [showDetails, setShowDetails] = useState(true);
-  const [contentHeight, setContentHeight] = useState(0); 
+const WorkPage = ({screenWidth, id, language, works, currentWorkData, setCurrentWorkData}) => {
+  const [showDetails, setShowDetails] = useState(true); 
 
   useEffect(() => {
     setCurrentWorkData(false)
     getToken('http://yova.praid.com.ua/api/login')
       .then(data => data.data['api_token'])
       .then(token => {
-        getData(`http://yova.praid.com.ua/api/${area}/${id}`, token)
+        getData(`http://yova.praid.com.ua/api/project`, token, '', language, id)
           .then(data => setCurrentWorkData(data))
           .catch(err => console.log(err))
       })
@@ -43,7 +42,6 @@ const WorkPage = ({screenWidth, id, language, works, currentWorkData, setCurrent
 
   useEffect(() => {
     if (!currentWorkData) return
-    setContentHeight(document.getElementById('contentShow').scrollHeight); 
     setShowDetails(false)
   }, [currentWorkData])
 
@@ -65,37 +63,29 @@ const WorkPage = ({screenWidth, id, language, works, currentWorkData, setCurrent
         <div className="wrapper">
           <div className="work__mainTitleContent">
             {
-              currentWorkData.en.play === 1 
+              currentWorkData.play === 1 
                 ? <iframe 
                     data-test="main_video"
                     className="work__mainVideo"
                     width="100%" 
                     height="100%" 
-                    src={currentWorkData.en.video}>
+                    src={currentWorkData.video}>
                   </iframe>
                 : <LazyPhotoLoad 
                     data-test="main_image"
                     actualClass="work__image" 
-                    image={currentWorkData.en.mainImage} 
-                    alt={currentWorkData[language === 'en' ? 'en' : 'ua'].title} 
+                    image={currentWorkData.mainImage} 
+                    alt={currentWorkData.title} 
                   />
             }
           </div>
-            { 
-              language === "en" 
-                ? <h1 className="work__left-mobtitle" itemProp="name">{currentWorkData.en.title}</h1> 
-                : <h1 className="work__left-mobtitle" itemProp="name">{currentWorkData.ua.title}</h1> 
-            }
+            <h1 className="work__left-mobtitle" itemProp="name">{currentWorkData.title}</h1> 
             <animated.div id="contentShow" className="work__info" style={window.innerWidth < 799 ? showContentAnimation : null}>
               <div className="work__left">
-                {
-                  language === 'en' 
-                    ? <WorkPageTable language="en" content={currentWorkData.en.common_info} />
-                    : <WorkPageTable language="ua" content={currentWorkData.ua.common_info} />
-                }
+                <WorkPageTable language={language} content={currentWorkData.common_info} />
                 <LazyLoad height={screenWidth > 799 ? 85 : 0} unmountIfInvisible={true}>
                   <div className="work__left-button">
-                    <a href={currentWorkData.en.file} download={currentWorkData.en.title}>
+                    <a href={currentWorkData.file} download={currentWorkData.title}>
                       <ButtonDecorate 
                         title="media kit" 
                         title_ua="Медіа комплект"
@@ -107,36 +97,18 @@ const WorkPage = ({screenWidth, id, language, works, currentWorkData, setCurrent
                 </LazyLoad>
               </div>
               <div className="work__right">
-                {
-                  language === 'en' 
-                    ? <h1 
-                        data-test="main_title-en" 
-                        itemProp="name" className="work__right-title"
-                      >
-                        {currentWorkData.en.title}
-                      </h1>
-                    : <h1 
-                        data-test="main_title-ua"
-                        itemProp="name" 
-                        className="work__right-title"
-                      >
-                        {currentWorkData.ua.title}
-                      </h1>
-                }
-                {
-                  language === 'en' 
-                    ? 
-                      <p data-test="main_description-en" className="work__right-text">{currentWorkData.en.description}</p>
-                    : 
-                      <p data-test="main_description-us" className="work__right-text">{currentWorkData.ua.description}</p>
-                }
+              <h1 
+                data-test={`main_title-${language}`} 
+                itemProp="name" className="work__right-title"
+              >
+                {currentWorkData.title}
+              </h1>
+              <p data-test={`main_description-${language}`} className="work__right-text">{currentWorkData.description}</p>
               </div>
             </animated.div>
             <button className="work__details" onClick={() => setShowDetails(!showDetails)}>MORE DETAILS {`${showDetails === true ? '-' : '+'}`}</button>
             <WorkPageGallery 
-              images={language === 'en' ? currentWorkData.en.images : currentWorkData.ua.images} 
-              text_en={currentWorkData.en.description.split('\n')} 
-              text_ua={currentWorkData.ua.description.split('\n')}
+              images={currentWorkData.images} 
             />
           <h3 className='work__also'>{language === 'en' ? 'YOU MIGHT ALSO LIKE' : 'Вам може сподобатись'}</h3>
           <MassonryGallery 

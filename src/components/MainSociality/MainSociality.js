@@ -14,15 +14,15 @@ const MainSociality = ({allSocialities, language, allText}) => {
       <div className="mainSociality__gallery">
         {allSocialities.map((item, i) => {
           if (i < 2) {
-            let locationArr = item.location.split(','); 
+            {/* let locationArr = item.location.split(','); 
             let city = locationArr[2]; 
-            let country = locationArr[3]; 
+            let country = locationArr[3];  */}
             return <WorksCard 
               key={item.id}
               image={item.projectImage}
               title={item.title}
-              location={`${city}. ${country}`}
-              location_ua='Київ, Україна'
+              link={item.alias}
+              location={item.location}
               backgroundPici={i === 0 ? true : false}
               area='socialities'
             />

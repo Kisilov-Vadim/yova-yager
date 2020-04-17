@@ -4,12 +4,11 @@ import { connect } from 'react-redux';
 import {getAllData} from '../store/actions';
 
 const mapStateToPros = state => ({
-  categories: state.categories,
   featured: state.featured, 
-  works: state.works, 
-  settings: state.settings, 
+  works: state.works,
   isLoaded: state.isLoaded, 
-  allSocialities: state.allSocialities
+  allSocialities: state.allSocialities,
+  language: state.language
 })
 
 const mapToDispatch = {

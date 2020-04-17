@@ -34,38 +34,6 @@ const WorkPageGallery = ({images}) => {
           }
         })
       }
-      {/* <Image imageClass="workGallery__large" src={images[0].imageURL} alt="photo" />
-      <Image imageClass="workGallery__short-left" src={images[0].imageURL} alt="photo" />
-      <Image imageClass="workGallery__short-right" src={images[0].imageURL} alt="photo" />
-      <Image imageClass="workGallery__large" src={images[0].imageURL} alt="photo" />
-      <Image imageClass="workGallery__short-left" src={images[0].imageURL} alt="photo" />
-      <Image imageClass="workGallery__short-right" src={images[0].imageURL} alt="photo" /> */}
-
-      {/* <Image imageClass="workGallery-two" src={`http://yova.praid.com.ua${images[1].imageURL}`} alt={images[1].description} />
-      <Image imageClass="workGallery-three" src={`http://yova.praid.com.ua${images[2].imageURL}`} alt={images[2].description} />
-      <Image imageClass="workGallery-four" src={`http://yova.praid.com.ua${images[3].imageURL}`} alt={images[3].description} />
-      <Image imageClass="workGallery-five" src={`http://yova.praid.com.ua${images[4].imageURL}`} alt={images[4].description} />
-      <div className='workGallery-six'>
-        {
-          language === 'en' 
-            ?
-              text_en.map((item, index) => {
-                if (index < 3) {
-                  return 
-                }
-                return <p itemProp="about">{item}</p>
-              })
-            :
-              text_ua.map((item, index) => {
-                if (index < 3) {
-                  return 
-                }
-                return <p itemProp="about">{item}</p>
-              })
-        }
-      </div>
-      <Image imageClass="workGallery-seven" src={`http://yova.praid.com.ua${images[5].imageURL}`} alt={images[5].description} />
-      <Image imageClass="workGallery-eight" src={`http://yova.praid.com.ua${images[6].imageURL}`} alt={images[6].description} /> */}
     </div>
   );
 }

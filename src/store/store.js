@@ -5,13 +5,10 @@ import thunk from 'redux-thunk';
 const initialState = {
   screenWidth: 1440, 
   menuShow: false, 
-  isLoaded: false, 
-  categories: [],
+  isLoaded: false,
   featured: [], 
   works: [], 
   allSocialities: [], 
-  settings: [], 
-  allImages: [], 
   allText: [],
   currentWorkData: false, 
   language: 'en'
@@ -29,11 +26,6 @@ export const reducer = (state, action) => {
         ...state, 
         menuShow: action.status, 
       }; 
-    case ACTIONS.SET_CATEGORIES:
-      return {
-        ...state,
-        categories: action.categories
-      }
     case ACTIONS.SET_FEATURED:
       return {
         ...state,
@@ -49,20 +41,10 @@ export const reducer = (state, action) => {
         ...state,
         allSocialities: action.allSocialities
       }
-    case ACTIONS.SET_SETTINGS:
-      return {
-        ...state,
-        settings: action.settings
-      }
     case ACTIONS.SET_ISLOADED:
       return {
         ...state,
         isLoaded: action.value
-      }
-    case ACTIONS.SET_ALLIMAGES: 
-      return {
-        ...state,
-        allImages: action.images
       }
     case ACTIONS.SET_ALLTEXT: 
       return {

@@ -6,8 +6,9 @@ import $ from 'jquery'
 
 import Social from '../Social/Social';
 import {SliderMenu} from '../SliderMenu/index';
+import {SelectLanguage} from '../SelectLanguage/index';
 
-const Header = ({menuShow, setMenuShow, changeLanguage, setScreenWidth, screenWidth, language}) => {
+const Header = ({menuShow, setMenuShow, setScreenWidth, screenWidth}) => {
   const [scrollPosition, setScrollPosition] = useState(0);  
 
   const getScrollPosition = () => {
@@ -25,7 +26,7 @@ const Header = ({menuShow, setMenuShow, changeLanguage, setScreenWidth, screenWi
   }
 
   useEffect(() => {
-    setScreenWidth($(window).width())
+    resize()
   }, [])
 
   useEffect(() => {
@@ -36,7 +37,7 @@ const Header = ({menuShow, setMenuShow, changeLanguage, setScreenWidth, screenWi
     return () => {
       window.removeEventListener('scroll', getScrollPosition);
       window.removeEventListener('resize', resize)
-    window.removeEventListener('orientationchange', resize);
+      window.removeEventListener('orientationchange', resize);
     }
   }) 
 
@@ -82,20 +83,7 @@ const Header = ({menuShow, setMenuShow, changeLanguage, setScreenWidth, screenWi
               </Switch>
             <div className="header__info">
               {/* <HeaderSearch /> */}
-              <div className="header__info-language">
-                <span 
-                  className={language === 'en' ? "active" : null}
-                  onClick = {() => changeLanguage('en')}
-                >
-                  EN
-                </span>
-                <span
-                  className={language === 'ua' ? "active" : null}
-                  onClick = {() => changeLanguage('ua')}
-                >
-                  UA
-                </span>
-              </div>
+              <SelectLanguage />
               <div 
                 className={`header__info-burger ${menuShow === true ? "header__info-burger-show" : null}`} 
                 onClick={() => setMenuShow(!menuShow)}

@@ -13,10 +13,10 @@ import {Contact} from '../pages/Contact/index';
 import Preloader from '../components/Preloader/Preloader';
 import Error from '../pages/Error/Error';
 
-const App = ({isLoaded, getAllData, works, allSocialities}) => {
+const App = ({isLoaded, getAllData, works, allSocialities, language, featured}) => {
 
   useEffect(() => {
-    getAllData()
+    getAllData(language)
   }, [])
 
     if (!isLoaded) {
@@ -29,13 +29,17 @@ const App = ({isLoaded, getAllData, works, allSocialities}) => {
         <>
           <Header />
             <Switch>
+              {featured.map(feature => 
+                <Route exact={true} path={`/${feature.type}/${feature.alias}`} key={feature.id} component={
+                  () => <WorkPage id={feature.id} />} /> 
+              )}
               {works.map(work => 
-                <Route exact={true} path={`/works/${work.title}`} key={work.id} component={
-                  () => <WorkPage id={work.id} area='works' />} /> 
+                <Route exact={true} path={`/works/${work.alias}`} key={work.id} component={
+                  () => <WorkPage id={work.id} />} /> 
               )}
               {allSocialities.map(sociality => 
-                <Route exact={true} path={`/socialities/${sociality.title}`}  key={sociality.id} component={
-                  () => <WorkPage id={sociality.id} area='socialities' />} />
+                <Route exact={true} path={`/socialities/${sociality.alias}`}  key={sociality.id} component={
+                  () => <WorkPage id={sociality.id} />} />
               )}
               <Route exact={true} path="/" component={MainPage} />
               <Route exact={true} path="/works" component={WorksPage} />

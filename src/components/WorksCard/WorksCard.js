@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Warp from 'warpjs';
 
-const WorksCard = ({screenWidth, image, backgroundPici, title, location, location_ua, area, language}) => {
+const WorksCard = ({screenWidth, image, backgroundPici, title, link, location, area, language}) => {
 
   let animIdPici, mainTimer, svgPici, warpPici, animatePici, timeoutPici; 
   let offsetPici = 0;
@@ -87,11 +87,11 @@ const WorksCard = ({screenWidth, image, backgroundPici, title, location, locatio
       <Fade bottom duration={1700} delay={100}>
         <div className="card" onMouseOver={backgroundPici ? startAnimate : null} onMouseLeave={backgroundPici ? stopAnimate : null}>
           <img itemprop="image" src={`http://yova.praid.com.ua${image}`} alt={title}/>
-          <Link to={`/${area}/${title}`} exact className="card__info" 
+          <Link to={`/${area}/${link}`} exact className="card__info" 
             onClick={() => window.scrollTo(0, 0)}>
             <div>
               <span itemprop="name">{title}</span>
-              <p itemprop="contentLocation">{language === 'en' ? location : location_ua}</p>
+              <p itemprop="contentLocation">{location}</p>
             </div>
           </Link>
          {
@@ -132,7 +132,7 @@ const WorksCard = ({screenWidth, image, backgroundPici, title, location, locatio
     return (
       <div className="card">
         <img src={`http://yova.praid.com.ua${image}`} alt={title}/>
-        <Link to={`/${area}/${title}`} exact className="card__info" onClick={() => window.scrollTo(0, 0)}>
+        <Link to={`/${area}/${link}`} exact className="card__info" onClick={() => window.scrollTo(0, 0)}>
           <div>
               <span itemprop="name">{title}</span>
               <p itemprop="contentLocation">{location}</p>
@@ -149,7 +149,6 @@ WorksCard.protoTypes = {
   title: PropTypes.string.isRequired, 
   image: PropTypes.string.isRequired, 
   location: PropTypes.string.isRequired,
-  location_ua: PropTypes.string.isRequired, 
   backgroundPici: PropTypes.bool, 
   area: PropTypes.string.isRequired
 }

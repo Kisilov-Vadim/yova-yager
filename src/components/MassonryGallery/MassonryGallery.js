@@ -61,15 +61,15 @@ const MassonryGallery = (
             if (elementCount <= index) {
               return
             }
-            let locationArr = work.location.split(',');
+            {/* let locationArr = work.location.split(',');
             let city = locationArr[2]; 
-            let country = locationArr[3];
+            let country = locationArr[3]; */}
             return <WorksCard 
               key={work.id}
               image={work.projectImage} 
               title={work.title}
-              location={`${city}. ${country}`}
-              location_ua='Київ, Україна'
+              link={work.alias}
+              location={work.location}
               backgroundPici={backgroundPici === true ? index === 0 ? true : false : false}
               area={area}
             />

@@ -1,14 +1,33 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import "./MainPage.scss"; 
-// import $ from 'jquery'
 import LazyLoad from 'react-lazyload'; 
+import {getData, getToken} from '../../store/actions';
 
 import {Message} from '../../components/Message/index'; 
 import {Featured} from '../../components/Featured/index'; 
 import {MainSociality} from '../../components/MainSociality/index';
 import {MassonryGallery} from '../../components/MassonryGallery/index';
 
-const MainPage = ({works, allText}) => {
+const MainPage = ({works, allText, language}) => {
+
+  // useEffect(() => {
+  //   // setIsLoaded(true)
+  //   getToken('http://yova.praid.com.ua/api/login')
+  //     .then(data => data.data['api_token'])
+  //     .then(token =>  {
+  //       Promise.all(
+  //         [
+  //           getData("http://yova.praid.com.ua/api/projects", token, 'work', language, '', 'true'),
+  //           getData("http://yova.praid.com.ua/api/projects", token, 'soc', language, '', 'true'),
+  //         ])
+  //       .then(data => {
+  //         setAllWorks(data[0])
+  //         setAllSocialities(data[1])
+  //         setIsLoaded(true); 
+  //       })
+  //       .catch(err => console.log(err)); 
+  //     })
+  // }, [])
 
   return ( 
     <main>
