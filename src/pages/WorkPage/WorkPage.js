@@ -26,10 +26,9 @@ const shuffle = (arr) => {
 	return arr;
 }
 
-const WorkPage = ({id, language, works, currentWorkData, setCurrentWorkData, area}) => {
+const WorkPage = ({screenWidth, id, language, works, currentWorkData, setCurrentWorkData, area}) => {
   const [showDetails, setShowDetails] = useState(true);
   const [contentHeight, setContentHeight] = useState(0); 
-  const [screenWidth, setScreenWidth] = useState($(window).width())
 
   useEffect(() => {
     setCurrentWorkData(false)
@@ -47,20 +46,6 @@ const WorkPage = ({id, language, works, currentWorkData, setCurrentWorkData, are
     setContentHeight(document.getElementById('contentShow').scrollHeight); 
     setShowDetails(false)
   }, [currentWorkData])
-
-  useEffect(() => {
-    window.addEventListener('resize', resize);
-    window.addEventListener('orientationchange', resize);
-    
-    return () => {
-      window.removeEventListener('resize', resize); 
-      window.removeEventListener('orientationchange', resize);
-    }
-  })
-
-  const resize = () => {
-    setScreenWidth($(window).width());
-  }
 
   const showContentAnimation = useSpring({ height: showDetails ? 'auto' : 0, opacity: showDetails ? 1 : 0, visibility: showDetails ? 'visible' : 'hidden' })
  

@@ -1,4 +1,5 @@
 export const ACTIONS = {
+  SET_SCREEN_WIDTH: 'SET_SCREEN_WIDTH', 
   SET_MENU_SHOW: 'SET_MENU_SHOW', 
   SET_CATEGORIES: 'SET_CATEGORIES', 
   SET_FEATURED: 'SET_FEATURED',
@@ -12,6 +13,7 @@ export const ACTIONS = {
   CHANGE_LANGUAGE: 'CHANGE_LANGUAGE', 
 }
 
+export const setScreenWidth = (width) => ({ type: ACTIONS.SET_SCREEN_WIDTH, width })
 export const setMenuShow = (status) => ({ type: ACTIONS.SET_MENU_SHOW, status });
 export const setCurrentWorkData = (work) => ({ type: ACTIONS.SET_CURRENTWORKPAGE, work })
 export const setIsLoaded = (value) => ({ type: ACTIONS.SET_ISLOADED, value }); 

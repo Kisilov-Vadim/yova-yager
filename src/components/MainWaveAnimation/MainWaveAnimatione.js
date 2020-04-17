@@ -4,43 +4,36 @@ import './MainWaveAnimatione.scss';
 import Warp from 'warpjs'; 
 import PropTypes from 'prop-types'
 
-const MainWaveAnimatione = ({start}) => {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+const MainWaveAnimatione = ({screenWidth, start}) => {
 
   let animId, svg, warp, animate, timeout, mainTimer; 
   let offset = 0
   let speed = 0
 
   useEffect(() => {
-    window.addEventListener('resize', resize);
-    window.addEventListener('orientationchange', resize);
 
-    if (screenWidth > 850) {
-      svg = document.getElementById('piciRock');
-      warp = new Warp(svg)
-      warp.interpolate(10)
-      warp.transform(([ x, y ]) => [ x, y, y ])
-      animate = () => {
-        timeout = setTimeout(() => {
-          warp.transform(([ x, y, oy ]) => [ x, oy + speed * 8 * Math.sin(oy / 32 + offset), oy])
-          animId = requestAnimationFrame(animate)
-          offset -= 0.27;
-        }, 1000 / 60);
-      }
+    if (screenWidth < 850) {
+      return 
+    }
+
+    svg = document.getElementById('piciRock');
+    warp = new Warp(svg)
+    warp.interpolate(10)
+    warp.transform(([ x, y ]) => [ x, y, y ])
+    animate = () => {
+      timeout = setTimeout(() => {
+        warp.transform(([ x, y, oy ]) => [ x, oy + speed * 8 * Math.sin(oy / 32 + offset), oy])
+        animId = requestAnimationFrame(animate)
+        offset -= 0.27;
+      }, 1000 / 60);
     }
 
     return () => {
       clearTimeout(timeout)
       cancelAnimationFrame(animId); 
       animId = null;
-      window.removeEventListener('resize', resize); 
-      window.removeEventListener('orientationchange', resize);
     }
   })
-
-  const resize = () => {
-    setScreenWidth(window.innerWidth);
-  }
 
   const startAnimate = () => {
     if (start) {

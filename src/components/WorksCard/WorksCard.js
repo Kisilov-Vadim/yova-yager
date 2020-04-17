@@ -5,44 +5,35 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Warp from 'warpjs';
 
-const WorksCard = ({image, backgroundPici, title, location, location_ua, area, language}) => {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth); 
+const WorksCard = ({screenWidth, image, backgroundPici, title, location, location_ua, area, language}) => {
 
   let animIdPici, mainTimer, svgPici, warpPici, animatePici, timeoutPici; 
   let offsetPici = 0;
   let animSpeed = 0; 
-  let animStop = false;
 
   useEffect(() => {
-    window.addEventListener('resize', resize);
-    window.addEventListener('orientationchange', resize);
-    
-    if (backgroundPici && screenWidth > 850) {
-      svgPici = document.getElementById('backgroundPici');
-      warpPici = new Warp(svgPici)
-      warpPici.interpolate(10)
-      warpPici.transform(([ x, y ]) => [ x, y, y ])
-      animatePici = () => {
-        timeoutPici = setTimeout(() => {
-          warpPici.transform(([ x, y, oy ]) => [ x , oy + animSpeed * 8 * Math.sin(oy / 32 + offsetPici), oy ])
-          animIdPici = requestAnimationFrame(animatePici)
-          offsetPici -= 0.27;
-        }, 1000 / 60);
-      }
+    if (!backgroundPici || screenWidth < 850) {
+      return
+    }
+
+    svgPici = document.getElementById('backgroundPici');
+    warpPici = new Warp(svgPici)
+    warpPici.interpolate(10)
+    warpPici.transform(([ x, y ]) => [ x, y, y ])
+    animatePici = () => {
+      timeoutPici = setTimeout(() => {
+        warpPici.transform(([ x, y, oy ]) => [ x , oy + animSpeed * 8 * Math.sin(oy / 32 + offsetPici), oy ])
+        animIdPici = requestAnimationFrame(animatePici)
+        offsetPici -= 0.27;
+      }, 1000 / 60);
     }
 
     return () => {
-      window.removeEventListener('resize', resize); 
-      window.removeEventListener('orientationchange', resize);
       clearTimeout(timeoutPici)
       cancelAnimationFrame(animIdPici); 
       animIdPici = null;
     }
   })
-
-  const resize = () => {
-    setScreenWidth(window.innerWidth);
-  }
 
   const startAnimate = () => {
     let timer = 50;

@@ -3,6 +3,7 @@ import WorkPage from './WorkPage';
 import {setCurrentWorkData, setIsLoaded} from '../../store/actions';
 
 const mapStateToPros = state => ({
+  screenWidth: state.screenWidth,
   works: state.works,
   currentWorkData: state.currentWorkData, 
   language: state.language

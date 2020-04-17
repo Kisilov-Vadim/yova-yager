@@ -3,6 +3,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
 const initialState = {
+  screenWidth: 1440, 
   menuShow: false, 
   isLoaded: false, 
   categories: [],
@@ -18,6 +19,11 @@ const initialState = {
 
 export const reducer = (state, action) => {
   switch(action.type) {
+    case ACTIONS.SET_SCREEN_WIDTH: 
+      return {
+        ...state, 
+        screenWidth: action.width
+      }
     case ACTIONS.SET_MENU_SHOW: 
       return {
         ...state, 

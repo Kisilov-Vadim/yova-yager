@@ -61,17 +61,17 @@
       opacity: 0;
     }
 
-    .header__atmosphere {
-      border: none;
+    // .header__atmosphere {
+    //   border: none;
 
-      &-hospitality, &-design {
-        display: none;
-      }
+    //   &-hospitality, &-design {
+    //     display: none;
+    //   }
 
-      &-YY {
-        display: block;
-      }
-    }
+    //   &-YY {
+    //     display: block;
+    //   }
+    // }
   }
 
   &__atmosphere {
@@ -304,7 +304,7 @@
     -khtml-user-select: none;    /* Konqueror */
     -moz-user-select: none;      /* Firefox */
     -ms-user-select: none;       /* Internet Explorer/Edge */
-    user-select: none;  
+    user-select: none; 
   }
 }
 
@@ -332,23 +332,6 @@
         display: none;
       }
     }
-
-    &__atmosphere {
-      border: none;
-
-      &-hospitality, &-design {
-        display: none;
-      }
-
-      &-YY {
-        display: block; 
-         
-        & > img {
-          height: 100%;
-          width: 100%;
-        }
-      }
-    }  
   }
 }
 

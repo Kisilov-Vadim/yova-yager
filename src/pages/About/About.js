@@ -50,15 +50,12 @@ const awardsArr = [
   }
 ]
 
-const About = ({language}) => {
+const About = ({screenWidth, language}) => {
   const [openAwards, setOpenAwards] = useState(true);
   const [awardsCardsHeight, setAwardsCardsHeight] = useState(null); 
-  const [windowWidth, setWindowWidth] = useState($(window).width()); 
 
   useEffect(() => {
-    window.addEventListener('resize', resize); 
-
-    if (windowWidth > 560) {
+    if (screenWidth > 560) {
       $('.awards__cards').css('height', 'auto')
       return 
     }; 
@@ -66,14 +63,7 @@ const About = ({language}) => {
     setAwardsCardsHeight($('.awards__cards').innerHeight())
     setOpenAwards(false)
    
-    return () => {
-      window.removeEventListener('resize', resize)
-    }
-  }, [windowWidth])
-
-  const resize = () => {
-    setWindowWidth($(window).width())
-  }
+  }, [screenWidth])
 
   return (
     <section className="about">

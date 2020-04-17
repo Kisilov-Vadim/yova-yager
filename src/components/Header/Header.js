@@ -7,7 +7,7 @@ import $ from 'jquery'
 import Social from '../Social/Social';
 import {SliderMenu} from '../SliderMenu/index';
 
-const Header = ({menuShow, setMenuShow, getAllData, changeLanguage, language}) => {
+const Header = ({menuShow, setMenuShow, changeLanguage, setScreenWidth, screenWidth, language}) => {
   const [scrollPosition, setScrollPosition] = useState(0);  
 
   const getScrollPosition = () => {
@@ -20,11 +20,23 @@ const Header = ({menuShow, setMenuShow, getAllData, changeLanguage, language}) =
     }
   }
 
+  const resize = () => {
+    setScreenWidth($(window).width())
+  }
+
+  useEffect(() => {
+    setScreenWidth($(window).width())
+  }, [])
+
   useEffect(() => {
     window.addEventListener('scroll', getScrollPosition)
+    window.addEventListener('resize', resize)
+    window.addEventListener('orientationchange', resize);
     
     return () => {
       window.removeEventListener('scroll', getScrollPosition);
+      window.removeEventListener('resize', resize)
+    window.removeEventListener('orientationchange', resize);
     }
   }) 
 
@@ -55,14 +67,11 @@ const Header = ({menuShow, setMenuShow, getAllData, changeLanguage, language}) =
             `}
           >
             <div className="header__atmosphere">
-              <div className="header__atmosphere-YY">
-                <img src="/img/header/YY.png" alt="YY" />
-              </div>
               <div className="header__atmosphere-hospitality">
-                <span>HOSPITALITY</span>
+                <span>{scrollPosition > 0 || screenWidth < 949 ? "Y" : "HOSPITALITY"}</span>
               </div>
               <div className="header__atmosphere-design">
-                <span>DESIGN</span>
+                <span>{scrollPosition > 0 || screenWidth < 949 ? "Y" : "DESIGN"}</span>
               </div>
             </div>
               <Switch>

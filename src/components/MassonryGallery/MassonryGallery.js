@@ -9,39 +9,29 @@ import LazyLoad from 'react-lazyload';
 
 const MassonryGallery = (
     {
-      allText, title, title_ua, language, backgroundPici, 
+      screenWidth, allText, title, title_ua, language, backgroundPici, 
       button, worksArr, area, photoLoadButton, 
       count, buttonAutoStart
     }
   ) => {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth); 
   const [elementCount, setElementCount] = useState(count);
   
   useEffect(() => {
     setElementCount(count)
-  }, [worksArr])
+  }, [count])
 
   useEffect(() => {
-    window.addEventListener('resize', resize);
-    window.addEventListener('orientationchange', resize);
-
     if (!photoLoadButton) {
       window.addEventListener('scroll', onScrollList);
     }
     
     return () => {
-      window.removeEventListener('resize', resize); 
-      window.removeEventListener('orientationchange', resize);
       
       if (!photoLoadButton) {
         window.removeEventListener('scroll', onScrollList);
       }
     }
   })
-
-  const resize = () => {
-    setScreenWidth(window.innerWidth);
-  }
 
   const onScrollList = () => {
     let gallery = $('.massonry .massonry__gallery'); 
@@ -63,11 +53,14 @@ const MassonryGallery = (
       }
       <div className="massonry__gallery">
         <Masonry 
-          breakpointCols={`${screenWidth < 699 ? 1 : 2}`}
+          breakpointCols={`${screenWidth < 700 ? 1 : 2}`}
           className="massonry__gallery-table"
           columnClassName="massonry__gallery-columns"> 
 
           {worksArr.map((work, index) => {
+            if (elementCount <= index) {
+              return
+            }
             let locationArr = work.location.split(',');
             let city = locationArr[2]; 
             let country = locationArr[3];
@@ -81,7 +74,6 @@ const MassonryGallery = (
               area={area}
             />
           })}
-
         </Masonry>   
       </div>
       {

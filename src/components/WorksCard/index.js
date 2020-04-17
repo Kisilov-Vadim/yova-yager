@@ -3,6 +3,7 @@ import WorksCard from './WorksCard';
 
 
 const mapStateToPros = state => ({
+  screenWidth: state.screenWidth,
   language: state.language
 })
 

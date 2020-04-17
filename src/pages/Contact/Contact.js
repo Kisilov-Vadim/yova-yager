@@ -1,6 +1,6 @@
 import React from 'react'
 import './Contact.scss'
-import MainWaveAnimatione from '../../components/MainWaveAnimation/MainWaveAnimatione';
+import {MainWaveAnimatione} from '../../components/MainWaveAnimation/index';
 
 
 const Contact = ({language}) => {
@@ -44,9 +44,9 @@ const Contact = ({language}) => {
                 {language === 'en' ? 'Social' : 'Соціальні мережі'}
               </th>
               <td>
-                <a href="https://www.instagram.com/yovayager/" target="_blank">Instagram</a>  
-                <a href="https://www.behance.net/yovayager" target="_blank">Behance</a>
-                <a href="https://www.pinterest.com/yovayager/" target="_blank">Pinterest</a> 
+                <a href="https://www.instagram.com/yovayager/" target="_blank" rel="noopener noreferrer">Instagram</a>  
+                <a href="https://www.behance.net/yovayager" target="_blank" rel="noopener noreferrer">Behance</a>
+                <a href="https://www.pinterest.com/yovayager/" target="_blank" rel="noopener noreferrer">Pinterest</a> 
               </td>
             </tr>
           </table>

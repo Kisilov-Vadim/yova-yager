@@ -3,8 +3,7 @@ import './ButtonDecorate.scss';
 import PropTypes from 'prop-types';
 import Warp from 'warpjs'; 
 
-const ButtonDecorate = ({title, title_ua, language, id, autoStart}) => {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth); 
+const ButtonDecorate = ({screenWidth, title, title_ua, language, id, autoStart}) => {
   const [animButton, setAnimButton] = useState(null)
 
   let animId, svg, warp, animate;
@@ -12,8 +11,6 @@ const ButtonDecorate = ({title, title_ua, language, id, autoStart}) => {
   let offset = 0;
 
   useEffect(() => {
-    window.addEventListener('resize', resize);
-    window.addEventListener('orientationchange', resize);
     window.addEventListener('scroll', getAnimateButton);
 
     if (screenWidth < 850) {
@@ -34,17 +31,11 @@ const ButtonDecorate = ({title, title_ua, language, id, autoStart}) => {
     }    
 
     return () => {
-      window.removeEventListener('resize', resize); 
-      window.removeEventListener('orientationchange', resize);
       window.removeEventListener('scroll', getAnimateButton);
       cancelAnimationFrame(animId); 
       animId = null
     }
   }, [])
-
-  const resize = () => {
-    setScreenWidth(window.innerWidth);
-  }
 
   const getAnimateButton = () => {
     svg = document.getElementById(id) || null;

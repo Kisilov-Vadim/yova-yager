@@ -8,24 +8,9 @@ import {WorksCard} from '../../components/WorksCard/index';
 import {ButtonDecorate} from '../../components/ButtonDecorate/index';
 
 
-const SocialityPage = ({allSocialities, language, allText}) => {
+const SocialityPage = ({screenWidth, allSocialities, language, allText}) => {
   const [filter, setFilter] = useState("VIEW ALL")
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth); 
   const [elementCount, setElementCount] = useState(5)
-
-  useEffect(() => {
-    window.addEventListener('resize', resize);
-    window.addEventListener('orientationchange', resize);
-    
-    return () => {
-      window.removeEventListener('resize', resize); 
-      window.removeEventListener('orientationchange', resize);
-    }
-  })
-
-  const resize = () => {
-    setScreenWidth(window.innerWidth);
-  }
 
   let categories = new Set(); 
   allSocialities.forEach(work => categories.add(work.categoryName))
@@ -53,7 +38,7 @@ const SocialityPage = ({allSocialities, language, allText}) => {
           <WorksPageNav setFilter={setFilter} filter={filter} categories={categories} />
         </div>
         <Masonry 
-          breakpointCols={`${screenWidth < 699 ? 1 : 2}`}
+          breakpointCols={`${screenWidth < 700 ? 1 : 2}`}
           className="sociality__gallery-table"
           columnClassName="sociality__gallery-columns"
         >
@@ -79,7 +64,7 @@ const SocialityPage = ({allSocialities, language, allText}) => {
                   location={`${city}. ${country}`}
                   location_ua='Київ, Україна'
                   backgroundPici={index === 3 ? true : false}
-                  area="sociality"
+                  area="socialities"
                 />   
             })
           }
