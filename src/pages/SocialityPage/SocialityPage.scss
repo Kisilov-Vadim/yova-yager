@@ -17,10 +17,13 @@
       line-height: 1.5;
       letter-spacing: normal;
       color: #000000;
-      margin: 0;
+      margin: 0 0 110px 0;
+      width: calc((100% - 110px) / 2);
+      box-sizing: border-box;
 
       @media screen and (max-width: 699px) {
-        margin: 50px 0;
+        margin: 55px 0;
+        width: 100%;
       }
      }
 
@@ -36,18 +39,22 @@
     &-columns {
       // width: calc((100% - 100px)/2)!important;
 
+      &:nth-child(2) {
+        position: relative;
+      }
+
       @media screen and (max-width: 699px) {
         margin: 0;
       }
 
       & > div {
         position: relative;
-        margin-bottom: 100px;
+        margin-bottom: 110px;
         display: flex;
         justify-content: center;
 
         @media screen and (max-width: 699px) {
-          margin: 50px 0;
+          margin: 55px 0;
         }
       }
 
@@ -57,7 +64,7 @@
       }
 
       &:nth-child(even) {
-        margin-left: 50px; /* gutter size */
+        margin-left: 55px; /* gutter size */
 
         @media screen and (max-width: 699px) {
           margin: 0;
@@ -65,7 +72,7 @@
       }
 
       &:nth-child(odd) {
-        margin-right: 50px; /* gutter size */
+        margin-right: 55px; /* gutter size */
 
         @media screen and (max-width: 699px) {
           margin: 0;

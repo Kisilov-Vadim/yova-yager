@@ -3,6 +3,7 @@ import './SocialityPage.scss';
 import LazyLoad from 'react-lazyload'; 
 import Masonry from 'react-masonry-css'; 
 import {getData, getToken} from '../../store/actions';
+import $ from 'jquery';
 
 import WorksPageNav from '../../components/WorksPageNav/WorksPageNav';
 import {WorksCard} from '../../components/WorksCard/index';
@@ -13,6 +14,7 @@ import Preloader from '../../components/Preloader/Preloader';
 const SocialityPage = ({screenWidth, allSocialities, setAllSocialities, setIsLoaded, language, allText}) => {
   const [filter, setFilter] = useState("VIEW ALL")
   const [elementCount, setElementCount] = useState(5)
+  const [textHeight, setTextHeight] = useState($('.sociality__gallery-text').height())
 
   useEffect(() => {
     setAllSocialities([])
@@ -31,6 +33,11 @@ const SocialityPage = ({screenWidth, allSocialities, setAllSocialities, setIsLoa
         .catch(err => console.log(err)); 
       })
   }, [])
+
+  useEffect(() => {
+    let height = $('.sociality__gallery-text').height();
+    $('.sociality__gallery-table > div:nth-child(2)').css('top', -height-110)
+  })
 
   let categories = new Set(); 
   allSocialities.forEach(work => categories.add(work.category_name))
@@ -61,22 +68,21 @@ const SocialityPage = ({screenWidth, allSocialities, setAllSocialities, setIsLoa
             <h1 className="sociality__nav-title">{language === 'en' ? 'Sociality' : 'Соціальність'}</h1>
             <WorksPageNav setFilter={setFilter} filter={filter} categories={categories} />
           </div>
+          {
+              language === 'en' ?
+                  <div className="sociality__gallery-text">
+                    YOVA YAGER studio hospitality design and Kiev restaurant Alltrueeast take conscious steps to ensure the preservation of the environment. <br/><br/> Brands care about the environment, adhere to the principles of application of development and implement meaningful objects oriented to a person. In the life of a restaurant it is sorting garbage and using recyclable materials. Design studio - the use of environmental materials, products of local manufacturers and the offer of tools to solve problems facing public organizations. 
+                  </div>
+                :
+                  <div className="sociality__gallery-text">
+                    Студия YOVA YAGER hospitality design и киевский ресторан Alltrueeast делают осознанные шаги, направленные на сохранение окружающей среды. <br/><br/> Бренды заботятся об экологии, соблюдают принципы устойчивого развития и реализовывают осмысленные объекты, ориентированные на человека. В жизни ресторана это – сортировка мусора и использование перерабатываемых материалов. В жизни дизайн-студии – применение экологичных материалов, продукции локальных производителей и предложение инструментов для решения задач, стоящих перед современным обществом.
+                  </div>
+            }
           <Masonry 
             breakpointCols={`${screenWidth < 700 ? 1 : 2}`}
             className="sociality__gallery-table"
             columnClassName="sociality__gallery-columns"
           >
-            {
-              language === 'en' ?
-                  <p className="sociality__gallery-text">
-                    YOVA YAGER studio hospitality design and Kiev restaurant Alltrueeast take conscious steps to ensure the preservation of the environment. <br/><br/> Brands care about the environment, adhere to the principles of application of development and implement meaningful objects oriented to a person. In the life of a restaurant it is sorting garbage and using recyclable materials. Design studio - the use of environmental materials, products of local manufacturers and the offer of tools to solve problems facing public organizations. 
-                  </p>
-                :
-                  <p className="sociality__gallery-text">
-                    Студия YOVA YAGER hospitality design и киевский ресторан Alltrueeast делают осознанные шаги, направленные на сохранение окружающей среды. <br/><br/> Бренды заботятся об экологии, соблюдают принципы устойчивого развития и реализовывают осмысленные объекты, ориентированные на человека. В жизни ресторана это – сортировка мусора и использование перерабатываемых материалов. В жизни дизайн-студии – применение экологичных материалов, продукции локальных производителей и предложение инструментов для решения задач, стоящих перед современным обществом.
-                  </p>
-            }
-            
             {filteredSociality.map((item, index) => {
                 {/* let locationArr = item.location.split(',');
                 let city = locationArr[2]; 
@@ -87,7 +93,7 @@ const SocialityPage = ({screenWidth, allSocialities, setAllSocialities, setIsLoa
                     title={item.title}
                     link={item.alias}
                     location={item.location}
-                    backgroundPici={index === 3 ? true : false}
+                    backgroundPici={index === 0 ? true : false}
                     area="socialities"
                   />   
               })

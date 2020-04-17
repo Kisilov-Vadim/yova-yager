@@ -8,6 +8,7 @@ export const ACTIONS = {
   SET_ALLTEXT: 'SET_ALLTEXT',
   SET_CURRENTWORKPAGE: 'SET_CURRENTWORKPAGE',
   CHANGE_LANGUAGE: 'CHANGE_LANGUAGE', 
+  SET_ABOUT_PAGE: 'SET_ABOUT_PAGE'
 }
 
 export const setScreenWidth = (width) => ({ type: ACTIONS.SET_SCREEN_WIDTH, width })
@@ -19,6 +20,7 @@ const setFeatured = (featured) => ({ type: ACTIONS.SET_FEATURED, featured });
 export const setAllWorks = (works) => ({ type: ACTIONS.SET_WORKS, works }); 
 export const setAllSocialities = (allSocialities) => ({ type: ACTIONS.SET_ALLSOCIALITIES, allSocialities }); 
 const setAllText = (text) => ({ type: ACTIONS.SET_ALLTEXT, text }); 
+export const setAboutPage = (about) => ({ type: ACTIONS.SET_ABOUT_PAGE, about })
 
 
 export const getToken = async (url) => {
