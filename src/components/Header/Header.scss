@@ -151,18 +151,29 @@
     }
 
     &-burger {
+      position: relative;
       padding: 0;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       justify-content: center;
 
-      .up_line, .down_line {
+      span {
+        position: absolute;
         width: 22px; 
         height: 1px; 
         background-color: #000;
         margin: 3px 0;
         transition: all .4s;
+        margin: 0;
+      }
+
+      span:first-child {
+        top: 40%; 
+      }
+
+      span:last-child {
+        top: 61%;
       }
 
       // &:before, &:after {
@@ -184,16 +195,16 @@
 
       &-show {
 
-        .up_line {
-          margin: 0;
-          transform: rotate(45deg);
-        }
-        
-        
-        .down_line {
-          margin: 0;
-          transform: rotate(-45deg);
-        }
+      span:first-child {
+        top: 50%;
+        transform: rotate(45deg);
+      }
+      
+      
+      span:last-child  {
+        top: 50%;
+        transform: rotate(-45deg);
+      }        
 
         // &:after {
         //   top: 50%!important;

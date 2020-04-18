@@ -13,7 +13,7 @@ const Message = ({language, allText}) => {
   const infoTextUa = allText.main_message_ua.split('\n')
 
   const showAnimation = useTrail(infoText.length, {
-    to: { opacity: showText ? 1 : 0, transform: showText ? 'translate(0, 0)' : 'translate(0, 100%)' },
+    to: { transform: showText ? 'translate(0, 0)' : 'translate(0, 200%)', visibility: showText ? 'visible' : 'hidden'},
     config: { mass: 1, tension: 200, friction: 26 }
   })
 
@@ -45,17 +45,30 @@ const Message = ({language, allText}) => {
             <h1 className="message__info-title">{language === 'en' ? allText.main_phrase_en : allText.main_phrase_ua}</h1>
           </Typist>
           <div className="message__info-text">
+            {/* <div className='main-test__one'>
+              <span>Test</span>
+            </div>
+            <div className='main-test__two'>
+              <span>Test</span>
+            </div>
+            <div className='main-test__three'>
+              <span>Test</span>
+            </div> */}
             {showAnimation.map((item, index) => (
               showText &&
               language === 'en' 
-                ?
-                  <animated.p style={item} key={index}>
-                    {infoText[index]}
-                  </animated.p> 
-                :
-                  <animated.p style={item} key={index}>
-                    {infoTextUa[index]}
-                  </animated.p>
+                  ? <animated.div key={index}>
+                      <animated.p style={item} key={index}>
+                        {infoText[index]}
+                      </animated.p> 
+                    </animated.div>
+                    
+                  :
+                  <animated.div key={index}>
+                    <animated.p style={item} key={index}>
+                      {infoTextUa[index]}
+                    </animated.p> 
+                  </animated.div>
             ))}
           </div>
         </div>

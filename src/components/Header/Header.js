@@ -88,8 +88,8 @@ const Header = ({menuShow, setMenuShow, setScreenWidth, screenWidth}) => {
                 className={`header__info-burger ${menuShow === true ? "header__info-burger-show" : null}`} 
                 onClick={() => setMenuShow(!menuShow)}
               >
-                <div className="up_line" />
-                <div className="down_line" />
+                <span/>
+                <span/>
               </div>
             </div>
           </div>

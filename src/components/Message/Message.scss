@@ -67,9 +67,17 @@
       letter-spacing: 1px;
       line-height: 37px;
       margin-top: 60px;
+      height: 300px;
 
-      & > p {
+      p {
         margin: 0;
+      }
+
+      div {
+        display: flex;
+        align-items: center;
+        overflow: hidden; 
+        height: 40px
       }
     }
   }
