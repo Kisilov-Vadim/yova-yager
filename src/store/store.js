@@ -12,7 +12,8 @@ const initialState = {
   allText: [],
   currentWorkData: false, 
   language: 'en',
-  aboutPage: false
+  aboutPage: false,
+  contactPage: false,  
 }; 
 
 export const reducer = (state, action) => {
@@ -62,10 +63,10 @@ export const reducer = (state, action) => {
         ...state, 
         language: action.language
       }
-    case ACTIONS.SET_ABOUT_PAGE: 
+    case ACTIONS.SET_CONTACT_PAGE: 
       return {
         ...state, 
-        aboutPage: action.about
+        contactPage: action.contact
       }
     default: 
       return state; 

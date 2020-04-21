@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import {setAboutPage} from '../../store/actions';
 
 const mapStateToPros = state => ({
-  screenWidth: state.screenWidth,
   language: state.language,
   aboutPage: state.aboutPage
 })

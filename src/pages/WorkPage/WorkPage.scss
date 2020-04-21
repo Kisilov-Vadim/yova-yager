@@ -78,10 +78,18 @@
 
       @media screen and (max-width: 799px) {
         margin-bottom: 0;
+        width: 80%;
+        height: max-content;
       }
 
-      & > tbody > tr > td {
-        width: max-content;
+      @media screen and (max-width: 560px) {
+        width: 100%;
+      }
+
+      & > tbody > tr {
+        @media screen and (max-width: 560px) {
+          display: flex;
+        }
       }
 
       & > tbody > tr > td:nth-child(odd) {
@@ -92,6 +100,7 @@
         font-weight: 600;
         line-height: 30px;
         min-width: 140px;
+        margin-right: 10px;
       }
 
       & > tbody > tr > td:nth-child(even) {
@@ -178,8 +187,6 @@
       }
 
       &-table {
-        width: 80%;
-        height: max-content;
 
         & > tr > td {
           width: 50%;
@@ -227,15 +234,3 @@
   }
 }
 
-
-// @keyframes showDetails {
-//   from {
-//     height: 0;
-//     opacity: 0;
-//   }
-
-//   to {
-//     height: max-content;
-//     opacity: 1;
-//   }
-// }

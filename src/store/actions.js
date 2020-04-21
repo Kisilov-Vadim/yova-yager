@@ -8,7 +8,8 @@ export const ACTIONS = {
   SET_ALLTEXT: 'SET_ALLTEXT',
   SET_CURRENTWORKPAGE: 'SET_CURRENTWORKPAGE',
   CHANGE_LANGUAGE: 'CHANGE_LANGUAGE', 
-  SET_ABOUT_PAGE: 'SET_ABOUT_PAGE'
+  SET_ABOUT_PAGE: 'SET_ABOUT_PAGE',
+  SET_CONTACT_PAGE: 'SET_CONTACT_PAGE'
 }
 
 export const setScreenWidth = (width) => ({ type: ACTIONS.SET_SCREEN_WIDTH, width })
@@ -20,7 +21,8 @@ const setFeatured = (featured) => ({ type: ACTIONS.SET_FEATURED, featured });
 export const setAllWorks = (works) => ({ type: ACTIONS.SET_WORKS, works }); 
 export const setAllSocialities = (allSocialities) => ({ type: ACTIONS.SET_ALLSOCIALITIES, allSocialities }); 
 const setAllText = (text) => ({ type: ACTIONS.SET_ALLTEXT, text }); 
-export const setAboutPage = (about) => ({ type: ACTIONS.SET_ABOUT_PAGE, about })
+export const setAboutPage = (about) => ({ type: ACTIONS.SET_ABOUT_PAGE, about });
+export const setContactPage = (contact) => ({ type: ACTIONS.SET_CONTACT_PAGE, contact })
 
 
 export const getToken = async (url) => {
@@ -57,7 +59,7 @@ export const getData = async (url, token, type='', lang, id="", main) => {
 }
 
 export const getAllData = (lang) => {
-  console.log('yes')
+
   return (dispatch) => {
     getToken('http://yova.praid.com.ua/api/login')
       .then(data => data.data['api_token'])

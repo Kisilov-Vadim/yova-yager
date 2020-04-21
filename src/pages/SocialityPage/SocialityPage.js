@@ -83,15 +83,12 @@ const SocialityPage = ({screenWidth, allSocialities, setAllSocialities, setIsLoa
             columnClassName="sociality__gallery-columns"
           >
             {filteredSociality.map((item, index) => {
-                {/* let locationArr = item.location.split(',');
-                let city = locationArr[2]; 
-                let country = locationArr[3]; */}
                 return <WorksCard 
                     key={item.id}
                     image={item.projectImage} 
                     title={item.title}
                     link={item.alias}
-                    location={item.location}
+                    location={item.city_country}
                     backgroundPici={index === 0 ? true : false}
                     area="socialities"
                   />   

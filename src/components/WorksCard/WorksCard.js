@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import Warp from 'warpjs';
 
 const WorksCard = ({screenWidth, image, backgroundPici, title, link, location, area, language}) => {
-
+  
   let animIdPici, mainTimer, svgPici, warpPici, animatePici, timeoutPici; 
   let offsetPici = 0;
   let animSpeed = 0; 

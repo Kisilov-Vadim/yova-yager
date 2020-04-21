@@ -7,8 +7,7 @@ import {useSpring, animated} from 'react-spring';
 
 export default function LazyPhotoLoad({actualClass, image, alt}) {
   const [photo, setPhoto] = useState(false); 
-
-
+  
   const showMainPhoto = useSpring({ opacity: photo ? 1 : 0 })
 
   return (

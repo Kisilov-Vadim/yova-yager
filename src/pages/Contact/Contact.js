@@ -1,66 +1,84 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './Contact.scss'
 import {MainWaveAnimatione} from '../../components/MainWaveAnimation/index';
+import {getData, getToken} from '../../store/actions';
 
+import Preloader from '../../components/Preloader/Preloader'; 
 
-const Contact = ({language}) => {
+const Contact = ({language, setContactPage, contactPage}) => {
 
-  return (
-    <section className="contact">
-     <div className="wrapper">
-      <div className="contact__info"> 
-        <span className="contact__info-title">{language === 'en' ? 'BE FREE TO CONTACT US' : 'ЗВЕРТАЙТЕСЬ ДО НАС'}</span> 
-          <div className="contact__info-content">
-          <table>
-            <tr>
-              <th>
-                {language === 'en' ? 'E-mail' : 'Пошта'}
-              </th>
-              <td>
-                <a href="mailto:hello@yovayager.com">hello@yovayager.com</a>
-              </td>
-            </tr>
-            <tr className="telephone">
-              <th>
-                {language === 'en' ? 'Phone Numbers' : 'Номера телефонів'}
-              </th>
-              <td>
-                <a href="tel:+380955388407">Tel.: +38 095 538 84 07 </a>
-                <a href="tel:+380665388407">Tel.: +38 066 538 84 07</a>
-              </td>
-            </tr>
-            <tr className="adress">
-              <th>
-                {language === 'en' ? 'Address' : 'Адреса'} 
-              </th>
-              <td>
-                {
-                  language === 'en' ? 'Ukraine, Kiev 01001 \n Mihaylivsky Lane, 9a, office 35' : 'Україна, Київ 01001 \n вул. Михайлівська 9а, офіс 35'
-                }
-              </td>
-            </tr>
-            <tr className='social'>
-              <th>
-                {language === 'en' ? 'Social' : 'Соціальні мережі'}
-              </th>
-              <td>
-                <a href="https://www.instagram.com/yovayager/" target="_blank" rel="noopener noreferrer">Instagram</a>  
-                <a href="https://www.behance.net/yovayager" target="_blank" rel="noopener noreferrer">Behance</a>
-                <a href="https://www.pinterest.com/yovayager/" target="_blank" rel="noopener noreferrer">Pinterest</a> 
-              </td>
-            </tr>
-          </table>
-          <div className="qr-code">
-            <span>{language === 'en' ? 'No stumps' : 'Не зволікай'}</span>
-            <img src="img/contact/qr.svg" alt="qr-code" />
-            <span>{language === 'en' ? 'Just QR us' : 'Просто QR нас'}</span>
+  useEffect(() => {
+    setContactPage(false)
+    getToken('http://yova.praid.com.ua/api/login')
+      .then(data => data.data['api_token'])
+      .then(token => getData("http://yova.praid.com.ua/api/contact", token, '', language, '', '')
+        .then(data => setContactPage(data))
+      )
+  }, [])
+
+  if (!contactPage) {
+    return (
+      <Preloader />
+    )
+  } else {
+    return (
+      <section className="contact">
+       <div className="wrapper">
+        <div className="contact__info"> 
+          <span className="contact__info-title">{language === 'en' ? 'BE FREE TO CONTACT US' : 'ЗВЕРТАЙТЕСЬ ДО НАС'}</span> 
+            <div className="contact__info-content">
+            <table>
+              <tr>
+                <th>
+                  {language === 'en' ? 'E-mail' : 'Пошта'}
+                </th>
+                <td>
+                  <a href={`mailto:${contactPage.email}`}>{contactPage.email}</a>
+                </td>
+              </tr>
+              <tr className="telephone">
+                <th>
+                  {language === 'en' ? 'Phone Numbers' : 'Номера телефонів'}
+                </th>
+                <td>
+                  {
+                    contactPage.phone.split('\n').map(tel => <a href={`tel: ${tel.split(': ')[1]}`}>{tel}</a>)
+                  }
+                </td>
+              </tr>
+              <tr className="adress">
+                <th>
+                  {language === 'en' ? 'Address' : 'Адреса'} 
+                </th>
+                <td>
+                  {
+                    contactPage.address
+                  }
+                </td>
+              </tr>
+              <tr className='social'>
+                <th>
+                  {language === 'en' ? 'Social' : 'Соціальні мережі'}
+                </th>
+                <td>
+                  <a href={contactPage.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>  
+                  <a href={contactPage.behance} target="_blank" rel="noopener noreferrer">Behance</a>
+                  <a href={contactPage.pinterest} target="_blank" rel="noopener noreferrer">Pinterest</a> 
+                </td>
+              </tr>
+            </table>
+            <div className="qr-code">
+              <span>{language === 'en' ? 'No stumps' : 'Не зволікай'}</span>
+              <img src="img/contact/qr.svg" alt="qr-code" />
+              <span>{language === 'en' ? 'Just QR us' : 'Просто QR нас'}</span>
+            </div>
           </div>
         </div>
+        <MainWaveAnimatione /> 
       </div>
-      <MainWaveAnimatione /> 
-    </div>
-    </section>
-  )
+      </section>
+    )
+  }
 }
 
 export default Contact
