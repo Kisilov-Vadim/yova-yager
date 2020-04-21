@@ -2,8 +2,8 @@
    margin-top: 93px;
 
    @media screen and (max-width: 560px) {
-    margin-top: 0;
-    padding-bottom: 100px;
+    margin-top: 34px;
+    // padding-bottom: 100px;
    }
 
    &__gallery {
@@ -24,6 +24,10 @@
       @media screen and (max-width: 699px) {
         margin: 55px 0;
         width: 100%;
+      }
+
+      @media screen and (max-width: 560px) {
+        margin: 55px 0 0 0;
       }
      }
 
@@ -148,7 +152,6 @@
 
       &-title {
         font-size: 30px;
-        margin: 0 auto;
       }
 
       &-sort {

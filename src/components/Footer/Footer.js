@@ -27,7 +27,7 @@ const Footer = ({language, allText}) => {
                 <span className="second-span">{language === 'en' ? allText['footer_call-title_en'] : allText['footer_call-title_ua']}</span>
                 {
                   allText['footer_call-text_en'].split('\n').map(item => 
-                    <a key={item} href={`tel:${item}`}>{item}</a>
+                    <a key={item} href={`tel:${item.split(': ')[1]}`}>{item}</a>
                   )
                 }
                 

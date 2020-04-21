@@ -11,12 +11,12 @@ import {ButtonDecorate} from '../../components/ButtonDecorate/index';
 import Preloader from '../../components/Preloader/Preloader';
 
 
-const SocialityPage = ({screenWidth, allSocialities, setAllSocialities, setIsLoaded, language, allText}) => {
+const SocialityPage = ({screenWidth, allSocialities, setAllSocialities, language, allText}) => {
   const [filter, setFilter] = useState("VIEW ALL")
   const [elementCount, setElementCount] = useState(5)
 
   useEffect(() => {
-    setAllSocialities([])
+    setAllSocialities(false)
     language === 'en' ? setFilter('VIEW ALL') : setFilter('ПОКАЗАТИ ВСЕ');
     getToken('http://yova.praid.com.ua/api/login')
       .then(data => data.data['api_token'])
@@ -26,39 +26,38 @@ const SocialityPage = ({screenWidth, allSocialities, setAllSocialities, setIsLoa
             getData("http://yova.praid.com.ua/api/projects", token, 'soc', language, '', 'false'),
           ])
         .then(data => {
-          setAllSocialities(data[0])
-          setIsLoaded(true); 
+          setAllSocialities(data[0]); 
         })
         .catch(err => console.log(err)); 
       })
   }, [])
 
   useEffect(() => {
+    if (!allSocialities) return
     let height = $('.sociality__gallery-text').height();
     $('.sociality__gallery-table > div:nth-child(2)').css('top', -height-110)
   })
 
-  let categories = new Set(); 
-  allSocialities.forEach(work => categories.add(work.category_name))
-
-  if (categories.size <= 1 && categories.has('')) {
-    categories = []
-  } else {
-    categories.delete('');
-    if (language === 'en') {
-      categories = ['VIEW ALL', ...categories]
-    } else {
-      categories = ['ПОКАЗАТИ ВСЕ', ...categories]
-    }
-  }
-
-  const filteredSociality = filter === 'VIEW ALL' || filter === 'ПОКАЗАТИ ВСЕ' ? allSocialities : allSocialities.filter(item => item.category_name === filter)
-
-  if (allSocialities.length === 0) {
+  if (!allSocialities) {
     return (
       <Preloader />
     )
   } else {
+  
+    let categories = new Set(); 
+    allSocialities.forEach(work => categories.add(work.category_name))
+    categories.delete('');
+    if (categories.size === 0) {
+      categories = []
+    } else {
+      if (language === 'en') {
+        categories = ['VIEW ALL', ...categories]
+      } else {
+        categories = ['ПОКАЗАТИ ВСЕ', ...categories]
+      }
+    }
+  
+    const filteredSociality = filter === 'VIEW ALL' || filter === 'ПОКАЗАТИ ВСЕ' ? allSocialities : allSocialities.filter(item => item.category_name === filter)
 
     return (  
       <section className="sociality">

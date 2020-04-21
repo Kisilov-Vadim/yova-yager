@@ -3,10 +3,6 @@
   display: flex;
   flex-wrap: wrap;
 
-  @media screen and (max-width: 799px) {
-    margin-top: 82px;
-  }
-
   @media screen and (max-width: 560px) {
     flex-direction: column;
   }

@@ -131,7 +131,7 @@ const WorkPage = ({screenWidth, id, language, area, works, featured, allSocialit
           <h3 className='work__also'>{language === 'en' ? 'YOU MIGHT ALSO LIKE' : 'Вам може сподобатись'}</h3>
           <MassonryGallery 
             title={false} 
-            button={false} 
+            button={true} 
             worksArr={worksForAlsoLike()} 
             count={4} 
             area={area}

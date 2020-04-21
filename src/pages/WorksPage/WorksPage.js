@@ -6,27 +6,11 @@ import {WorksPageNav} from '../../components/WorksPageNav/index';
 import {MassonryGallery} from '../../components/MassonryGallery/index';
 import Preloader from '../../components/Preloader/Preloader';
 
-const WorksPage = ({works, language, setAllWorks, setIsLoaded}) => {
+const WorksPage = ({works, language, setAllWorks}) => {
   const [filter, setFilter] = useState('VIEW ALL')
 
-  let categories = new Set(); 
-  works.forEach(work => categories.add(work.category_name))
-
-  if (categories.size <= 1 && categories.has('')) {
-    categories = []
-  } else {
-    categories.delete('');
-    if (language === 'en') {
-      categories = ['VIEW ALL', ...categories]
-    } else {
-      categories = ['ПОКАЗАТИ ВСЕ', ...categories]
-    }
-  }
-
-  const filteredArr = filter === 'VIEW ALL' || filter === 'ПОКАЗАТИ ВСЕ' ? works : works.filter(item => item.category_name === filter)
-
   useEffect(() => {
-    setAllWorks([])
+    setAllWorks(false)
     language === 'en' ? setFilter('VIEW ALL') : setFilter('ПОКАЗАТИ ВСЕ');
     getToken('http://yova.praid.com.ua/api/login')
       .then(data => data.data['api_token'])
@@ -37,17 +21,33 @@ const WorksPage = ({works, language, setAllWorks, setIsLoaded}) => {
           ])
         .then(data => {
           setAllWorks(data[0])
-          setIsLoaded(true); 
         })
         .catch(err => console.log(err)); 
       })
   }, [])
   
-  if(works.length === 0) {
+  if(!works) {
     return (
       <Preloader />
     )
   } else {
+
+    let categories = new Set(); 
+    works.forEach(work => categories.add(work.category_name))
+
+    if (categories.size <= 1 && categories.has('')) {
+      categories = []
+    } else {
+      categories.delete('');
+      if (language === 'en') {
+        categories = ['VIEW ALL', ...categories]
+      } else {
+        categories = ['ПОКАЗАТИ ВСЕ', ...categories]
+      }
+    }
+
+    const filteredArr = filter === 'VIEW ALL' || filter === 'ПОКАЗАТИ ВСЕ' ? works : works.filter(item => item.category_name === filter)
+
     return ( 
       <section className="workspage">
         <div className="wrapper">

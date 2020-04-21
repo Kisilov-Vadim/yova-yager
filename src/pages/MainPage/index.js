@@ -1,20 +1,17 @@
 import MainPage from './MainPage';
 import { connect } from 'react-redux';
-import {setAllSocialities, setAllWorks, setIsLoaded, setFeatured} from '../../store/actions';
+import {setAllSocialities, setAllWorks} from '../../store/actions';
 
 const mapStateToPros = state => ({
   works: state.works,
   allSocialities: state.allSocialities, 
   allText: state.allText,
   language: state.language,
-  isLoaded: state.isLoaded
 })
 
 const mapDispatchToProps = {
   setAllSocialities,
   setAllWorks,
-  setIsLoaded,
-  setFeatured
 }
 
 const newMainPage = connect(

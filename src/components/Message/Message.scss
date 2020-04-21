@@ -110,7 +110,8 @@
 
 @media screen and (max-width: 499px) {
   .message {
-    height: 500px;
+    height: auto;
+    min-height: 500px;
 
     &__info {
       width: 100%;

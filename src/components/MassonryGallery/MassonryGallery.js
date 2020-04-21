@@ -38,7 +38,7 @@ const MassonryGallery = (
     const scrollBottom = gallery.scrollTop() + gallery.outerHeight() - ($(window).scrollTop() + $(window).innerHeight() / 2); 
 
     if (scrollBottom < 0) {
-      setElementCount(elementCount + 6)
+      setElementCount(elementCount + 8)
     }
   }
 
@@ -77,7 +77,7 @@ const MassonryGallery = (
         photoLoadButton && button && elementCount < worksArr.length ?
           <LazyLoad height={elementCount >= worksArr.length ? 0 : 80} unmountIfInvisible={true} offset={200}>
             <div 
-              onClick={() => setElementCount(elementCount + 6)} 
+              onClick={() => setElementCount(elementCount + 8)} 
             >
               <ButtonDecorate 
                 title={allText.button_more_en} 

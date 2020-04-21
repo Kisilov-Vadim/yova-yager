@@ -12,7 +12,7 @@ import Preloader from '../../components/Preloader/Preloader';
 const About = ({language, setAboutPage, aboutPage}) => {
   const [openAwards, setOpenAwards] = useState(true);
   const [awardsCardsHeight, setAwardsCardsHeight] = useState(null); 
-  const [windowWidth, setWindowWidth] = useState($(window).width()); 
+  const [windowWidth, setWindowWidth] = useState($(window).width());
 
   useEffect(() => {
     setAboutPage(false)
@@ -30,14 +30,15 @@ const About = ({language, setAboutPage, aboutPage}) => {
       $('.awards__cards').css('height', 'auto')
       return 
     }; 
-    if (awardsCardsHeight) return
+  
+    if (!$('.awards__cards').innerHeight() || awardsCardsHeight) return
     setAwardsCardsHeight($('.awards__cards').innerHeight())
-    setOpenAwards(false)
-
+    setOpenAwards(false) 
+   
     return () => {
       window.removeEventListener('resize', resize)
     }
-  }, [windowWidth])
+  }, [windowWidth, aboutPage])
 
   const resize = () => {
     setWindowWidth($(window).width())
@@ -48,6 +49,7 @@ const About = ({language, setAboutPage, aboutPage}) => {
       <Preloader />
     )
   } else {
+
     return (
       <section className="about">
         <div className="wrapper">
