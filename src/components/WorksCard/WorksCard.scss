@@ -32,6 +32,7 @@
 
     & > div {
       position: absolute;
+      padding-right: 37px;
       left: 37px;
       bottom: 32px;
       color: #ffffff;
@@ -40,6 +41,7 @@
       @media screen and (max-width: 560px) {
         left: 20px;
         bottom: 21px;
+        padding-right: 20px;
       }
 
       & > span {

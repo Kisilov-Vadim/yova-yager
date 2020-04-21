@@ -16,9 +16,9 @@
     }
 
     &-sort {
-      width: 43%;
+      width: calc((100% - 100px) / 2);
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       flex-wrap: wrap;
 
       &-active {

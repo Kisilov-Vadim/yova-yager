@@ -285,6 +285,10 @@
 
       .active {
         color: #b3b2ba!important;
+        cursor: auto;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none
       }
       
       span {

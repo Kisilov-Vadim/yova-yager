@@ -3,7 +3,6 @@ import "./Footer.scss";
 
 import {Navigation} from '../Navigation/index';
 import Social from '../Social/Social';
-import Image from '../Image/Image'; 
 
 const Footer = ({language, allText}) => {
 
@@ -14,7 +13,7 @@ const Footer = ({language, allText}) => {
         <div className="footer__content">
           <div className="footer__content-left">
             <span className="footer__content-name" itemProp="author">{language === 'en' ? allText.footer_withPhoto_en : allText.footer_withPhoto_ua}</span>
-            <Image imageClass="footer__content-imageFace" src="img/footer/YY-10.png" alt="Yova" /> 
+            <img className="footer__content-imageFace" src="/img/footer/YY-10.png" alt="Yova" /> 
           </div>
           <div className="footer__content-right">
             <div className="footer__content-right-info">

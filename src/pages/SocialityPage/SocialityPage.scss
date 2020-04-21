@@ -108,7 +108,7 @@
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      width: 43%;
+      width: calc((100% - 110px) / 2);
 
       &-active {
         color: #0004ff; 

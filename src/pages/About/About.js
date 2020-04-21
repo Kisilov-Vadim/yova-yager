@@ -63,7 +63,6 @@ const About = ({language, setAboutPage, aboutPage}) => {
                 {
                   aboutPage[0].text_right.split('\n').map(text => {
                     if (text.includes('#')) {
-                      console.log(text)
                       return (
                         <p key={text} className="title">
                           {text.replace('# ', '')}
@@ -87,7 +86,6 @@ const About = ({language, setAboutPage, aboutPage}) => {
                 {
                   aboutPage[0].text_left.split('\n').map(text => {
                     if (text.includes('#')) {
-                      console.log(text)
                       return (
                         <p key={text} className="title">
                           {text.replace('# ', '')}

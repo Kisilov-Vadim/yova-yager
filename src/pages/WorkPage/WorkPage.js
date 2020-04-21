@@ -5,7 +5,6 @@ import {useSpring, animated} from 'react-spring';
 // import {JSONLD, Generic} from 'react-structured-data'
 // import Helmet from 'react-helmet'
 import LazyLoad from 'react-lazyload'; 
-import $ from 'jquery';
 
 import {ButtonDecorate} from '../../components/ButtonDecorate/index';
 import {WorkPageGallery} from '../../components/WorkPageGallery/index';
@@ -26,7 +25,7 @@ const shuffle = (arr) => {
 	return arr;
 }
 
-const WorkPage = ({screenWidth, id, language, works, currentWorkData, setCurrentWorkData}) => {
+const WorkPage = ({screenWidth, id, language, area, works, featured, allSocialities, currentWorkData, setCurrentWorkData}) => {
   const [showDetails, setShowDetails] = useState(true); 
 
   useEffect(() => {
@@ -47,9 +46,26 @@ const WorkPage = ({screenWidth, id, language, works, currentWorkData, setCurrent
 
   const showContentAnimation = useSpring({ height: showDetails ? 'auto' : 0, opacity: showDetails ? 1 : 0, visibility: showDetails ? 'visible' : 'hidden' })
  
-  const worksForAlsoLike = (arr) => {
-    let newWorks = arr.filter(item => item.id != id)
-    return shuffle(newWorks)
+  const worksForAlsoLike = () => {
+    let returnArr = []; 
+    let filteredFeature = featured.filter(item => item.type === area)
+
+    if (area === 'works') {
+      let worksWithFeatured = [...works, ...filteredFeature]; 
+      worksWithFeatured.forEach(item => {
+        if (!returnArr.find(x => x.id === item.id) && item.id != id) {
+          returnArr.push(item)
+        }
+      })
+    } else {
+      let socWithFeatured = [...allSocialities, ...filteredFeature];
+      socWithFeatured.forEach(item => {
+        if (!returnArr.find(x => x.id === item.id) && item.id != id) {
+          returnArr.push(item)
+        }
+      }) 
+    }
+    return shuffle(returnArr)
   }
 
   if (!currentWorkData) {
@@ -57,7 +73,7 @@ const WorkPage = ({screenWidth, id, language, works, currentWorkData, setCurrent
       <Preloader />
     )
   } else {
-
+    
     return (  
       <section className="work" itemscope itemtype="http://schema.org/CreativeWork" itemProp="isFamilyFriendly">
         <div className="wrapper">
@@ -83,18 +99,20 @@ const WorkPage = ({screenWidth, id, language, works, currentWorkData, setCurrent
             <animated.div id="contentShow" className="work__info" style={window.innerWidth < 799 ? showContentAnimation : null}>
               <div className="work__left">
                 <WorkPageTable language={language} content={currentWorkData.common_info} />
-                <LazyLoad height={screenWidth > 799 ? 85 : 0} unmountIfInvisible={true}>
-                  <div className="work__left-button">
-                    <a href={currentWorkData.file} download={currentWorkData.title}>
-                      <ButtonDecorate 
-                        title="media kit" 
-                        title_ua="Медіа комплект"
-                        id={'buttonMedia'} 
-                        autoStart={true}
-                      />
-                    </a>
-                  </div>
-                </LazyLoad>
+                { currentWorkData.file.length > 0 &&
+                  <LazyLoad height={screenWidth > 799 ? 85 : 0} unmountIfInvisible={true}>
+                    <div className="work__left-button">
+                      <a href={currentWorkData.file} download={currentWorkData.title}>
+                        <ButtonDecorate 
+                          title="media kit" 
+                          title_ua="Медіа комплект"
+                          id={'buttonMedia'} 
+                          autoStart={true}
+                        />
+                      </a>
+                    </div>
+                  </LazyLoad>
+                }
               </div>
               <div className="work__right">
               <h1 
@@ -114,9 +132,9 @@ const WorkPage = ({screenWidth, id, language, works, currentWorkData, setCurrent
           <MassonryGallery 
             title={false} 
             button={false} 
-            worksArr={worksForAlsoLike(works)} 
+            worksArr={worksForAlsoLike()} 
             count={4} 
-            area='works' 
+            area={area}
             photoLoadButton={true}
             buttonAutoStart={true}
           />

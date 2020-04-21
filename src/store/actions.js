@@ -17,7 +17,7 @@ export const setMenuShow = (status) => ({ type: ACTIONS.SET_MENU_SHOW, status })
 export const setCurrentWorkData = (work) => ({ type: ACTIONS.SET_CURRENTWORKPAGE, work })
 export const setIsLoaded = (value) => ({ type: ACTIONS.SET_ISLOADED, value }); 
 export const changeLanguage = (language) => ({ type: ACTIONS.CHANGE_LANGUAGE, language });
-const setFeatured = (featured) => ({ type: ACTIONS.SET_FEATURED, featured }); 
+export const setFeatured = (featured) => ({ type: ACTIONS.SET_FEATURED, featured }); 
 export const setAllWorks = (works) => ({ type: ACTIONS.SET_WORKS, works }); 
 export const setAllSocialities = (allSocialities) => ({ type: ACTIONS.SET_ALLSOCIALITIES, allSocialities }); 
 const setAllText = (text) => ({ type: ACTIONS.SET_ALLTEXT, text }); 
@@ -68,13 +68,13 @@ export const getAllData = (lang) => {
           [
             getData("http://yova.praid.com.ua/api/projects", token, 'feature', lang, '', 'true'),
             getData("http://yova.praid.com.ua/api/projects", token, 'work', lang, '', 'true'),
-            getData("http://yova.praid.com.ua/api/projects", token, 'soc', lang, '', 'true'), 
+            getData("http://yova.praid.com.ua/api/projects", token, 'soc', lang, '', 'true'),
             getData("http://yova.praid.com.ua/api/text", token)
           ])
           .then(data => {
             dispatch(setFeatured(data[0]))
-            dispatch(setAllWorks(data[1]));
-            dispatch(setAllSocialities(data[2]));
+            dispatch(setAllWorks(data[1]))
+            dispatch(setAllSocialities(data[2]))
             dispatch(setAllText(data[3]))
             dispatch(setIsLoaded(true)); 
           })

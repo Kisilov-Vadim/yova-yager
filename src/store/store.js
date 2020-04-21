@@ -63,6 +63,11 @@ export const reducer = (state, action) => {
         ...state, 
         language: action.language
       }
+    case ACTIONS.SET_ABOUT_PAGE: 
+      return {
+        ...state, 
+        aboutPage: action.about
+      }
     case ACTIONS.SET_CONTACT_PAGE: 
       return {
         ...state, 

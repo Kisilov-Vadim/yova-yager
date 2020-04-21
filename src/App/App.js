@@ -31,15 +31,15 @@ const App = ({isLoaded, getAllData, works, allSocialities, language, featured}) 
             <Switch>
               {featured.map(feature => 
                 <Route exact={true} path={`/${feature.type}/${feature.alias}`} key={feature.id} component={
-                  () => <WorkPage id={feature.id} />} /> 
+                  () => <WorkPage id={feature.id} area={feature.type} />} /> 
               )}
               {works.map(work => 
                 <Route exact={true} path={`/works/${work.alias}`} key={work.id} component={
-                  () => <WorkPage id={work.id} />} /> 
+                  () => <WorkPage id={work.id} area={work.type} />} /> 
               )}
               {allSocialities.map(sociality => 
                 <Route exact={true} path={`/socialities/${sociality.alias}`}  key={sociality.id} component={
-                  () => <WorkPage id={sociality.id} />} />
+                  () => <WorkPage id={sociality.id} area={sociality.type} />} />
               )}
               <Route exact={true} path="/" component={MainPage} />
               <Route exact={true} path="/works" component={WorksPage} />
