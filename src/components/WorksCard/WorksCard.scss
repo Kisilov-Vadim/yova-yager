@@ -46,11 +46,19 @@
 
       & > span {
         font-size: 24px;
+
+        @media screen and (max-width: 560px) {
+          font-size: 18px;
+        }
       }
 
       & > p {
         margin: 10px 0 0 0;
         font-size: 18px;
+
+        @media screen and (max-width: 560px) {
+          font-size: 14px;
+        }
       }
     }
   }

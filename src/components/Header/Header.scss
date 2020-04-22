@@ -72,6 +72,10 @@
     //     display: block;
     //   }
     // }
+
+    .header__atmosphere {
+      border: none;
+    }
   }
 
   &__atmosphere {
@@ -83,11 +87,19 @@
     justify-self: flex-start;
     align-items: center;
 
+    @media screen and (max-width: 949px) {
+      border: none;
+    }
+
     &-hospitality, &-design {
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100%;
+
+      @media screen and (max-width: 560px) {
+        display: none;
+      }
 
       span {
         font-size: 14px;
@@ -106,7 +118,12 @@
     }
 
     &-YY {
-      display: none;
+      height: 100%;
+      width: 80px;
+
+      @media screen and (max-width: 950px) {
+        display: block;
+      }
     }
   }
 

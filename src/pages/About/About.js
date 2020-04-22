@@ -84,7 +84,7 @@ const About = ({language, setAboutPage, aboutPage}) => {
               </div>
             </div>
             <div className="about__content-studio">
-              <div className="content_text">
+              <div className="content_text content_text-left">
                 {
                   aboutPage[0].text_left.split('\n').map(text => {
                     if (text.includes('#')) {

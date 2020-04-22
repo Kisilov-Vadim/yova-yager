@@ -68,12 +68,27 @@ const Header = ({menuShow, setMenuShow, setScreenWidth, screenWidth}) => {
             `}
           >
             <div className="header__atmosphere">
-              <div className="header__atmosphere-hospitality">
-                <span>{scrollPosition > 0 || screenWidth < 949 ? "Y" : "HOSPITALITY"}</span>
-              </div>
-              <div className="header__atmosphere-design">
-                <span>{scrollPosition > 0 || screenWidth < 949 ? "Y" : "DESIGN"}</span>
-              </div>
+              {
+                scrollPosition > 0 || screenWidth < 949 
+                  ? 
+                    <Switch>
+                      <Route exact={true} path="/">
+                        <img className="header__atmosphere-YY" src="/img/header/YY.svg" alt="YY" />
+                      </Route> 
+                        <Link to='/' exact={true} onClick={clickOnLink} className="header__atmosphere-YY">
+                          <img src="/img/header/YY.svg" alt="YY" style={{cursor: 'pointer'}} />
+                        </Link>
+                    </Switch>
+                  : 
+                    <>
+                      <div className="header__atmosphere-hospitality">
+                        <span>HOSPITALITY</span>
+                      </div>
+                      <div className="header__atmosphere-design">
+                        <span>DESIGN</span>
+                      </div>
+                    </>
+              }
             </div>
               <Switch>
                 <Route exact={true} path="/">

@@ -1,15 +1,10 @@
 .sociality {
-   margin-top: 93px;
-
-   @media screen and (max-width: 560px) {
-    margin-top: 34px;
-    // padding-bottom: 100px;
-   }
+   margin-top: 34px;
 
    &__gallery {
 
      &-text {
-      font-family: ProximaRegular, sans-serif;
+      font-family: GothamPro, sans-serif;
       font-size: 16px;
       font-weight: normal;
       font-stretch: normal;
