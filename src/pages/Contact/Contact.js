@@ -8,7 +8,6 @@ import Preloader from '../../components/Preloader/Preloader';
 const Contact = ({language, setContactPage, contactPage}) => {
 
   useEffect(() => {
-    setContactPage(false)
     getToken('http://yova.praid.com.ua/api/login')
       .then(data => data.data['api_token'])
       .then(token => getData("http://yova.praid.com.ua/api/contact", token, '', language, '', '')
@@ -24,9 +23,9 @@ const Contact = ({language, setContactPage, contactPage}) => {
     return (
       <section className="contact">
        <div className="wrapper">
-        <div className="contact__info"> 
-          <span className="contact__info-title">{language === 'en' ? 'BE FREE TO CONTACT US' : 'ЗВЕРТАЙТЕСЬ ДО НАС'}</span> 
-            <div className="contact__info-content">
+        <h1 className="contact__title">{language === 'en' ? "Contacts" : "Контакти"}</h1>
+        <div className="contact__info">  
+          <div className="contact__info-content">
             <table>
               <tr>
                 <th>

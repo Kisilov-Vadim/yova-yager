@@ -44,7 +44,12 @@ const WorkPage = ({screenWidth, id, language, area, works, featured, allSocialit
     setShowDetails(false)
   }, [currentWorkData])
 
-  const showContentAnimation = useSpring({ height: showDetails ? 'auto' : 0, opacity: showDetails ? 1 : 0, visibility: showDetails ? 'visible' : 'hidden' })
+  const showContentAnimation = useSpring({ 
+    height: showDetails ? 'auto' : 0, 
+    opacity: showDetails ? 1 : 0, 
+    visibility: showDetails ? 'visible' : 'hidden',
+    marginBottom: showDetails ? 50 : 0
+  })
  
   const worksForAlsoLike = () => {
     let returnArr = []; 
@@ -125,9 +130,15 @@ const WorkPage = ({screenWidth, id, language, area, works, featured, allSocialit
               </div>
             </animated.div>
             <button className="work__details" onClick={() => setShowDetails(!showDetails)}>MORE DETAILS {`${showDetails === true ? '-' : '+'}`}</button>
-            <WorkPageGallery 
-              images={currentWorkData.images} 
-            />
+            {
+              currentWorkData.images.length > 0 
+                ? 
+                  <WorkPageGallery 
+                    images={currentWorkData.images} 
+                  />
+                :
+                  null
+            }
           <h3 className='work__also'>{language === 'en' ? 'YOU MIGHT ALSO LIKE' : 'Вам може сподобатись'}</h3>
           <MassonryGallery 
             title={false} 

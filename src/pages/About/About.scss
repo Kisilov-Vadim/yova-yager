@@ -73,6 +73,30 @@
           width: 100%;
           padding-top: 33px;
         }
+
+        .quote {
+          font-family: Formular;
+          font-size: 21px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: 5px;
+          color: #000000;
+          text-transform: uppercase;
+
+          @media screen and (max-width: 560px) {
+            font-size: 13px;
+            letter-spacing: 3.33px;
+          }
+        }
+
+        p {
+
+          &:first-child {
+            margin-top: 0;
+          }
+        }
         
         .title {
           font-family: Formular;
@@ -84,10 +108,6 @@
           letter-spacing: 5px;
           color: #000000;
           text-transform: uppercase;
-
-          &:first-child {
-            margin-top: 0;
-          }
 
           @media screen and (max-width: 560px) {
             font-size: 16px;
@@ -105,7 +125,6 @@
           letter-spacing: normal;
           color: #000000;
           margin: 25px 0;
-          text-align: justify;
 
           @media screen and (max-width: 560px) {
             font-size: 14px;
@@ -138,7 +157,11 @@
       .content_text-left {
         padding: 0;
 
-        .title {
+        @media screen and (max-width: 799px) {
+          padding: 33px 0 0 0;
+        }
+
+        p {
 
           &:first-child {
             margin-bottom: 63px;
@@ -150,7 +173,7 @@
     &-studio {
       margin-top: 92px;
 
-      @media screen and (max-width: 560px) {
+      @media screen and (max-width: 799px) {
         flex-direction: column-reverse;
         margin-top: 60px;
       }
@@ -191,7 +214,6 @@
 
           .text {
             margin: 25px 0;
-            text-align: justify;
 
             @media screen and (max-width: 560px) {
               margin: 21px 0;

@@ -46,7 +46,7 @@ const MainPage = ({works, allSocialities, allText, language, setAllWorks, setAll
           <div className="main__work">
             <MassonryGallery 
               worksArr={works} 
-              count={4}
+              count={8}
               title={allText['main_subtitle-second_en']}
               title_ua={allText['main_subtitle-second_ua']}
               button={true} 

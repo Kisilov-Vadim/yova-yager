@@ -15,7 +15,6 @@ const About = ({language, setAboutPage, aboutPage}) => {
   const [windowWidth, setWindowWidth] = useState($(window).width());
 
   useEffect(() => {
-    setAboutPage(false)
     getToken('http://yova.praid.com.ua/api/login')
       .then(data => data.data['api_token'])
       .then(token => getData("http://yova.praid.com.ua/api/about", token, '', language, '', '')
@@ -64,7 +63,12 @@ const About = ({language, setAboutPage, aboutPage}) => {
               <div className="content_text">
                 {
                   aboutPage[0].text_right.split('\n').map(text => {
-                    if (text.includes('#')) {
+                    if (text.includes('##')) {
+                      return (
+                        <p key={text} className="quote">
+                          {text.replace('## ', '')}
+                        </p>
+                      )} else if (text.includes('#')) {
                       return (
                         <p key={text} className="title">
                           {text.replace('# ', '')}
@@ -87,7 +91,13 @@ const About = ({language, setAboutPage, aboutPage}) => {
               <div className="content_text content_text-left">
                 {
                   aboutPage[0].text_left.split('\n').map(text => {
-                    if (text.includes('#')) {
+                    if (text.includes('##')) {
+                      return (
+                        <p key={text} className="quote">
+                          {text.replace('## ', '')}
+                        </p>
+                      )
+                    } else if (text.includes('#')) {
                       return (
                         <p key={text} className="title">
                           {text.replace('# ', '')}

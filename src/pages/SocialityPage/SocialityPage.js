@@ -13,7 +13,7 @@ import Preloader from '../../components/Preloader/Preloader';
 
 const SocialityPage = ({screenWidth, allSocialities, setAllSocialities, language, allText}) => {
   const [filter, setFilter] = useState("VIEW ALL")
-  const [elementCount, setElementCount] = useState(5)
+  const [elementCount, setElementCount] = useState(4)
 
   useEffect(() => {
     setAllSocialities(false)
@@ -99,7 +99,7 @@ const SocialityPage = ({screenWidth, allSocialities, setAllSocialities, language
           elementCount < filteredSociality.length ?
             <LazyLoad height={elementCount >= filteredSociality.length ? 0 : 80} unmountIfInvisible={true} offset={200}>
               <div 
-                onClick={() => setElementCount(elementCount + 6)} 
+                onClick={() => setElementCount(elementCount + 8)} 
               >
                 <ButtonDecorate 
                   title={allText.button_more_en} 

@@ -2,14 +2,19 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  margin: 0;
 
-  @media screen and (max-width: 560px) {
+  @media screen and (max-width: 799px) {
+    margin: 0 0 10px;
+  }
+
+  @media screen and (max-width: 699px) {
     flex-direction: column;
   }
 
   div {
-    @media screen and (max-width: 560px) {
-      margin: 54px 0;
+    @media screen and (max-width: 699px) {
+      margin: 0 0 50px;  
       width: 100%;
     }
   }
@@ -17,7 +22,7 @@
   &__large {
     height: auto; 
     width: 100%;
-    margin: 50px 0;
+    margin-bottom: 100px;
 
     img {
       width: 100%;
@@ -27,8 +32,8 @@
 
   &__short-left, &__short-right  {
     height: auto; 
-    width: calc((100% - 110px) / 2);
-    margin: 50px 0; 
+    width: calc((100% - 100px) / 2);
+    margin-bottom: 100px;
     display: flex;
     align-items: center;
     color: #000000;
@@ -40,7 +45,6 @@
     line-height: 1.5;
     letter-spacing: normal;
     // line-height: 32px;
-    text-align: justify;
 
     img {
       width: 100%;
@@ -55,84 +59,4 @@
   &__short-left {
     margin-right: 50px 
   }
-
-  // display: grid;
-  // grid-auto-rows: auto;
-  // gap: 100px;
-  // grid-template-columns: 1fr 1fr;
-  // grid-template-areas: 
-  //   "one one"
-  //   "two three"
-  //   "four four"
-  //   "five six"
-  //   "seven eight";
-  // width: 100%;
-
-//   & > div > img {
-//     width: 100%;
-//     height: 100%;
-//     object-fit: contain;
-//   }
-
-//   &-one {
-//     grid-area: one;
-//   }
-
-//   &-two {
-//     grid-area: two;
-//   }
-
-//   &-three {
-//     grid-area: three;
-//   }
-
-//   &-four {
-//     grid-area: four;
-//   }
-  
-//   &-five {
-//     grid-area: five;
-//   }
-
-//   &-six {
-//     grid-area: six;
-//   }
-
-//   &-seven {
-//     grid-area: seven;
-//   }
-
-//   &-eight {
-//     grid-area: eight;
-//   }
-
-//   & div > p {
-//     font-family: ProximaRegular, sans-serif;
-//     font-size: 18px;
-//     font-weight: 400;
-//     line-height: 32px;
-//     max-width: 500px;
-//     margin: 0 0 20px 0;
-//   }
-// }
-
-// @media screen and (max-width: 799px) {
-//   .workGallery {
-//     display: flex;
-//     flex-direction: column;
-
-//     & > div, & > img {
-//       margin-top: 50px;
-//     }
-
-//     & > p {
-//       height: max-content;
-//     }
-
-//     & > img {
-//       height: 525px; 
-//       object-fit: cover;
-//     }
-//   }
-// }
 }

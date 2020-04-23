@@ -61,7 +61,7 @@ const WorksPage = ({works, language, setAllWorks}) => {
             button={true} 
             photoLoadButton={false}
             area='works'
-            count={4}
+            count={8}
             buttonAutoStart={true}
           />
         </div>

@@ -44,7 +44,24 @@ const Footer = ({language, allText}) => {
               <Navigation place='footer' />
             </div>
           </div>
-        </div>        
+        </div>  
+        <div className="footer__copyright">
+          <span>
+            © {new Date().getFullYear()} Yova Yager. All rights reserved.  
+          </span>
+          <span>
+            Made with
+            <img src="/img/footer/heart.svg" alt="heart" />
+          </span>
+          <span>
+            Designed by 
+            <img src="/img/footer/logo_HETMANZ.svg" alt="HETMANZ" />
+          </span>
+          <a href="https://amsg.com.ua">
+            Developed by
+            <img src="/img/footer/logo_amsg.svg" alt="AMSG" />
+          </a>            
+        </div>      
       </div>
     </footer>
   );

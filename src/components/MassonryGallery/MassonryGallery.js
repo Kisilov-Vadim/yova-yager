@@ -14,11 +14,7 @@ const MassonryGallery = (
       count, buttonAutoStart
     }
   ) => {
-  const [elementCount, setElementCount] = useState(count);
-  
-  useEffect(() => {
-    setElementCount(count)
-  }, [count])
+  const [elementCount, setElementCount] = useState(4);
 
   useEffect(() => {
     if (!photoLoadButton) {
@@ -38,7 +34,7 @@ const MassonryGallery = (
     const scrollBottom = gallery.scrollTop() + gallery.outerHeight() - ($(window).scrollTop() + $(window).innerHeight() / 2); 
 
     if (scrollBottom < 0) {
-      setElementCount(elementCount + 8)
+      setElementCount(elementCount + count)
     }
   }
 
@@ -77,7 +73,7 @@ const MassonryGallery = (
         photoLoadButton && button && elementCount < worksArr.length ?
           <LazyLoad height={elementCount >= worksArr.length ? 0 : 80} unmountIfInvisible={true} offset={200}>
             <div 
-              onClick={() => setElementCount(elementCount + 8)} 
+              onClick={() => setElementCount(elementCount + count)} 
             >
               <ButtonDecorate 
                 title={allText.button_more_en} 

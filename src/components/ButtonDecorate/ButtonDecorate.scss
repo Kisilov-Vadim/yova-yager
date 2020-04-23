@@ -1,11 +1,13 @@
 .decorateButton {
   position: relative;
   width: max-content;
+  min-width: 140px;
   height: 85px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: -10px auto 50px;
+  margin: 0 auto;
+  
 
   &:hover {
     cursor: pointer;

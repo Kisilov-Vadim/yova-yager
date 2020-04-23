@@ -45,7 +45,13 @@
       }
 
       & > span {
+        font-family: Formular;
         font-size: 24px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
 
         @media screen and (max-width: 560px) {
           font-size: 18px;
@@ -53,11 +59,18 @@
       }
 
       & > p {
-        margin: 10px 0 0 0;
+        margin: 8px 0 0 0;
+        font-family: Formular;
         font-size: 18px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
 
         @media screen and (max-width: 560px) {
           font-size: 14px;
+          margin: 7px 0 0 0;
         }
       }
     }
