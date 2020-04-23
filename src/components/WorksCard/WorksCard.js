@@ -84,19 +84,19 @@ const WorksCard = ({screenWidth, image, backgroundPici, title, link, location, a
   if (screenWidth > 850) {
 
     return ( 
-      <Fade bottom duration={1700} delay={100}>
-        <div className="card" onMouseOver={backgroundPici ? startAnimate : null} onMouseLeave={backgroundPici ? stopAnimate : null}>
+      <Fade bottom duration={1700} delay={100} data-test="screenWidth-more-850">
+        <div data-test="withBackgroundPici" className="card" onMouseOver={backgroundPici ? startAnimate : null} onMouseLeave={backgroundPici ? stopAnimate : null}>
           <img itemprop="image" src={`http://yova.praid.com.ua${image}`} alt={title}/>
           <Link to={`/${area}/${link}`} exact className="card__info" 
             onClick={() => window.scrollTo(0, 0)}>
             <div>
-              <span itemprop="name">{title}</span>
-              <p itemprop="contentLocation">{location}</p>
+              <span itemprop="name" data-test="title">{title}</span>
+              <p itemprop="contentLocation" data-test="location">{location}</p>
             </div>
           </Link>
          {
             backgroundPici === true ? 
-              <div className="card__pici">
+              <div className="card__pici" data-test="background-pici">
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
                   id="backgroundPici" 
@@ -130,12 +130,12 @@ const WorksCard = ({screenWidth, image, backgroundPici, title, link, location, a
   } else {
 
     return (
-      <div className="card">
+      <div className="card" data-test="screenWidth-less-850">
         <img src={`http://yova.praid.com.ua${image}`} alt={title}/>
         <Link to={`/${area}/${link}`} exact className="card__info" onClick={() => window.scrollTo(0, 0)}>
           <div>
-              <span itemprop="name">{title}</span>
-              <p itemprop="contentLocation">{location}</p>
+              <span itemprop="name" data-test="title">{title}</span>
+              <p itemprop="contentLocation" data-test="location">{location}</p>
           </div>
         </Link>
       </div>
