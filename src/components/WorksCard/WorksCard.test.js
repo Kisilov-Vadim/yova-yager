@@ -7,10 +7,10 @@ import { WorksCard } from './index';
 const defaultProps = {
   image: 'String', 
   title: 'String', 
-  location: 'string', 
+  location: 'Kiev, Ukraine', 
   backgroundPici: true, 
-  area: 'string',
-  link: 'string'
+  area: 'works',
+  link: 'altruist'
 }
 
 const defaultState = {
@@ -52,14 +52,27 @@ describe('screenWidth more then 850px', () => {
     expect(backgroundPici.length).toBe(0);
   })
 
+  test('render hover content block', () => {
+    let hoverContent = findByTestAttr(wrapper, 'hover-content');
+    expect(hoverContent.length).toBe(1)
+  })
+
   test('render card title', () => {
-    let title = findByTestAttr(wrapper, 'title');
+    wrapper = setUp({}, {title: 'Zmist'})
+    let title = findByTestAttr(wrapper, 'Zmist');
     expect(title.length).toBe(1)
   })
 
   test('render card location', () => {
-    let location = findByTestAttr(wrapper, 'location');
+    wrapper = setUp({}, {location: 'Kiev, Ukraine'})
+    let location = findByTestAttr(wrapper, 'Kiev, Ukraine');
     expect(location.length).toBe(1)
+  })
+
+  test('render link to work or sociality page', () => {
+    wrapper = setUp({}, {area: 'works', link: 'altruist'}); 
+    let link = findByTestAttr(wrapper, '/works/altruist');
+    expect(link.length).toBe(1);
   })
 })
 
@@ -80,14 +93,27 @@ describe('screenWidth less then 850px', () => {
     expect(backgroundPici.length).toBe(0);
   })
 
+  test('render hover content block', () => {
+    let hoverContent = findByTestAttr(wrapper, 'hover-content');
+    expect(hoverContent.length).toBe(1)
+  })
+
   test('render card title', () => {
-    let title = findByTestAttr(wrapper, 'title');
+    wrapper = setUp({}, {title: 'Macdonalds'})
+    let title = findByTestAttr(wrapper, 'Macdonalds');
     expect(title.length).toBe(1)
   })
 
   test('render card location', () => {
-    let location = findByTestAttr(wrapper, 'location');
+    wrapper = setUp({}, {location: 'New York, USA'})
+    let location = findByTestAttr(wrapper, 'New York, USA');
     expect(location.length).toBe(1)
+  })
+
+  test('render link to work or sociality page', () => {
+    wrapper = setUp({}, {area: 'works', link: 'altruist'}); 
+    let link = findByTestAttr(wrapper, '/works/altruist');
+    expect(link.length).toBe(1);
   })
 })
 
