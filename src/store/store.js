@@ -7,7 +7,7 @@ const initialState = {
   menuShow: false, 
   isLoaded: false,
   language: 'en',
-  featured: false, 
+  featured: [], 
   works: false, 
   allSocialities: false, 
   currentWorkData: false, 

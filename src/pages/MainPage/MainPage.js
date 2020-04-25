@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import "./MainPage.scss"; 
-import LazyLoad from 'react-lazyload'; 
 import {getData, getToken} from '../../store/actions';
 
 import {Message} from '../../components/Message/index'; 
@@ -39,10 +38,7 @@ const MainPage = ({works, allSocialities, allText, language, setAllWorks, setAll
       <main>
         <Message />
         <div className="wrapper">
-          <LazyLoad scroll={true} height={400}>
-            <Featured />
-          </LazyLoad>
-          <LazyLoad scroll={true}>
+          <Featured />
           <div className="main__work">
             <MassonryGallery 
               worksArr={works} 
@@ -55,7 +51,6 @@ const MainPage = ({works, allSocialities, allText, language, setAllWorks, setAll
               buttonAutoStart={true}
             />
           </div>
-          </LazyLoad>
           <MainSociality />
         </div>
       </main>

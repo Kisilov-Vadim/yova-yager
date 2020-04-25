@@ -97,7 +97,7 @@ const SocialityPage = ({screenWidth, allSocialities, setAllSocialities, language
         </div>
         {
           elementCount < filteredSociality.length ?
-            <LazyLoad height={elementCount >= filteredSociality.length ? 0 : 80} unmountIfInvisible={true} offset={200}>
+            <LazyLoad height={elementCount >= filteredSociality.length ? 0 : 85} unmountIfInvisible={true} offset={400}>
               <div 
                 onClick={() => setElementCount(elementCount + 8)} 
               >

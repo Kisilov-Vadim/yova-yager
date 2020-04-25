@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { findByTestAttr, checkProps, storeFactory } from '../../testUtilits/'; 
+import { findByTestAttr, checkProps, storeFactory } from '../../testUtilits/';
 
 import { WorksCard } from './index';
 
 const defaultProps = {
-  image: 'String', 
-  title: 'String', 
-  location: 'Kiev, Ukraine', 
-  backgroundPici: true, 
+  image: 'String',
+  title: 'String',
+  location: 'Kiev, Ukraine',
+  backgroundPici: true,
   area: 'works',
   link: 'altruist'
 }
@@ -19,16 +19,16 @@ const defaultState = {
 }
 
 let setUp = (initialState={}, props={}) => {
-  const store = storeFactory({...defaultState,...initialState}); 
-  const allProps = {...defaultProps, ...props}; 
-  const wrapper = shallow(<WorksCard {...allProps} store={store} />).dive().dive(); 
-  return wrapper; 
+  const store = storeFactory({...defaultState,...initialState});
+  const allProps = {...defaultProps, ...props};
+  const wrapper = shallow(<WorksCard {...allProps} store={store} />).dive().dive();
+  return wrapper;
 }
 
 describe('screenWidth more then 850px', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = setUp({ screenWidth: 1440 }); 
+    wrapper = setUp({ screenWidth: 1440 });
   })
 
   test('does not throw error with expected props', () => {
@@ -36,19 +36,19 @@ describe('screenWidth more then 850px', () => {
   })
 
   test('render div when screenWidth > 850px', () => {
-    let mainDiv = findByTestAttr(wrapper, 'screenWidth-more-850'); 
+    let mainDiv = findByTestAttr(wrapper, 'screenWidth-more-850');
     expect(mainDiv.length).toBe(1)
   })
 
   test('render background pici animation when backgroundPici === true', () => {
     wrapper = setUp({screenWidth: 1440}, { backgroundPici: true})
-    let backgroundPici = findByTestAttr(wrapper, 'background-pici'); 
+    let backgroundPici = findByTestAttr(wrapper, 'background-pici');
     expect(backgroundPici.length).toBe(1);
   })
 
   test('render background pici animation when backgroundPici === false', () => {
     wrapper = setUp({screenWidth: 1440}, { backgroundPici: false})
-    let backgroundPici = findByTestAttr(wrapper, 'background-pici'); 
+    let backgroundPici = findByTestAttr(wrapper, 'background-pici');
     expect(backgroundPici.length).toBe(0);
   })
 
@@ -70,7 +70,7 @@ describe('screenWidth more then 850px', () => {
   })
 
   test('render link to work or sociality page', () => {
-    wrapper = setUp({}, {area: 'works', link: 'altruist'}); 
+    wrapper = setUp({}, {area: 'works', link: 'altruist'});
     let link = findByTestAttr(wrapper, '/works/altruist');
     expect(link.length).toBe(1);
   })
@@ -79,17 +79,17 @@ describe('screenWidth more then 850px', () => {
 describe('screenWidth less then 850px', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = setUp({ screenWidth: 560 }); 
+    wrapper = setUp({ screenWidth: 560 });
   })
 
   test('render div when screenWidth < 850px', () => {
-    let mainDiv = findByTestAttr(wrapper, 'screenWidth-less-850'); 
+    let mainDiv = findByTestAttr(wrapper, 'screenWidth-less-850');
     expect(mainDiv.length).toBe(1)
   })
 
   test('render background pici animation', () => {
     wrapper = setUp({screenWidth: 560}, { backgroundPici: true })
-    let backgroundPici = findByTestAttr(wrapper, 'background-pici'); 
+    let backgroundPici = findByTestAttr(wrapper, 'background-pici');
     expect(backgroundPici.length).toBe(0);
   })
 
@@ -109,11 +109,4 @@ describe('screenWidth less then 850px', () => {
     let location = findByTestAttr(wrapper, 'New York, USA');
     expect(location.length).toBe(1)
   })
-
-  test('render link to work or sociality page', () => {
-    wrapper = setUp({}, {area: 'works', link: 'altruist'}); 
-    let link = findByTestAttr(wrapper, '/works/altruist');
-    expect(link.length).toBe(1);
-  })
 })
-

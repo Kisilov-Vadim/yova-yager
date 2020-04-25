@@ -71,7 +71,7 @@ const MassonryGallery = (
       </div>
       {
         photoLoadButton && button && elementCount < worksArr.length ?
-          <LazyLoad height={elementCount >= worksArr.length ? 0 : 80} unmountIfInvisible={true} offset={200}>
+          <LazyLoad height={elementCount >= worksArr.length ? 0 : 85} unmountIfInvisible={true} offset={200}>
             <div 
               onClick={() => setElementCount(elementCount + count)} 
             >
