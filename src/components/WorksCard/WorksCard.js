@@ -88,10 +88,10 @@ const WorksCard = ({screenWidth, image, backgroundPici, title, link, location, a
         <div data-test="withBackgroundPici" className="card" onMouseOver={backgroundPici ? startAnimate : null} onMouseLeave={backgroundPici ? stopAnimate : null}>
           <img itemprop="image" src={`http://yova.praid.com.ua${image}`} alt={title}/>
           <Link to={`/${area}/${link}`} exact className="card__info" 
-            onClick={() => window.scrollTo(0, 0)}>
-            <div>
-              <span itemprop="name" data-test="title">{title}</span>
-              <p itemprop="contentLocation" data-test="location">{location}</p>
+            onClick={() => window.scrollTo(0, 0)} data-test={`/${area}/${link}`}>
+            <div data-test="hover-content">
+              <span itemprop="name" data-test={`${title}`}>{title}</span>
+              <p itemprop="contentLocation" data-test={`${location}`}>{location}</p>
             </div>
           </Link>
          {
@@ -132,10 +132,10 @@ const WorksCard = ({screenWidth, image, backgroundPici, title, link, location, a
     return (
       <div className="card" data-test="screenWidth-less-850">
         <img src={`http://yova.praid.com.ua${image}`} alt={title}/>
-        <Link to={`/${area}/${link}`} exact className="card__info" onClick={() => window.scrollTo(0, 0)}>
-          <div>
-              <span itemprop="name" data-test="title">{title}</span>
-              <p itemprop="contentLocation" data-test="location">{location}</p>
+        <Link to={`/${area}/${link}`} exact className="card__info" onClick={() => window.scrollTo(0, 0)} data-test={`/${area}/${link}`}>
+          <div data-test="hover-content">
+            <span itemprop="name" data-test={`${title}`}>{title}</span>
+            <p itemprop="contentLocation" data-test={`${location}`}>{location}</p>
           </div>
         </Link>
       </div>

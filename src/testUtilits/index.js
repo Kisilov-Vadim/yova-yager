@@ -1,6 +1,7 @@
 import checkPropTypes from 'check-prop-types';
 import {reducer} from '../store/store';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
+import ReduxThunk from 'redux-thunk';
 
 /**
  * Find dom elem in component by data-test attr
@@ -33,9 +34,11 @@ export const checkProps = (component, props) => {
  * @param {Object} initialState - initial state in test
  */
 
+const middlewares = [ReduxThunk]; 
+// const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore)
+
 export const storeFactory = (initialState) => {
-  return createStore(
-    reducer,
-    initialState,
-  )
+  const createStoreWithMiddleWare = applyMiddleware(...middlewares)(createStore);
+  return createStoreWithMiddleWare(reducer, initialState); 
 }
+

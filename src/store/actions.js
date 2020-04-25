@@ -20,7 +20,7 @@ export const changeLanguage = (language) => ({ type: ACTIONS.CHANGE_LANGUAGE, la
 export const setFeatured = (featured) => ({ type: ACTIONS.SET_FEATURED, featured }); 
 export const setAllWorks = (works) => ({ type: ACTIONS.SET_WORKS, works }); 
 export const setAllSocialities = (allSocialities) => ({ type: ACTIONS.SET_ALLSOCIALITIES, allSocialities }); 
-const setAllText = (text) => ({ type: ACTIONS.SET_ALLTEXT, text }); 
+export const setAllText = (text) => ({ type: ACTIONS.SET_ALLTEXT, text }); 
 export const setAboutPage = (about) => ({ type: ACTIONS.SET_ABOUT_PAGE, about });
 export const setContactPage = (contact) => ({ type: ACTIONS.SET_CONTACT_PAGE, contact })
 

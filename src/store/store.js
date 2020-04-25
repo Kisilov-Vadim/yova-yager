@@ -6,14 +6,14 @@ const initialState = {
   screenWidth: 1440, 
   menuShow: false, 
   isLoaded: false,
+  language: 'en',
   featured: false, 
   works: false, 
   allSocialities: false, 
-  allText: [],
   currentWorkData: false, 
-  language: 'en',
   aboutPage: false,
-  contactPage: false,  
+  contactPage: false,
+  allText: []  
 }; 
 
 export const reducer = (state, action) => {
