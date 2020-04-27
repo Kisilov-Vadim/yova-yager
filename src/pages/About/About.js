@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import './About.scss'; 
+import './About.scss';
 import LazyLoad from 'react-lazyload';
 import Awards_card from './Awards_card';
-import $ from 'jquery'; 
+import $ from 'jquery';
 import {getData, getToken} from '../../store/actions';
 
 import {ButtonDecorate} from '../../components/ButtonDecorate/index';
@@ -11,7 +11,7 @@ import Preloader from '../../components/Preloader/Preloader';
 
 const About = ({language, setAboutPage, aboutPage}) => {
   const [openAwards, setOpenAwards] = useState(true);
-  const [awardsCardsHeight, setAwardsCardsHeight] = useState(null); 
+  const [awardsCardsHeight, setAwardsCardsHeight] = useState(null);
   const [windowWidth, setWindowWidth] = useState($(window).width());
 
   useEffect(() => {
@@ -23,17 +23,17 @@ const About = ({language, setAboutPage, aboutPage}) => {
   }, [])
 
   useEffect(() => {
-    window.addEventListener('resize', resize); 
+    window.addEventListener('resize', resize);
 
     if (windowWidth > 560) {
       $('.awards__cards').css('height', 'auto')
-      return 
-    }; 
-  
+      return
+    };
+
     if (!$('.awards__cards').innerHeight() || awardsCardsHeight) return
     setAwardsCardsHeight($('.awards__cards').innerHeight())
-    setOpenAwards(false) 
-   
+    setOpenAwards(false)
+
     return () => {
       window.removeEventListener('resize', resize)
     }
@@ -50,22 +50,24 @@ const About = ({language, setAboutPage, aboutPage}) => {
   } else {
 
     return (
-      <section className="about">
+      <section className="about" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="jobTitle" content="designer" />
         <div className="wrapper">
           <h1 className="about__title">{language === 'en' ? "About" : "Про мене"}</h1>
           <div className="about__content">
             <div className="about__content-yova">
-              <LazyPhotoLoad 
-                actualClass="content_photo" 
+              <LazyPhotoLoad
+                actualClass="content_photo"
                 image={aboutPage[0].image_left}
                 alt="Yova Yager"
+                itemprop="image"
               />
               <div className="content_text">
                 {
                   aboutPage[0].text_right.split('\n').map(text => {
                     if (text.includes('##')) {
                       return (
-                        <p key={text} className="quote">
+                        <p key={text} className="quote" itemprop="name">
                           {text.replace('## ', '')}
                         </p>
                       )} else if (text.includes('#')) {
@@ -78,7 +80,7 @@ const About = ({language, setAboutPage, aboutPage}) => {
                       return null
                     } else {
                       return (
-                        <p className="text" key={text}>
+                        <p className="text" key={text} itemprop="description">
                           {text}
                         </p>
                       )
@@ -107,7 +109,7 @@ const About = ({language, setAboutPage, aboutPage}) => {
                       return null
                     } else {
                       return (
-                        <p className="text" key={text}>
+                        <p className="text" key={text} itemprop="description">
                           {text}
                         </p>
                       )
@@ -115,20 +117,21 @@ const About = ({language, setAboutPage, aboutPage}) => {
                   })
                 }
               </div>
-              <LazyPhotoLoad 
-                actualClass="content_photo" 
+              <LazyPhotoLoad
+                actualClass="content_photo"
                 image={aboutPage[0].image_right}
                 alt="Yova Yager studio"
+                itemprop="image"
               />
             </div>
           </div>
-          <LazyLoad 
-            height={80} 
+          <LazyLoad
+            height={80}
             offset={100}
           >
             <div className="about__press-button">
               <a href="#" >
-                <ButtonDecorate 
+                <ButtonDecorate
                   title="MEDIA KIT"
                   title_ua="Медіа комплект"
                   id="aboutPressKitButton"
@@ -139,23 +142,23 @@ const About = ({language, setAboutPage, aboutPage}) => {
           </LazyLoad>
           <div className="awards">
             <h1 className="about__title">{language === 'en' ? 'AWARDS' : 'Нагороди'}</h1>
-            <div className="awards__cards" 
+            <div className="awards__cards"
                 style={{
-                  height: `${openAwards === true ? awardsCardsHeight : '680'}px` 
+                  height: `${openAwards === true ? awardsCardsHeight : '680'}px`
                 }}
             >
               {
-                aboutPage[1].map(({title, text, image, id}) => 
-                  <Awards_card 
+                aboutPage[1].map(({title, text, image, id}) =>
+                  <Awards_card
                     title_first={title}
-                    title_second={text} 
-                    img={image} 
+                    title_second={text}
+                    img={image}
                     key={id}
                   />)
               }
             </div>
-            <button 
-              className="awards__more" 
+            <button
+              className="awards__more"
               onClick={() => setOpenAwards(!openAwards)}
             >
               {language === 'en' ? openAwards ? 'less awards' : 'more awards' : openAwards ? 'менше нагород' : 'більше нагород'} {openAwards === true ? '-' : '+'}
@@ -164,7 +167,7 @@ const About = ({language, setAboutPage, aboutPage}) => {
         </div>
       </section>
     )
-  }  
+  }
 }
 
-export default About; 
+export default About;

@@ -7,16 +7,14 @@ export default function Awards_card({title_first, title_second, img}) {
       <div className="photo">
         <img src={img} alt={title_first} />
       </div>
-      <span className="title">{title_first}<br/>{title_second}
+      <span className="title" itemprop='award'>{title_first}<br/>{title_second}
       </span>
     </div>
   )
 }
 
 Awards_card.protoTypes = {
-  title_first: PropTypes.string.isRequired, 
-  title_second: PropTypes.string.isRequired, 
+  title_first: PropTypes.string.isRequired,
+  title_second: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired
 }
-
-
