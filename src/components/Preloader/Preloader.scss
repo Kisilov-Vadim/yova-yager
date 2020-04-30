@@ -9,9 +9,13 @@
   background-color: white;
   z-index: 10;
 
+  @media screen and (max-width: 560px) {
+    height: calc(100vh - 60px);
+  }
+
   &__main {
     display: flex;
-    width: 200px; 
+    width: 200px;
     height: 90px;
     border: 1px solid #221D00;
 
@@ -38,7 +42,7 @@
     }
 
     &-left {
-      border-right: 1px solid #221D00;  
+      border-right: 1px solid #221D00;
     }
   }
 }
