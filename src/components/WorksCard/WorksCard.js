@@ -98,9 +98,10 @@ const WorksCard = ({
     }, 1100)
   }
 
-  if (screenWidth > 850) {
+  if (screenWidth > 850 && document.body) {
 
-    return (<Fade bottom="bottom" duration={1700} delay={100} data-test="screenWidth-more-850">
+    return (
+      <Fade bottom="bottom" duration={1700} delay={100} data-test="screenWidth-more-850">
       <div data-test="withBackgroundPici" className="card" onMouseOver={backgroundPici
           ? startAnimate
           : null} onMouseLeave={backgroundPici
@@ -135,17 +136,18 @@ const WorksCard = ({
     </Fade>);
   } else {
 
-    return (<div className="card" data-test="screenWidth-less-850" itemscope="itemscope" itemtype="http://schema.org/Place">
-      <img src={`http://yova.praid.com.ua${image}`} alt={title} itemprop="image" />
-      <Link to={`/${area}/${link}`} exact="exact" className="card__info" onClick={() => window.scrollTo(0, 0)} data-test={`/${area}/${link}`} itemprop="url">
-        <div data-test="hover-content">
-          <span itemprop="name" data-test={`${title}`}>{title}</span>
-          <p itemprop="address" data-test={`${location}`}>{location}</p>
-        </div>
-      </Link>
-    </div>)
+    return (
+      <div className="card" data-test="screenWidth-less-850" itemscope="itemscope" itemtype="http://schema.org/Place">
+        <img src={`http://yova.praid.com.ua${image}`} alt={title} itemprop="image" />
+        <Link to={`/${area}/${link}`} exact="exact" className="card__info" onClick={() => window.scrollTo(0, 0)} data-test={`/${area}/${link}`} itemprop="url">
+          <div data-test="hover-content">
+            <span itemprop="name" data-test={`${title}`}>{title}</span>
+            <p itemprop="address" data-test={`${location}`}>{location}</p>
+          </div>
+        </Link>
+      </div>
+    )
   }
-
 }
 
 WorksCard.protoTypes = {
