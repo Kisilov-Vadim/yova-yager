@@ -95,7 +95,7 @@ const WorkPage = ({screenWidth, id, language, area, works, featured, allSocialit
                 : <LazyPhotoLoad
                     data-test="main_image"
                     actualClass="work__image"
-                    image={currentWorkData.mainImage}
+                    image='/img/gif.gif'
                     alt={currentWorkData.title}
 										itemptop="image"
                   />
